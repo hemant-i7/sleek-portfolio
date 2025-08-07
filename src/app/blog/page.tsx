@@ -2,8 +2,8 @@ import { BlogList } from '@/components/blog/BlogList';
 import Container from '@/components/common/Container';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { getAllTags, getPublishedBlogPosts } from '@/lib/blog';
 import { generateMetadata as getMetadata } from '@/config/Meta';
+import { getAllTags, getPublishedBlogPosts } from '@/lib/blog';
 import { Metadata } from 'next';
 import { Robots } from 'next/dist/lib/metadata/types/metadata-types';
 
@@ -20,8 +20,8 @@ export const generateMetadata = (): Metadata => {
         'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1,
-      } as Robots['googleBot']
-    }
+      } as Robots['googleBot'],
+    },
   };
 };
 
@@ -37,7 +37,7 @@ export default function BlogPage() {
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
             Blogs
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             Thoughts, tutorials, and insights on engineering, and programming.
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function BlogPage() {
             <h2 className="text-2xl font-semibold">
               Latest Posts
               {posts.length > 0 && (
-                <span className="ml-2 text-sm font-normal text-muted-foreground">
+                <span className="text-muted-foreground ml-2 text-sm font-normal">
                   ({posts.length} {posts.length === 1 ? 'post' : 'posts'})
                 </span>
               )}

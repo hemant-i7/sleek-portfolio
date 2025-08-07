@@ -5,7 +5,6 @@ import Monitor from '@/components/svgs/devices/Monitor';
 import Mouse from '@/components/svgs/devices/Mouse';
 import Phone from '@/components/svgs/devices/Phone';
 
-
 export const devices = [
   {
     name: 'MacBook Pro 16" M4 46GB 512GB',

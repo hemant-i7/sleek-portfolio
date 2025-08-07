@@ -16,9 +16,9 @@ export const metadata: Metadata = {
       follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
-      'max-snippet': -1
-    }
-  }
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function ContactPage() {
@@ -30,7 +30,7 @@ export default function ContactPage() {
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
             {contactConfig.title}
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             {contactConfig.description}
           </p>
         </div>

@@ -53,8 +53,8 @@ const ChatBubble: React.FC = () => {
   useEffect(() => {
     setMessages((msgs) =>
       msgs.map((msg) =>
-        msg.timestamp === '' ? { ...msg, timestamp: getCurrentTime() } : msg
-      )
+        msg.timestamp === '' ? { ...msg, timestamp: getCurrentTime() } : msg,
+      ),
     );
   }, []);
 
@@ -246,17 +246,17 @@ const ChatBubble: React.FC = () => {
     >
       <ExpandableChatHeader>
         <div className="flex items-center space-x-3">
-          <Avatar className="h-8 w-8 border-2 border-primary bg-blue-300 dark:bg-yellow-300">
+          <Avatar className="border-primary h-8 w-8 border-2 bg-blue-300 dark:bg-yellow-300">
             <AvatarImage src="/assets/logo.png" alt="Assistant" />
             <AvatarFallback>AI</AvatarFallback>
           </Avatar>
           <div>
-            <h3 className="font-semibold text-sm">
+            <h3 className="text-sm font-semibold">
               {heroConfig.name}&apos;s Portfolio Assistant
             </h3>
-            <div className="text-xs text-muted-foreground">
+            <div className="text-muted-foreground text-xs">
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
                 Online
               </div>
             </div>
@@ -273,20 +273,20 @@ const ChatBubble: React.FC = () => {
                 className={cn(
                   'flex w-max max-w-xs flex-col gap-2 rounded-lg px-3 py-2 text-sm',
                   message.sender === 'user'
-                    ? 'ml-auto text-secondary bg-muted'
+                    ? 'text-secondary bg-muted ml-auto'
                     : 'bg-muted',
                 )}
               >
                 <div className="flex items-start space-x-2">
                   {message.sender === 'bot' && (
-                    <Avatar className="h-6 w-6 border-2 border-primary bg-blue-300 dark:bg-yellow-300">
+                    <Avatar className="border-primary h-6 w-6 border-2 bg-blue-300 dark:bg-yellow-300">
                       <AvatarImage src="/assets/logo.png" alt="Assistant" />
                       <AvatarFallback>AI</AvatarFallback>
                     </Avatar>
                   )}
-                  <div className="flex-1 md:max-w-sm max-w-xs">
+                  <div className="max-w-xs flex-1 md:max-w-sm">
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 prose prose-sm max-w-none dark:prose-invert">
+                      <div className="prose prose-sm dark:prose-invert max-w-none flex-1">
                         {message.text ? (
                           <ReactMarkdown
                             components={{
@@ -295,7 +295,7 @@ const ChatBubble: React.FC = () => {
                                   {...props}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-blue-500 hover:text-blue-700 underline break-words"
+                                  className="break-words text-blue-500 underline hover:text-blue-700"
                                 />
                               ),
                               // Custom paragraph component to remove default margins
@@ -329,7 +329,7 @@ const ChatBubble: React.FC = () => {
                     </div>
                     <p
                       className={cn(
-                        'text-xs mt-1',
+                        'mt-1 text-xs',
                         message.sender === 'user'
                           ? 'text-secondary'
                           : 'text-muted-foreground',
@@ -345,7 +345,7 @@ const ChatBubble: React.FC = () => {
             {/* Show suggestions only when conversation just started */}
             {messages.length === 1 && !isLoading && (
               <div className="space-y-2">
-                <p className="text-xs text-muted-foreground px-3">
+                <p className="text-muted-foreground px-3 text-xs">
                   Quick questions:
                 </p>
                 <div className="flex flex-wrap gap-2 px-3">
@@ -355,7 +355,7 @@ const ChatBubble: React.FC = () => {
                       variant="outline"
                       size="sm"
                       onClick={() => handleSuggestionClick(suggestion)}
-                      className="text-xs h-8 px-3 bg-background hover:bg-muted border-muted-foreground/20"
+                      className="bg-background hover:bg-muted border-muted-foreground/20 h-8 px-3 text-xs"
                     >
                       {suggestion}
                     </Button>
@@ -383,7 +383,7 @@ const ChatBubble: React.FC = () => {
             disabled={!newMessage.trim() || isLoading}
           >
             {isLoading ? (
-              <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
             ) : (
               <SendIcon className="h-4 w-4" />
             )}

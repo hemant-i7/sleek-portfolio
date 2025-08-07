@@ -1,8 +1,8 @@
 import Container from '@/components/common/Container';
 import { ProjectList } from '@/components/projects/ProjectList';
 import { Separator } from '@/components/ui/separator';
-import { projects } from '@/config/Projects';
 import { generateMetadata as getMetadata } from '@/config/Meta';
+import { projects } from '@/config/Projects';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
       follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
-      'max-snippet': -1
-    }
-  }
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function ProjectsPage() {
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
             Projects
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             My projects and work across different technologies and domains.
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
             <h2 className="text-2xl font-semibold">
               All Projects
               {projects.length > 0 && (
-                <span className="ml-2 text-sm font-normal text-muted-foreground">
+                <span className="text-muted-foreground ml-2 text-sm font-normal">
                   ({projects.length}{' '}
                   {projects.length === 1 ? 'project' : 'projects'})
                 </span>

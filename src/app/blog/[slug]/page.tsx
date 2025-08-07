@@ -10,6 +10,7 @@ import {
   getBlogPostSlugs,
   getRelatedPosts,
 } from '@/lib/blog';
+import { serialize } from 'next-mdx-remote/serialize';
 import { Metadata } from 'next';
 import { Link } from 'next-view-transitions';
 import { notFound } from 'next/navigation';
@@ -71,6 +72,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post || !post.frontmatter.isPublished) {
     notFound();
   }
+  
+  // Pre-serialize the MDX content on the server
+  const mdxSource = await serialize(post.content);
   const relatedPosts = await getRelatedPosts(slug, 3);
 
   return (
@@ -87,7 +91,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Blog Content */}
-        <BlogContent frontmatter={post.frontmatter} content={post.content} />
+        <BlogContent frontmatter={post.frontmatter} mdxSource={mdxSource} />
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (

@@ -14,7 +14,10 @@ export const siteConfig = {
   name: heroConfig.name,
   title: 'Sleek Portfolio',
   description: 'Sleek Portfolio Template by @Hemant Kadam',
-  url: typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000',
+  url:
+    typeof window !== 'undefined'
+      ? window.location.origin
+      : 'http://localhost:3000',
   ogImage: '/meta/opengraph-image.png',
   author: {
     name: 'Hemant Kadam',

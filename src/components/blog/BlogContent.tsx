@@ -1,19 +1,20 @@
+'use client';
+
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { BlogFrontmatter } from '@/types/blog';
-import rehypeHighlight from '@shikijs/rehype';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { MDXRemoteWrapper } from './MDXRemoteWrapper';
 import Image from 'next/image';
-
 import Calender from '../svgs/Calender';
 import { BlogComponents } from './BlogComponents';
 
 interface BlogContentProps {
   frontmatter: BlogFrontmatter;
-  content: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  mdxSource: any; // Pre-serialized MDX content
 }
 
-export function BlogContent({ frontmatter, content }: BlogContentProps) {
+export function BlogContent({ frontmatter, mdxSource }: BlogContentProps) {
   const { title, description, image, tags, date } = frontmatter;
 
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
@@ -45,13 +46,13 @@ export function BlogContent({ frontmatter, content }: BlogContentProps) {
             ))}
           </div>
 
-          <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
+          <h1 className="text-4xl leading-tight font-bold lg:text-5xl">
             {title}
           </h1>
 
-          <p className="text-xl text-muted-foreground">{description}</p>
+          <p className="text-muted-foreground text-xl">{description}</p>
 
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="text-muted-foreground flex items-center gap-2 text-sm">
             <Calender className="size-6" />
             <time dateTime={date}>{formattedDate}</time>
           </div>
@@ -61,22 +62,10 @@ export function BlogContent({ frontmatter, content }: BlogContentProps) {
       </header>
 
       {/* Content */}
-      <div className="prose prose-neutral max-w-none dark:prose-invert">
-        <MDXRemote
-          source={content}
+      <div className="prose prose-neutral dark:prose-invert max-w-none">
+        <MDXRemoteWrapper
+          mdxSource={mdxSource}
           components={BlogComponents}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [
-                [
-                  rehypeHighlight,
-                  {
-                    theme: 'github-dark',
-                  },
-                ],
-              ],
-            },
-          }}
         />
       </div>
     </article>

@@ -30,7 +30,7 @@ export const experiences: Experience[] = [
     location: 'Mumbai, Maharashtra, India',
     image: '/company/surfboard_ventures_logo.jpeg',
     description: [
-      'Working as an Associate Software Engineer Intern, contributing to software development projects and collaborating with the engineering team.'
+      'Working as an Associate Software Engineer Intern, contributing to software development projects and collaborating with the engineering team.',
     ],
     startDate: 'Mar 2025',
     endDate: 'Present',
@@ -44,7 +44,7 @@ export const experiences: Experience[] = [
     location: 'Mumbai, Maharashtra, India',
     image: '/company/1713630756849.jpeg',
     description: [
-      'Freelance work in Graphic Design, Video Editing, and related skills.'
+      'Freelance work in Graphic Design, Video Editing, and related skills.',
     ],
     startDate: 'Mar 2022',
     endDate: 'Present',
@@ -56,9 +56,10 @@ export const experiences: Experience[] = [
     company: 'YouTube',
     position: 'Content Creator',
     location: '',
-    image: '/company/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.webp',
+    image:
+      '/company/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.webp',
     description: [
-      'Content Creator on YouTube, producing videos on technology, graphic design, and video editing.'
+      'Content Creator on YouTube, producing videos on technology, graphic design, and video editing.',
     ],
     startDate: 'May 2020',
     endDate: 'Present',
@@ -70,10 +71,9 @@ export const experiences: Experience[] = [
     company: 'Blogger Hemant',
     position: 'Content Creator',
     location: '',
-    image: '/company/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.webp',
-    description: [
-      'Content Creator for Blogger Hemant YouTube channel.'
-    ],
+    image:
+      '/company/youtube-logo-youtube-logo-transparent-youtube-icon-transparent-free-free-png.webp',
+    description: ['Content Creator for Blogger Hemant YouTube channel.'],
     startDate: 'May 2020',
     endDate: 'Present',
     website: 'https://www.youtube.com/@bloggerhemant',
@@ -86,7 +86,7 @@ export const experiences: Experience[] = [
     location: 'Vasai, Maharashtra, India',
     image: '/company/nsmedia.png',
     description: [
-      'Web Developer Intern at NS Media, working on front-end and back-end development, Figma, and video editing.'
+      'Web Developer Intern at NS Media, working on front-end and back-end development, Figma, and video editing.',
     ],
     startDate: 'Aug 2022',
     endDate: 'Sep 2022',

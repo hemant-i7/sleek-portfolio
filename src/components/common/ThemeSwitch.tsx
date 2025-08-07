@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import React, { useCallback, useEffect, useState } from 'react';
+
 import Moon from '../svgs/Moon';
 import Sun from '../svgs/Sun';
 
@@ -17,7 +18,9 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
   useEffect(() => {
     setMounted(true);
     return () => {
-      const existingTransition = document.querySelector('[data-theme-transition]');
+      const existingTransition = document.querySelector(
+        '[data-theme-transition]',
+      );
       if (existingTransition) {
         existingTransition.remove();
       }
@@ -31,7 +34,8 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
       const rect = event.currentTarget.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
-      const backgroundColor = resolvedTheme === 'light' ? 'oklch(0.145 0 0)' : 'oklch(1 0 0)';
+      const backgroundColor =
+        resolvedTheme === 'light' ? 'oklch(0.145 0 0)' : 'oklch(1 0 0)';
 
       const transition = document.createElement('div');
       transition.setAttribute('data-theme-transition', 'true');
@@ -67,7 +71,7 @@ export default function ThemeSwitch({ className }: ThemeSwitchProps) {
     <button
       onClick={toggleTheme}
       disabled={isAnimating}
-      className={`relative flex h-8 w-8 items-center justify-center overflow-hidden transition-opacity hover:opacity-80 ${className} hover:cursor-pointer z-50`}
+      className={`relative flex h-8 w-8 items-center justify-center overflow-hidden transition-opacity hover:opacity-80 ${className} z-50 hover:cursor-pointer`}
       aria-label="Toggle theme"
     >
       <Sun

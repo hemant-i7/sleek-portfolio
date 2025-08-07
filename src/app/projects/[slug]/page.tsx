@@ -11,6 +11,7 @@ import {
   getProjectNavigation,
   getRelatedProjectCaseStudies,
 } from '@/lib/project';
+import { serialize } from 'next-mdx-remote/serialize';
 import { Metadata } from 'next';
 import { Link } from 'next-view-transitions';
 import { notFound } from 'next/navigation';
@@ -74,6 +75,8 @@ export default async function ProjectCaseStudyPage({
     notFound();
   }
 
+  // Pre-serialize the MDX content on the server
+  const mdxSource = await serialize(caseStudy.content);
   const navigation = await getProjectNavigation(slug);
   const relatedProjects = await getRelatedProjectCaseStudies(slug, 2);
 
@@ -93,7 +96,7 @@ export default async function ProjectCaseStudyPage({
         {/* Project Content */}
         <ProjectContent
           frontmatter={caseStudy.frontmatter}
-          content={caseStudy.content}
+          mdxSource={mdxSource}
         />
 
         {/* Project Navigation */}
@@ -112,12 +115,12 @@ export default async function ProjectCaseStudyPage({
                 {relatedProjects.map((project) => (
                   <div
                     key={project.slug}
-                    className="group rounded-lg border bg-card p-6 transition-colors hover:bg-muted/50"
+                    className="group bg-card hover:bg-muted/50 rounded-lg border p-6 transition-colors"
                   >
                     <Link href={`/projects/${project.slug}`}>
                       <div className="space-y-3">
                         <div className="flex items-center gap-2">
-                          <h3 className="text-lg font-semibold group-hover:text-primary">
+                          <h3 className="group-hover:text-primary text-lg font-semibold">
                             {project.frontmatter.title}
                           </h3>
                           <div className="text-xs">
@@ -137,7 +140,7 @@ export default async function ProjectCaseStudyPage({
                             </div>
                           </div>
                         </div>
-                        <p className="text-sm text-muted-foreground line-clamp-2">
+                        <p className="text-muted-foreground line-clamp-2 text-sm">
                           {project.frontmatter.description}
                         </p>
                         <div className="flex flex-wrap gap-1">
@@ -146,13 +149,13 @@ export default async function ProjectCaseStudyPage({
                             .map((tech) => (
                               <span
                                 key={tech}
-                                className="rounded bg-muted px-2 py-1 text-xs"
+                                className="bg-muted rounded px-2 py-1 text-xs"
                               >
                                 {tech}
                               </span>
                             ))}
                           {project.frontmatter.technologies.length > 3 && (
-                            <span className="rounded bg-muted px-2 py-1 text-xs">
+                            <span className="bg-muted rounded px-2 py-1 text-xs">
                               +{project.frontmatter.technologies.length - 3}
                             </span>
                           )}

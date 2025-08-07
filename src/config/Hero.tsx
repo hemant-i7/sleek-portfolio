@@ -119,21 +119,21 @@ export const socialLinks = [
   {
     name: 'X',
     href: 'https://twitter.com/hemant_i7',
-    icon: <X />, 
+    icon: <X />,
   },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/hemant-kadam-5a1195194/',
-    icon: <LinkedIn />, 
+    icon: <LinkedIn />,
   },
   {
     name: 'Github',
     href: 'https://github.com/hemant-i7',
-    icon: <Github />, 
+    icon: <Github />,
   },
   {
     name: 'Email',
     href: 'mailto:contact@ainertia.in',
-    icon: <Mail />, 
+    icon: <Mail />,
   },
 ];
