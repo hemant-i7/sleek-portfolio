@@ -22,7 +22,41 @@ export const profileImage = '/company/1715195128331.jpeg';
 
 export const about = {
   name: 'Hemant Kadam',
-  description: `I'm a passionate Full Stack Web Developer and Content Creator. I love building responsive, user-friendly web applications and sharing knowledge through blogs and tutorials. Specialized in JavaScript, React.js, and Next.js, with a strong foundation in both frontend and backend development.`,
+  description: `I'm a passionate technologist and creator who codes primarily out of passion, constantly chasing knowledge and experimenting with new technologies. I thrive on building, learning, and pushing boundaries in the tech space.`,
+  
+  aboutMe: [
+    {
+      title: 'Who Am I?',
+      content: `I'm a curious technologist with a passion for building and creating. I'm not just a coder - I'm a leader, analyst, and risk-taker who loves turning ideas into reality.`
+    },
+    {
+      title: 'What Drives Me',
+      content: `I'm passionate about AI/ML, LLMs, deep learning, DevOps, backend technologies, and system design. I enjoy working with TypeScript, Next.js, NestJS, and JavaScript to build cool stuff.`
+    },
+    {
+      title: 'Beyond Code',
+      content: `When I'm not coding, you'll find me creating content, exploring music, or diving into new hobbies. I believe in continuous learning and personal growth.`
+    },
+    {
+      title: 'Open for Business',
+      content: `I'm open to exciting opportunities where I can contribute my skills and grow. Whether you need talent for your product, a team member, or a co-founder, let's talk!`
+    },
+    {
+      title: 'Disclaimer',
+      content: `My views are my own and don't reflect any organization. Following/liking doesn't mean endorsement. I'm not a certified advisor in any field. I use social media for fun and personal sharing.`
+    }
+  ],
+  
+  faq: [
+    {
+      question: 'Are you open for job opportunities?',
+      answer: 'Not generally, unless it is such an extraordinary opportunity (not always about money) that can change my mind.'
+    },
+    {
+      question: 'What are your socials?',
+      answer: 'You can find me on X and GitHub. That should be enough for now.'
+    }
+  ]
 };
 
 export const education = [
