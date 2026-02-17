@@ -82,11 +82,11 @@ export function HackathonItem({ item }: HackathonItemProps) {
                 </button>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] max-h-[90vh] w-auto border-0 bg-transparent p-0 shadow-none">
-                <DialogTitle className="sr-only">{item.title} — post image</DialogTitle>
+                <DialogTitle className="sr-only">{item.title}, post image</DialogTitle>
                 <div className="relative flex max-h-[85vh] w-full items-center justify-center overflow-hidden rounded-lg bg-muted">
                   <Image
                     src={item.postImageUrl!}
-                    alt={`${item.title} — post image`}
+                    alt={`${item.title}, post image`}
                     width={1200}
                     height={800}
                     className="max-h-[85vh] w-auto object-contain"
@@ -117,11 +117,11 @@ export function HackathonItem({ item }: HackathonItemProps) {
             </button>
           </DialogTrigger>
           <DialogContent className="max-w-[95vw] max-h-[90vh] w-auto border-0 bg-transparent p-0 shadow-none">
-            <DialogTitle className="sr-only">{item.title} — post image</DialogTitle>
+            <DialogTitle className="sr-only">{item.title}, post image</DialogTitle>
             <div className="relative flex max-h-[85vh] w-full items-center justify-center overflow-hidden rounded-lg bg-muted">
               <Image
                 src={item.postImageUrl!}
-                alt={`${item.title} — post image`}
+                alt={`${item.title}, post image`}
                 width={1200}
                 height={800}
                 className="max-h-[85vh] w-auto object-contain"

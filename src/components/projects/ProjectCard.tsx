@@ -126,7 +126,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {project.technologies.map((technology, index) => (
                 <Tooltip key={index}>
                   <TooltipTrigger>
-                    <div className="size-6 transition-all duration-300 hover:scale-120 hover:cursor-pointer">
+                    <div className="size-6 transition-all duration-300 pb-10 pt-4 hover:scale-120 hover:cursor-pointer">
                       {technology.icon}
                     </div>
                   </TooltipTrigger>

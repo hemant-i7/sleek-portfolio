@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-banners": "curl -s -X POST http://localhost:3000/api/projects/generate-all -H 'Content-Type: application/json'"
+    "generate-banners": "curl -s -X POST http://localhost:3000/api/projects/generate-all -H 'Content-Type: application/json'",
+    "generate-curalink-banner": "curl -s -X POST http://localhost:3000/api/projects/generate-image -H 'Content-Type: application/json' -d '{\"projectKey\":\"CuraLink\"}'"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

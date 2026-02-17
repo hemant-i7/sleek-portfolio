@@ -74,9 +74,9 @@ export const experiences: Experience[] = [
   {
     isCurrent: false,
     company: 'N. S. Media',
-    position: 'Web Developer Intern',
+    position: 'Software Developer Intern',
     location: 'Vasai, Mumbai',
-    image: '/company/nsmedia.png',
+    image: '/company/nsmedia.svg',
     description: [
       'Created responsive websites using React.js, CSS3, and integrated REST APIs.',
       'Improved page load speed by 20%.',

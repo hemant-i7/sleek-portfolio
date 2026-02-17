@@ -13,7 +13,7 @@ export interface PageMeta {
 export const siteConfig = {
   name: heroConfig.name,
   title: 'Sleek Portfolio',
-  description: 'Hemant Kadam – Web Developer & Content Creator',
+  description: 'Hemant Kadam, Software Developer & Content Creator',
   url:
     typeof window !== 'undefined'
       ? window.location.origin
@@ -34,7 +34,7 @@ export const siteConfig = {
     'react',
     'nextjs',
     'typescript',
-    'web development',
+    'software development',
     heroConfig.name.toLowerCase(),
   ],
 };
@@ -48,7 +48,7 @@ export const pageMetadata: Record<string, PageMeta> = {
       'portfolio',
       'developer',
       'full-stack',
-      'web development',
+      'software development',
       'projects',
     ],
     ogImage: '/meta/hero.png',
@@ -89,7 +89,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     keywords: [
       'projects',
       'portfolio',
-      'web development',
+      'software development',
       'applications',
       'software',
     ],
@@ -101,12 +101,12 @@ export const pageMetadata: Record<string, PageMeta> = {
   '/blog': {
     title: 'Blog - Thoughts & Tutorials',
     description:
-      'Read my thoughts, tutorials, and insights on engineering, programming, and web development.',
+      'Read my thoughts, tutorials, and insights on engineering, programming, and software development.',
     keywords: [
       'blog',
       'tutorials',
       'programming',
-      'web development',
+      'software development',
       'technical writing',
     ],
     ogImage: '/meta/blogs.png',
@@ -116,7 +116,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   // Resume page
   '/resume': {
     title: 'Resume - Professional CV',
-    description: `View and download ${heroConfig.name}'s professional resume and CV. Technical skills, experience, and qualifications.`,
+    description: `View and download ${heroConfig.name}'s resume and CV. Frontend, backend, DevOps, Docker. Technical skills, experience, and qualifications.`,
     keywords: [
       'resume',
       'cv',

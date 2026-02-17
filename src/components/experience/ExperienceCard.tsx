@@ -20,21 +20,28 @@ const parseDescription = (text: string): string => {
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       {/* Company Header */}
-      <div className="flex flex-col gap-2 md:flex-row md:justify-between">
-        {/* Left Side */}
-        <div className="flex items-center gap-4">
-          <Image
-            src={experience.image}
-            alt={experience.company}
-            width={100}
-            height={100}
-            className="size-12 rounded-md"
-          />
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <h3 className="text-lg font-bold">{experience.company}</h3>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+        <div className="flex items-start gap-3">
+          <div className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/40 bg-muted/20 p-1">
+            <Image
+              src={experience.image}
+              alt={experience.company}
+              width={40}
+              height={40}
+              className="size-full object-contain"
+            />
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-base font-semibold tracking-tight">{experience.company}</h3>
+              {experience.isCurrent && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                  <span className="size-1.5 rounded-full bg-emerald-500" />
+                  Current
+                </span>
+              )}
               {experience.website && (
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -91,55 +98,44 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
                   <TooltipContent>View GitHub</TooltipContent>
                 </Tooltip>
               )}
-              {experience.isCurrent && (
-                <div className="flex items-center gap-1 rounded-md border-green-300 bg-green-500/10 px-2 py-1 text-xs">
-                  <div className="size-2 animate-pulse rounded-full bg-green-500"></div>
-                  Working
-                </div>
-              )}
             </div>
-            <p>{experience.position}</p>
+            <p className="text-sm text-muted-foreground">{experience.position}</p>
           </div>
         </div>
-        {/* Right Side */}
-        <div className="text-secondary flex flex-col md:text-right">
+        <div className="text-muted-foreground shrink-0 text-right text-sm">
           <p>
-            {experience.startDate} -{' '}
-            {experience.isCurrent ? 'Present' : experience.endDate}
+            {experience.startDate} – {experience.isCurrent ? 'Present' : experience.endDate}
           </p>
-          <p>{experience.location}</p>
+          {experience.location && <p>{experience.location}</p>}
         </div>
       </div>
 
-      {/* Technologies */}
-      <div>
-        <h4 className="text-md mt-4 mb-2 font-semibold">Technologies</h4>
-        <div className="flex flex-wrap gap-2">
-          {experience.technologies.map((technology, techIndex: number) => (
-            <Skill
-              key={techIndex}
-              name={technology.name}
-              href={technology.href}
-            >
-              {technology.icon}
-            </Skill>
-          ))}
+      {experience.technologies.length > 0 && (
+        <div>
+          <h4 className="mb-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Technologies
+          </h4>
+          <div className="flex flex-wrap gap-1.5">
+            {experience.technologies.map((technology, techIndex: number) => (
+              <Skill key={techIndex} name={technology.name} href={technology.href}>
+                {technology.icon}
+              </Skill>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Description */}
-      <div className="text-secondary flex flex-col">
-        {experience.description.map(
-          (description: string, descIndex: number) => (
-            <p
-              key={descIndex}
-              dangerouslySetInnerHTML={{
-                __html: `• ${parseDescription(description)}`,
-              }}
-            />
-          ),
-        )}
-      </div>
+      <ul className="text-muted-foreground list-none space-y-1 text-sm">
+        {experience.description.map((description: string, descIndex: number) => (
+          <li
+            key={descIndex}
+            className="flex gap-2 before:shrink-0 before:content-['·'] before:font-bold before:text-primary"
+            dangerouslySetInnerHTML={{
+              __html: parseDescription(description),
+            }}
+          />
+        ))}
+      </ul>
     </div>
   );
 }

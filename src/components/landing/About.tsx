@@ -1,32 +1,44 @@
 import {
   about,
   achievements,
-  aboutSectionImage,
   profileImage,
   technicalSkillsByCategory,
+  whoIAmImage,
 } from '@/config/About';
 import type { HackathonAchievement } from './HackathonItem';
 import { HackathonItem } from './HackathonItem';
-import Figma from '@/components/technologies/Figma';
-import Github from '@/components/technologies/Github';
-import MongoDB from '@/components/technologies/MongoDB';
-import NextJs from '@/components/technologies/NextJs';
-import NodeJs from '@/components/technologies/NodeJs';
-import Postman from '@/components/technologies/Postman';
-import ReactIcon from '@/components/technologies/ReactIcon';
-import Shadcn from '@/components/technologies/Shadcn';
-import TailwindCss from '@/components/technologies/TailwindCss';
-import TypeScript from '@/components/technologies/TypeScript';
-import Vercel from '@/components/technologies/Vercel';
 import Image from 'next/image';
 import React from 'react';
 import {
+  FaBrain,
+  FaClock,
   FaCode,
   FaHandshake,
   FaInfoCircle,
   FaLightbulb,
   FaMusic,
+  FaPeopleCarry,
+  FaPuzzlePiece,
 } from 'react-icons/fa';
+import {
+  SiApifox,
+  SiContentstack,
+  SiFigma,
+  SiGithub,
+  SiLangchain,
+  SiMongodb,
+  SiN8N,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNotion,
+  SiPostman,
+  SiReact,
+  SiShadcnui,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+  SiWordpress,
+} from 'react-icons/si';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
@@ -39,25 +51,29 @@ import {
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 const skillIconMap: Record<string, React.ReactNode> = {
-  'React.js': <ReactIcon />,
-  'Next.js': <NextJs />,
-  TypeScript: <TypeScript />,
-  'Tailwind CSS': <TailwindCss />,
-  'ShadCN UI': <Shadcn />,
-  'Node.js': <NodeJs />,
-  MongoDB: <MongoDB />,
-  'REST APIs': <ReactIcon />,
-  LangChain: <ReactIcon />,
-  n8n: <ReactIcon />,
-  Embeddings: <ReactIcon />,
-  WordPress: <ReactIcon />,
-  Contentstack: <ReactIcon />,
-  GitHub: <Github />,
-  'VS Code': <ReactIcon />,
-  Postman: <Postman />,
-  Figma: <Figma />,
-  Notion: <ReactIcon />,
-  Vercel: <Vercel />,
+  'React.js': <SiReact className="size-full p-1" />,
+  'Next.js': <SiNextdotjs className="size-full p-1" />,
+  TypeScript: <SiTypescript className="size-full p-1" />,
+  'Tailwind CSS': <SiTailwindcss className="size-full p-1" />,
+  'ShadCN UI': <SiShadcnui className="size-full p-1" />,
+  'Node.js': <SiNodedotjs className="size-full p-1" />,
+  MongoDB: <SiMongodb className="size-full p-1" />,
+  'REST APIs': <SiApifox className="size-full p-1" />,
+  LangChain: <SiLangchain className="size-full p-1" />,
+  n8n: <SiN8N className="size-full p-1" />,
+  Embeddings: <FaBrain className="size-full p-1" />,
+  WordPress: <SiWordpress className="size-full p-1" />,
+  Contentstack: <SiContentstack className="size-full p-1" />,
+  GitHub: <SiGithub className="size-full p-1" />,
+  'VS Code': <FaCode className="size-full p-1" />,
+  Postman: <SiPostman className="size-full p-1" />,
+  Figma: <SiFigma className="size-full p-1" />,
+  Notion: <SiNotion className="size-full p-1" />,
+  Vercel: <SiVercel className="size-full p-1" />,
+  'Analytical Thinking': <FaLightbulb className="size-full p-1" />,
+  Collaboration: <FaPeopleCarry className="size-full p-1" />,
+  'Problem Solving': <FaPuzzlePiece className="size-full p-1" />,
+  'Time Management': <FaClock className="size-full p-1" />,
 };
 
 function getIcon(title: string) {
@@ -82,24 +98,27 @@ export default function About() {
     <Container className="mt-20">
       <SectionHeading subHeading="About" heading="Me" />
 
-      {/* Hero: full-width image + overlay */}
-      <div className="relative mt-8 overflow-hidden rounded-2xl bg-muted">
-        <div className="relative aspect-[21/9] w-full">
+      {/* Who I am: illustration + intro */}
+      <div className="mt-8 grid gap-8 rounded-2xl border border-border/60 bg-card p-4 shadow-sm md:grid-cols-[minmax(280px,1fr)_1.2fr] md:gap-10 md:p-6">
+        <div className="relative aspect-[4/5] min-h-[280px] overflow-hidden rounded-xl md:aspect-[3/4]">
           <Image
-            src={aboutSectionImage}
-            alt=""
+            src={whoIAmImage}
+            alt="Hemant Kadam – Software developer, content creator, Next.js & AI"
             fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 1400px"
+            className="object-contain object-center"
+            sizes="(max-width: 768px) 100vw, 400px"
+            priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-          <h2 className="text-2xl font-bold tracking-tight text-white drop-shadow-lg md:text-3xl">
+        <div className="flex flex-col justify-center">
+          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
             {about.name}
           </h2>
-          <p className="mt-1 max-w-2xl text-sm text-white/90 md:text-base">
-            Web developer & creator · Frontend, AI, and educational content
+          <p className="mt-2 text-muted-foreground">
+            Software developer & creator · Frontend, AI, and educational content
+          </p>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            {about.description}
           </p>
         </div>
       </div>
@@ -132,9 +151,6 @@ export default function About() {
           <h3 className="mb-4 text-lg font-semibold text-muted-foreground">
             Who I am
           </h3>
-          <p className="mb-6 text-muted-foreground leading-relaxed">
-            {about.description}
-          </p>
           <div className="grid gap-4 sm:grid-cols-2">
             {about.aboutMe
               .filter((s) => s.title !== 'Disclaimer')
@@ -173,6 +189,21 @@ export default function About() {
                   <p className="text-sm text-muted-foreground">
                     {item.answer}
                   </p>
+                  {'links' in item && item.links && item.links.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {item.links.map((link) => (
+                        <a
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center rounded-lg border border-border/60 bg-muted/50 px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:border-primary/30"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -184,7 +215,7 @@ export default function About() {
       <section className="mt-20" id="achievements">
         <SectionHeading subHeading="Hackathon" heading="Wins" />
         <p className="mt-2 text-muted-foreground">
-          Where I won — national and international hackathons.
+          Where I won: national and international hackathons.
         </p>
         <div className="mt-6 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
           <ul className="divide-y divide-border/50">
@@ -205,17 +236,17 @@ export default function About() {
           {technicalSkillsByCategory.map((group, gIdx) => (
             <div
               key={gIdx}
-              className="rounded-2xl border border-border/60 bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border/60 bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
-              <h4 className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <h4 className="mb-3 shrink-0 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {group.category}
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex min-h-0 flex-wrap gap-2 [&_svg]:size-6 [&_svg]:shrink-0">
                 {group.skills.map((skillName, sIdx) => (
                   <Tooltip key={sIdx}>
                     <TooltipTrigger asChild>
-                      <span className="inline-flex size-10 items-center justify-center rounded-xl border border-border/50 bg-muted/50 transition-colors hover:border-border hover:bg-muted">
-                        {skillIconMap[skillName] ?? <ReactIcon />}
+                      <span className="inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/50 bg-muted/50 transition-colors hover:border-border hover:bg-muted">
+                        {skillIconMap[skillName] ?? <FaCode className="size-full p-1" />}
                       </span>
                     </TooltipTrigger>
                     <TooltipContent>
@@ -224,7 +255,7 @@ export default function About() {
                   </Tooltip>
                 ))}
               </div>
-              <p className="mt-3 line-clamp-2 text-xs text-muted-foreground">
+              <p className="mt-3 min-w-0 truncate text-xs text-muted-foreground" title={group.skills.join(', ')}>
                 {group.skills.join(' · ')}
               </p>
             </div>

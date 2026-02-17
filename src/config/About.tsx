@@ -29,16 +29,18 @@ export const technicalSkillsByCategory: { category: string; skills: string[] }[]
 
 export const profileImage = '/company/1715195128331.jpeg';
 export const aboutSectionImage = '/about/about-hero.png';
+/** Who I am illustration (tech, YouTube, AI, Next.js) */
+export const whoIAmImage = '/project/ChatGPT Image Feb 18, 2026, 12_38_09 AM.png';
 export const hackathonsSectionImage = '/about/hackathons-hero.png';
 
 export const about = {
   name: 'Hemant Kadam',
-  description: `Web developer with strong expertise in frontend technologies and working knowledge of backend systems. Experienced in high-performance web apps using React.js, Next.js, Tailwind CSS, with backend integration through Node.js, NestJS & MongoDB. Currently pursuing Computer Engineering at SLRTCE and Intern at Surfboard Ventures. Creator at @BloggerHemant (10K+ subscribers). Recognized in multiple national and international hackathons.`,
+  description: `Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at @BloggerHemant (10K+). Recognized in national and international hackathons.`,
 
   aboutMe: [
     {
       title: 'Who Am I?',
-      content: `I'm a web developer and creator who loves building products and sharing knowledge. I focus on frontend (React, Next.js, Tailwind) and work with Node.js, NestJS, MongoDB on the backend.`
+      content: `I'm a software developer and creator who loves building products and sharing knowledge. I focus on frontend (React, Next.js, Tailwind) and work with Node.js, NestJS, MongoDB on the backend.`
     },
     {
       title: 'What Drives Me',
@@ -65,8 +67,29 @@ export const about = {
     },
     {
       question: 'What are your socials?',
-      answer: 'GitHub (hemant-i7), LinkedIn (hemant-kadam), YouTube (@BloggerHemant, @HemanTKadaM, @techhemant8484), and Blogger (blogger.hemantkadam.in).'
-    }
+      answer: 'Find me on GitHub, LinkedIn, YouTube, and Blogger. All links below open in a new tab.',
+      links: [
+        { label: 'GitHub', href: 'https://github.com/hemant-i7' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hemant-kadam-5a1195194/' },
+        { label: 'Blogger Hemant (YT)', href: 'https://www.youtube.com/@bloggerhemant' },
+        { label: 'Hemant Kadam (YT)', href: 'https://www.youtube.com/@HemanTKadaM' },
+        { label: 'Tech Hemant (YT)', href: 'https://www.youtube.com/@techhemant8484' },
+        { label: 'Blog', href: 'https://blogger.hemantkadam.in/' },
+        { label: 'Linktree', href: 'https://linktr.ee/hemant_i7' },
+      ]
+    },
+    {
+      question: 'How can I contact you?',
+      answer: 'Email (hemantkadam112@gmail.com), LinkedIn, or the Contact page on this site. I respond to genuine inquiries.'
+    },
+    {
+      question: 'Do you do freelancing or consulting?',
+      answer: 'Yes, for the right projects. I focus on frontend, full-stack web apps, and AI/automation. Reach out with details.'
+    },
+    {
+      question: 'Where can I see your work?',
+      answer: 'Projects and Blogs sections on this site, plus GitHub for code. YouTube and Blogger for tutorials and content.'
+    },
   ]
 };
 

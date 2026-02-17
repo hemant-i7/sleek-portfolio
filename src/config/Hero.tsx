@@ -16,7 +16,7 @@
  *    ]
  *
  * 3. Write your description using the template:
- *    template: "I'm a **passionate developer** who loves building apps with {skills:0} and {skills:1}. I specialize in **web development** and enjoy working with {skills:2}."
+ *    template: "I'm a **passionate developer** who loves building apps with {skills:0} and {skills:1}. I specialize in **software development** and enjoy working with {skills:2}."
  *
  * 4. Update your social links:
  *    Just change the href values to your own social media profiles
@@ -54,7 +54,7 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Hemant Kadam',
-  title: 'Web Developer & Content Creator.',
+  title: 'Software Developer & Content Creator.',
   avatar: '/company/1715195128331.jpeg',
 
   // Skills Configuration
@@ -89,7 +89,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'Web developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Building high-performance web apps. Creator at <b>@BloggerHemant</b> (10K+). Recognized in national & international hackathons.',
+      'Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at <b>@BloggerHemant</b> (10K+). Recognized in national and international hackathons.',
   },
 
   // Buttons Configuration
@@ -111,11 +111,6 @@ export const heroConfig = {
 
 // Social Links Configuration
 export const socialLinks = [
-  {
-    name: 'Blog',
-    href: 'https://blogger.hemantkadam.in/',
-    icon: <Mail />,
-  },
   {
     name: 'X',
     href: 'https://twitter.com/hemant_i7',
