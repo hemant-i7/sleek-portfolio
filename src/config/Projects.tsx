@@ -1,7 +1,11 @@
+import ElevenLabs from '@/components/technologies/ElevenLabs';
+import Gemini from '@/components/technologies/Gemini';
 import MongoDB from '@/components/technologies/MongoDB';
 import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
+import OpenAI from '@/components/technologies/OpenAI';
 import ReactIcon from '@/components/technologies/ReactIcon';
+import Replicate from '@/components/technologies/Replicate';
 import TailwindCss from '@/components/technologies/TailwindCss';
 import TypeScript from '@/components/technologies/TypeScript';
 import { Project } from '@/types/project';
@@ -19,8 +23,8 @@ export const projects: Project[] = [
       { name: 'TypeScript', icon: <TypeScript /> },
       { name: 'Tailwind CSS', icon: <TailwindCss /> },
       { name: 'Node.js', icon: <NodeJs /> },
-      { name: 'Gemini API', icon: <ReactIcon /> },
-      { name: 'ElevenLabs', icon: <ReactIcon /> },
+      { name: 'Gemini API', icon: <Gemini /> },
+      { name: 'ElevenLabs', icon: <ElevenLabs /> },
     ],
     github: 'https://github.com/hemant-i7/Arise',
     live: 'https://www.ariseai.app/',
@@ -58,8 +62,8 @@ export const projects: Project[] = [
       { name: 'Next.js', icon: <NextJs /> },
       { name: 'TypeScript', icon: <TypeScript /> },
       { name: 'Tailwind CSS', icon: <TailwindCss /> },
-      { name: 'OpenAI', icon: <ReactIcon /> }, // Placeholder icon
-      { name: 'Replicate', icon: <ReactIcon /> }, // Placeholder icon
+      { name: 'OpenAI', icon: <OpenAI /> },
+      { name: 'Replicate', icon: <Replicate /> },
     ],
     github: 'https://github.com/hemant-i7/SynerzyAI',
     live: 'https://synerzy-ai.vercel.app/',

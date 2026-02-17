@@ -51,7 +51,7 @@ export default function WorkExperiencePage() {
             </h2>
           </div>
 
-          <ExperienceList experiences={experiences} />
+          <ExperienceList experiences={experiences} withTimeline />
         </div>
       </div>
     </Container>

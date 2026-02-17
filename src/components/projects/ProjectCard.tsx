@@ -36,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const imgSrc = imgError ? FALLBACK_IMAGE : project.image;
 
   return (
-    <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all dark:border-gray-800">
+    <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all duration-200 hover:shadow-md dark:border-gray-800">
       <CardHeader className="p-0">
         <div className="group relative aspect-video overflow-hidden bg-muted">
           <Image

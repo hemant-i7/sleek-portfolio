@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html suppressHydrationWarning>
-        <body lang="en" className={`font-hanken-grotesk antialiased`}>
+        <body lang="en" className="font-hanken-grotesk antialiased bg-grid">
           <Providers>
             <ReactLenis root>
               <Navbar />

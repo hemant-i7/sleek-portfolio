@@ -87,14 +87,14 @@ export const education = [
 ];
 
 export const achievements = [
-  { title: '1st Place – IIT Roorkee 44-hour Hackathon', note: 'Seventh hackathon win. Team: Kaustubh Bane, Hasan Sayyed, Morvi Panchal.' },
-  { title: 'Winner – TechSurf 2025', note: '' },
-  { title: '1st Runner-up – Webathon 2025 (National)', note: '' },
-  { title: '2nd Runner-up – Saboo Siddik College Hackathon (National)', note: '' },
-  { title: '5th Place – Google Build & Blog Hackathon, Google Office BKC (National)', note: '' },
-  { title: 'Top 5 Finalist – Bit & Build International Hackathon, Frcrce College (International)', note: '' },
-  { title: 'Top Performer – Global Digital Health Summit Hackathon, NMACC (International)', note: '' },
-  { title: 'Top 5 – Technovation, Amrutvahini College Nashik (National)', note: '' },
+  { title: '1st Place – IIT Roorkee 44-hour Hackathon', where: 'IIT Roorkee', note: 'Seventh hackathon win. Team: Kaustubh Bane, Hasan Sayyed, Morvi Panchal.', emoji: '🥇', description: 'Premier 44-hour hackathon at IIT Roorkee.', url: 'https://www.iitr.ac.in/' },
+  { title: 'Winner – TechSurf 2025', where: 'TechSurf', note: '', emoji: '🏆', description: 'Contentstack\'s annual flagship hackathon for India\'s next-gen developers. 40,000+ participants over 5 editions; certification, pitch, and finale rounds.', url: 'https://contentstack.com/techsurf' },
+  { title: '1st Runner-up – Webathon 2025 (National)', where: 'Webathon', note: '', emoji: '🥈', description: 'National-level hackathon by ACM-MHSSCE; multi-round with startup funding and mentorship.', url: 'https://webathon.mhsscoe.acm.org/' },
+  { title: '2nd Runner-up – Saboo Siddik College Hackathon (National)', where: 'Saboo Siddik College, Mumbai', note: '', emoji: '🥉', description: 'National hackathon at M.H. Saboo Siddik College of Engineering, Mumbai.', url: 'https://webathon.mhsscoe.acm.org/' },
+  { title: '5th Place – Google Build & Blog Hackathon, Google Office BKC (National)', where: 'Google Office BKC', note: '', emoji: '🎯', description: 'Build & Blog Marathon at Google Mumbai (BKC). Theme: Data to Generative AI with Google Cloud; mentorship from Google.', url: 'https://gdg.community.dev/' },
+  { title: 'Top 5 Finalist – Bit & Build International Hackathon', where: 'Fr. CRCE, Mumbai (International)', note: '', emoji: '🌍', description: 'International hackathon by GDSC Fr. Conceicao Rodrigues College. 2,500+ participants, 400+ teams, 20+ countries; AI, ML, Web, UX themes.', url: 'https://bit-n-build.devfolio.co/' },
+  { title: 'Top Performer – Global Digital Health Summit Hackathon', where: 'NMACC (International)', note: '', emoji: '⚡', description: 'Hackathon at Global Digital Health Summit; digital health, AI, and telemedicine focus.', url: 'https://cdac.in/index.aspx?id=lu_GDHS' },
+  { title: 'Top 5 – Technovation', where: 'Amrutvahini College Nashik (National)', note: '', emoji: '🚀', description: 'National tech hackathon at Amrutvahini College of Engineering, Nashik.', url: '' },
 ];
 
 export const extracurriculars = [

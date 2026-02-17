@@ -132,6 +132,19 @@
   }
 }
 
+/* Magic UI–style grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, oklch(0.2 0 0 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.2 0 0 / 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.03) 1px, transparent 1px);
+}
+
 .text-secondary {
   @apply text-[#909092] dark:text-[#909092];
 }
