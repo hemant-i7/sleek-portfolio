@@ -45,13 +45,12 @@ Educational technology
 AI-powered platform
 Next-gen startup vibe
 
-High resolution.
+High resolution, 8K quality, photorealistic details.
 YouTube thumbnail style.
-Cinematic lighting.
-Ultra sharp.
+Cinematic lighting, ultra sharp.
 Professional product mockup.
 16:9 aspect ratio.
-4K quality.`;
+No text artifacts. Clean typography.`;
 
 export function buildProjectBannerPrompt(
   projectName: string,

@@ -18,7 +18,18 @@ export const mySkills = [
   <PostgreSQL key="postgresql" />,
 ];
 
+export const technicalSkillsByCategory: { category: string; skills: string[] }[] = [
+  { category: 'Frontend', skills: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'ShadCN UI'] },
+  { category: 'Backend & Cloud', skills: ['Node.js', 'MongoDB', 'REST APIs'] },
+  { category: 'Automation & AI', skills: ['LangChain', 'n8n', 'Embeddings'] },
+  { category: 'CMS', skills: ['WordPress', 'Contentstack'] },
+  { category: 'Tools', skills: ['GitHub', 'VS Code', 'Postman', 'Figma', 'Notion', 'Vercel'] },
+  { category: 'Soft Skills', skills: ['Analytical Thinking', 'Collaboration', 'Problem Solving', 'Time Management'] },
+];
+
 export const profileImage = '/company/1715195128331.jpeg';
+export const aboutSectionImage = '/about/about-hero.png';
+export const hackathonsSectionImage = '/about/hackathons-hero.png';
 
 export const about = {
   name: 'Hemant Kadam',
@@ -54,7 +65,7 @@ export const about = {
     },
     {
       question: 'What are your socials?',
-      answer: 'You can find me on X and GitHub. That should be enough for now.'
+      answer: 'GitHub (hemant-i7), LinkedIn (hemant-kadam), YouTube (@BloggerHemant, @HemanTKadaM, @techhemant8484), and Blogger (blogger.hemantkadam.in).'
     }
   ]
 };

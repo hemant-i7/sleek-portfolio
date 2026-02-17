@@ -10,7 +10,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
 
-const GEMINI_IMAGE_MODEL = 'gemini-2.0-flash-exp-image-generation';
+// Use GEMINI_IMAGE_MODEL in .env for a higher-quality model (e.g. Imagen 3 when available)
+const GEMINI_IMAGE_MODEL =
+  process.env.GEMINI_IMAGE_MODEL || 'gemini-2.0-flash-exp-image-generation';
 
 function getProjectByKey(key: string): { title: string; tagline: string } | null {
   const idx = parseInt(key, 10);

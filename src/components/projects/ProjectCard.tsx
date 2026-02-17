@@ -27,19 +27,25 @@ interface ProjectCardProps {
   project: Project;
 }
 
+const FALLBACK_IMAGE = '/project/onestop-banner.png';
+
 export function ProjectCard({ project }: ProjectCardProps) {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [imgError, setImgError] = useState<boolean>(false);
+
+  const imgSrc = imgError ? FALLBACK_IMAGE : project.image;
 
   return (
     <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all dark:border-gray-800">
       <CardHeader className="p-0">
-        <div className="group relative aspect-video overflow-hidden">
+        <div className="group relative aspect-video overflow-hidden bg-muted">
           <Image
             className="h-full w-full object-cover"
-            src={project.image}
+            src={imgSrc}
             alt={project.title}
             width={1920}
             height={1080}
+            onError={() => setImgError(true)}
           />
           {project.video && (
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

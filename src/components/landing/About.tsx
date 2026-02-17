@@ -1,114 +1,227 @@
-import { about, mySkills, achievements } from '@/config/About';
+import {
+  about,
+  achievements,
+  aboutSectionImage,
+  hackathonsSectionImage,
+  profileImage,
+  technicalSkillsByCategory,
+} from '@/config/About';
+import Figma from '@/components/technologies/Figma';
+import Github from '@/components/technologies/Github';
+import MongoDB from '@/components/technologies/MongoDB';
+import NextJs from '@/components/technologies/NextJs';
+import NodeJs from '@/components/technologies/NodeJs';
+import Postman from '@/components/technologies/Postman';
+import ReactIcon from '@/components/technologies/ReactIcon';
+import Shadcn from '@/components/technologies/Shadcn';
+import TailwindCss from '@/components/technologies/TailwindCss';
+import TypeScript from '@/components/technologies/TypeScript';
+import Vercel from '@/components/technologies/Vercel';
 import Image from 'next/image';
 import React from 'react';
-import { FaCode, FaLightbulb, FaMusic, FaHandshake, FaInfoCircle } from 'react-icons/fa';
+import {
+  FaCode,
+  FaHandshake,
+  FaInfoCircle,
+  FaLightbulb,
+  FaMusic,
+  FaTrophy,
+} from 'react-icons/fa';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../ui/accordion';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+
+const skillIconMap: Record<string, React.ReactNode> = {
+  'React.js': <ReactIcon />,
+  'Next.js': <NextJs />,
+  TypeScript: <TypeScript />,
+  'Tailwind CSS': <TailwindCss />,
+  'ShadCN UI': <Shadcn />,
+  'Node.js': <NodeJs />,
+  MongoDB: <MongoDB />,
+  'REST APIs': <ReactIcon />,
+  LangChain: <ReactIcon />,
+  n8n: <ReactIcon />,
+  Embeddings: <ReactIcon />,
+  WordPress: <ReactIcon />,
+  Contentstack: <ReactIcon />,
+  GitHub: <Github />,
+  'VS Code': <ReactIcon />,
+  Postman: <Postman />,
+  Figma: <Figma />,
+  Notion: <ReactIcon />,
+  Vercel: <Vercel />,
+};
+
+function getIcon(title: string) {
+  switch (title) {
+    case 'Who Am I?':
+      return <FaCode className="mr-2 size-5 shrink-0 text-blue-500" />;
+    case 'What Drives Me':
+      return <FaLightbulb className="mr-2 size-5 shrink-0 text-amber-500" />;
+    case 'Beyond Code':
+      return <FaMusic className="mr-2 size-5 shrink-0 text-purple-500" />;
+    case 'Open for Business':
+      return <FaHandshake className="mr-2 size-5 shrink-0 text-emerald-500" />;
+    case 'Disclaimer':
+      return <FaInfoCircle className="mr-2 size-5 shrink-0 text-muted-foreground" />;
+    default:
+      return null;
+  }
+}
 
 export default function About() {
-  const getIcon = (title: string) => {
-    switch (title) {
-      case 'Who Am I?':
-        return <FaCode className="mr-2 text-blue-500" />;
-      case 'What Drives Me':
-        return <FaLightbulb className="mr-2 text-yellow-500" />;
-      case 'Beyond Code':
-        return <FaMusic className="mr-2 text-purple-500" />;
-      case 'Open for Business':
-        return <FaHandshake className="mr-2 text-green-500" />;
-      case 'Disclaimer':
-        return <FaInfoCircle className="mr-2 text-gray-500" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="About" heading="Me" />
-      
+
+      {/* Section hero image */}
+      <div className="relative mt-8 aspect-[21/9] w-full overflow-hidden rounded-xl bg-muted">
+        <Image
+          src={aboutSectionImage}
+          alt="Hemant Kadam - Web Developer & Creator"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 1200px"
+        />
+      </div>
+
       {/* Main About Section */}
-      <div className="mt-8 flex flex-col gap-8 md:flex-row">
-        <div className="w-full md:w-1/3 flex justify-center">
+      <div className="mt-10 flex flex-col gap-10 md:flex-row">
+        <div className="flex w-full justify-center md:w-1/3">
           <div className="relative">
             <Image
-              src="/assets/logo.png"
+              src={profileImage}
               alt={about.name}
               width={240}
               height={240}
-              className="border-secondary rounded-full border-4 bg-blue-300 dark:bg-yellow-300"
+              className="rounded-full border-4 border-primary/20 object-cover shadow-lg"
             />
-            <div className="absolute -bottom-3 -right-3 bg-white dark:bg-gray-800 p-2 rounded-full shadow-lg">
-              <div className="text-xs font-bold bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full">
+            <div className="absolute -bottom-3 -right-3 rounded-full bg-card p-2 shadow-md ring-1 ring-border">
+              <span className="rounded-full bg-gradient-to-r from-primary to-primary/80 px-3 py-1 text-xs font-semibold text-primary-foreground">
                 Available for exciting projects
-              </div>
+              </span>
             </div>
           </div>
         </div>
-        
-        <div className="w-full md:w-2/3 space-y-6">
+
+        <div className="w-full space-y-8 md:w-2/3">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{about.name}</h2>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">{about.description}</p>
+            <h2 className="text-3xl font-bold tracking-tight">{about.name}</h2>
+            <p className="mt-3 text-muted-foreground leading-relaxed">
+              {about.description}
+            </p>
           </div>
-          
+
           {/* About Me Sections */}
-          <div className="space-y-4">
+          <div className="grid gap-4 sm:grid-cols-1">
             {about.aboutMe.map((section, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                <div className="flex items-center mb-2">
+              <div
+                key={index}
+                className="rounded-xl border border-border/60 bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="mb-2 flex items-center gap-2">
                   {getIcon(section.title)}
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-                    {section.title}
-                  </h3>
+                  <h3 className="text-lg font-semibold">{section.title}</h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  {section.content}
+                </p>
               </div>
             ))}
           </div>
-          
-          {/* FAQ Section */}
-          <div className="mt-8">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Frequently Asked Questions</h3>
+
+          {/* FAQ */}
+          <div>
+            <h3 className="mb-4 text-xl font-semibold">
+              Frequently Asked Questions
+            </h3>
             <Accordion type="single" collapsible className="w-full">
               {about.faq.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionItem key={index} value={`faq-${index}`}>
                   <AccordionTrigger className="text-left">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent>
-                    <p className="text-gray-600 dark:text-gray-300">{item.answer}</p>
+                    <p className="text-muted-foreground">{item.answer}</p>
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
           </div>
-          
-          {/* Achievements Section */}
-          <div className="mt-8">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Achievements</h3>
-            <ul className="space-y-2">
-              {achievements.map((a, i) => (
-                <li key={i} className="text-gray-600 dark:text-gray-300 flex flex-col gap-0.5">
-                  <span className="font-medium text-gray-800 dark:text-white">{a.title}</span>
-                  {a.note && <span className="text-sm text-gray-500 dark:text-gray-400">{a.note}</span>}
-                </li>
-              ))}
-            </ul>
+
+          {/* Hackathon Wins */}
+          <div className="rounded-xl border border-border/60 bg-card overflow-hidden shadow-sm">
+            <div className="relative aspect-[3/1] w-full bg-muted">
+              <Image
+                src={hackathonsSectionImage}
+                alt="Hackathon achievements"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 800px"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/60 to-transparent">
+                <span className="flex items-center gap-2 rounded-full bg-background/90 px-4 py-2 text-sm font-semibold backdrop-blur">
+                  <FaTrophy className="text-amber-500" /> Hackathon Wins
+                </span>
+              </div>
+            </div>
+            <div className="p-5">
+              <h3 className="mb-4 text-xl font-semibold">Achievements</h3>
+              <ul className="space-y-3">
+                {achievements.map((a, i) => (
+                  <li
+                    key={i}
+                    className="flex flex-col gap-0.5 rounded-lg border border-border/40 bg-muted/30 px-4 py-2.5"
+                  >
+                    <span className="font-medium">{a.title}</span>
+                    {a.note && (
+                      <span className="text-sm text-muted-foreground">
+                        {a.note}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Skills Section */}
-          <div className="mt-8">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Technical Skills</h3>
-            <div className="flex flex-wrap gap-3">
-              {mySkills.map((skill, index) => (
-                <div 
-                  key={index} 
-                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200"
+          {/* Technical Skills */}
+          <div>
+            <h3 className="mb-4 text-xl font-semibold">Technical Skills</h3>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {technicalSkillsByCategory.map((group, gIdx) => (
+                <div
+                  key={gIdx}
+                  className="rounded-xl border border-border/60 bg-card p-4 shadow-sm"
                 >
-                  {skill.key}
+                  <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                    {group.category}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skillName, sIdx) => (
+                      <Tooltip key={sIdx}>
+                        <TooltipTrigger asChild>
+                          <div className="flex size-9 items-center justify-center rounded-lg border border-border/60 bg-muted/50 transition-colors hover:bg-muted">
+                            {skillIconMap[skillName] ?? <ReactIcon />}
+                          </div>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{skillName}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {group.skills.join(', ')}
+                  </p>
                 </div>
               ))}
             </div>

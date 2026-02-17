@@ -1,11 +1,33 @@
 import MongoDB from '@/components/technologies/MongoDB';
 import NextJs from '@/components/technologies/NextJs';
+import NodeJs from '@/components/technologies/NodeJs';
 import ReactIcon from '@/components/technologies/ReactIcon';
 import TailwindCss from '@/components/technologies/TailwindCss';
 import TypeScript from '@/components/technologies/TypeScript';
 import { Project } from '@/types/project';
 
 export const projects: Project[] = [
+  {
+    title: 'Arise',
+    tagline: 'AI-Powered Educational Platform – Quiz, Presentation & Roadmap',
+    description:
+      'Comprehensive AI learning ecosystem with quiz, presentation, and roadmap modules. Built with Next.js, Gemini API, ElevenLabs, and Node.js.',
+    image: '/project/arise-banner.png',
+    link: 'https://www.ariseai.app/',
+    technologies: [
+      { name: 'Next.js', icon: <NextJs /> },
+      { name: 'TypeScript', icon: <TypeScript /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss /> },
+      { name: 'Node.js', icon: <NodeJs /> },
+      { name: 'Gemini API', icon: <ReactIcon /> },
+      { name: 'ElevenLabs', icon: <ReactIcon /> },
+    ],
+    github: 'https://github.com/hemant-i7/Arise',
+    live: 'https://www.ariseai.app/',
+    details: false,
+    projectDetailsPageSlug: '',
+    isWorking: true,
+  },
   {
     title: 'OneStop',
     tagline: 'Training & Placement Hub – Jobs, ATS Match, Quizzes',
