@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-banners": "curl -s -X POST http://localhost:3000/api/projects/generate-all -H 'Content-Type: application/json'"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

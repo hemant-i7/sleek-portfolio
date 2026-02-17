@@ -54,7 +54,7 @@ export const skillComponents = {
 export const heroConfig = {
   // Personal Information
   name: 'Hemant Kadam',
-  title: 'Full Stack Web Developer & Content Creator.',
+  title: 'Web Developer & Content Creator.',
   avatar: '/company/1715195128331.jpeg',
 
   // Skills Configuration
@@ -89,7 +89,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'I build interactive web apps using {skills:0}, {skills:1}, {skills:2}, {skills:3} and {skills:4}. With a focus on <b>UI</b> design. Enthusiastic about <b>Three.js</b>, driven by a keen eye for design.',
+      'Web developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Building high-performance web apps. Creator at <b>@BloggerHemant</b> (10K+). Recognized in national & international hackathons.',
   },
 
   // Buttons Configuration
@@ -113,8 +113,8 @@ export const heroConfig = {
 export const socialLinks = [
   {
     name: 'Blog',
-    href: 'https://bloggerhemant.in/',
-    icon: <Mail />, // Replace with a blog icon if available
+    href: 'https://blogger.hemantkadam.in/',
+    icon: <Mail />,
   },
   {
     name: 'X',
@@ -133,7 +133,7 @@ export const socialLinks = [
   },
   {
     name: 'Email',
-    href: 'mailto:contact@ainertia.in',
+    href: 'mailto:hemantkadam112@gmail.com',
     icon: <Mail />,
   },
 ];

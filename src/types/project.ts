@@ -1,6 +1,8 @@
 export interface Project {
   title: string;
   description: string;
+  /** Short tagline for AI banner prompt (FULL_FORM_OR_TAGLINE). Falls back to description snippet. */
+  tagline?: string;
   image: string;
   video?: string;
   link: string;

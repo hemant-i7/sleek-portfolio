@@ -13,7 +13,7 @@ export interface PageMeta {
 export const siteConfig = {
   name: heroConfig.name,
   title: 'Sleek Portfolio',
-  description: 'Sleek Portfolio Template by @Hemant Kadam',
+  description: 'Hemant Kadam – Web Developer & Content Creator',
   url:
     typeof window !== 'undefined'
       ? window.location.origin
@@ -24,8 +24,8 @@ export const siteConfig = {
     twitter: '@hemant_i7',
     github: 'hemant-i7',
     linkedin: 'hemant-kadam-5a1195194',
-    email: 'contact@ainertia.in',
-    blog: 'https://bloggerhemant.in/',
+    email: 'hemantkadam112@gmail.com',
+    blog: 'https://blogger.hemantkadam.in/',
   },
   keywords: [
     'portfolio',

@@ -8,9 +8,10 @@ import { Project } from '@/types/project';
 export const projects: Project[] = [
   {
     title: 'OneStop',
+    tagline: 'Training & Placement Hub – Jobs, ATS Match, Quizzes',
     description:
-      'Your ultimate training and placement destination! Features: Job Search, Interview Preparation, ATS Compatibility Match, Mock Quizzes, Resources, and Popular Playlists. 2nd Runner-up Webathon 2024.',
-    image: '/company/Screenshot 2025-07-27 at 5.55.58 PM.png',
+      'Your ultimate training and placement destination! Features: Job Search, Interview Preparation, ATS Compatibility Match, Mock Quizzes, Resources. 1st Runner-up Webathon 2025 (National).',
+    image: '/project/onestop-banner.png',
     link: 'https://onestopclient.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs /> },
@@ -26,9 +27,10 @@ export const projects: Project[] = [
   },
   {
     title: 'SynerzyAI',
+    tagline: 'AI Image, Video & Audio Generation',
     description:
       'The Best AI Tool for Image generation, Video generation & Audio generation.',
-    image: '/company/Screenshot 2025-07-27 at 5.54.47 PM.png',
+    image: '/project/synerzyai-banner.png',
     link: 'https://synerzy-ai.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs /> },
@@ -45,9 +47,10 @@ export const projects: Project[] = [
   },
   {
     title: 'TalentLink',
+    tagline: 'Brand–Influencer Collaboration Platform',
     description:
       'TalentLink is an app that streamlines collaboration between brand managers and influencers. Provides a platform for brands to connect with influencers, manage campaigns, and track performance. Leverages NLP to automate tasks, provide actionable insights, and enhance user experience. Built with Next.js, MongoDB, and advanced analytics. Associated with Shree L. R. Tiwari College of Engineering.',
-    image: '/company/1713630756849.jpeg',
+    image: '/project/talentlink-banner.png',
     link: 'https://github.com/hemant-i7/talentlink',
     technologies: [
       { name: 'Next.js', icon: <NextJs /> },
@@ -63,9 +66,10 @@ export const projects: Project[] = [
   },
   {
     title: 'Kreate AI',
+    tagline: 'AI Social Media Captions & Hashtags',
     description:
       'KreateAI is an AI-driven tool that simplifies social media content creation by generating creative captions and trending hashtags. Features TamilIM for Tamil language content generation. Top 5 in a Google Hackathon.',
-    image: '/assets/1_mkkID8XaV3FBOGNsZ-nIGw.webp',
+    image: '/project/kreate-ai-banner.png',
     link: 'https://medium.com/@erchirag12/real-time-social-media-content-generator-dedf534be341',
     technologies: [
       { name: 'Next.js', icon: <NextJs /> },

@@ -22,20 +22,20 @@ export const profileImage = '/company/1715195128331.jpeg';
 
 export const about = {
   name: 'Hemant Kadam',
-  description: `I'm a passionate technologist and creator who codes primarily out of passion, constantly chasing knowledge and experimenting with new technologies. I thrive on building, learning, and pushing boundaries in the tech space.`,
-  
+  description: `Web developer with strong expertise in frontend technologies and working knowledge of backend systems. Experienced in high-performance web apps using React.js, Next.js, Tailwind CSS, with backend integration through Node.js, NestJS & MongoDB. Currently pursuing Computer Engineering at SLRTCE and Intern at Surfboard Ventures. Creator at @BloggerHemant (10K+ subscribers). Recognized in multiple national and international hackathons.`,
+
   aboutMe: [
     {
       title: 'Who Am I?',
-      content: `I'm a curious technologist with a passion for building and creating. I'm not just a coder - I'm a leader, analyst, and risk-taker who loves turning ideas into reality.`
+      content: `I'm a web developer and creator who loves building products and sharing knowledge. I focus on frontend (React, Next.js, Tailwind) and work with Node.js, NestJS, MongoDB on the backend.`
     },
     {
       title: 'What Drives Me',
-      content: `I'm passionate about AI/ML, LLMs, deep learning, DevOps, backend technologies, and system design. I enjoy working with TypeScript, Next.js, NestJS, and JavaScript to build cool stuff.`
+      content: `I'm passionate about building high-performance web apps, AI/automation (LangChain, n8n), and creating educational content. I enjoy turning ideas into working solutions and learning from every hackathon and project.`
     },
     {
       title: 'Beyond Code',
-      content: `When I'm not coding, you'll find me creating content, exploring music, or diving into new hobbies. I believe in continuous learning and personal growth.`
+      content: `I run multiple YouTube channels (49K+ combined subscribers), manage 4+ blogs with 2M+ organic traffic, and conduct workshops on freelancing and AI automation at my college.`
     },
     {
       title: 'Open for Business',
@@ -61,32 +61,46 @@ export const about = {
 
 export const education = [
   {
+    institution: 'Shree L. R. Tiwari College of Engineering (Mumbai University)',
+    degree: 'Bachelor of Engineering in Computer Science (CGPA: 8.5)',
+    duration: 'Sep 2023 – Jun 2026',
+    location: 'Mumbai, India',
+  },
+  {
     institution: 'Viva College of Diploma Engineering and Technology',
-    degree: 'Diploma in Computer Science',
+    degree: 'Diploma in Computer Engineering (84%)',
     duration: 'Aug 2020 – Jun 2023',
     location: 'Mumbai, India',
     score: '84%',
   },
-  {
-    institution:
-      'Shree L. R. Tiwari College of Engineering (Mumbai University)',
-    degree:
-      'Bachelor of Engineering in Computer Science (Second Year Pursuing)',
-    duration: 'Sep 2023 – Jun 2026',
-    location: 'Mumbai, India',
-  },
+];
+
+export const achievements = [
+  { title: '1st Place – IIT Roorkee 44-hour Hackathon', note: 'Seventh hackathon win. Team: Kaustubh Bane, Hasan Sayyed, Morvi Panchal.' },
+  { title: 'Winner – TechSurf 2025', note: '' },
+  { title: '1st Runner-up – Webathon 2025 (National)', note: '' },
+  { title: '2nd Runner-up – Saboo Siddik College Hackathon (National)', note: '' },
+  { title: '5th Place – Google Build & Blog Hackathon, Google Office BKC (National)', note: '' },
+  { title: 'Top 5 Finalist – Bit & Build International Hackathon, Frcrce College (International)', note: '' },
+  { title: 'Top Performer – Global Digital Health Summit Hackathon, NMACC (International)', note: '' },
+  { title: 'Top 5 – Technovation, Amrutvahini College Nashik (National)', note: '' },
 ];
 
 export const extracurriculars = [
   {
-    title: 'Blogging',
-    duration: 'March 2018 – Present',
-    description: `Actively manage and curate content for 5+ personal websites covering technology, lifestyle, and personal development. Implement effective SEO techniques and content strategies to optimize website performance and enhance visibility on search engines. Regularly analyze website analytics and metrics to track growth and identify areas for improvement. Collaborate with guest writers and contributors to diversify content and reach a broader audience.`,
+    title: 'Blogging & SEO',
+    duration: 'Present',
+    description: `Manage and rank 4+ personal websites (MarathiBeast.com, HireBace.com, Blogger.HemantKadam.in). Improved SEO and generated 2M+ Google organic traffic in 6 months.`,
   },
   {
     title: 'Content Creation',
-    duration: 'March 2021 – Present',
-    description: `Established a YouTube channel (Blogger hemant) in 2021 and diversified content creation efforts across various platforms. Create and publish in-depth tutorials, walkthroughs, and tips for beginners and experienced developers alike. Utilize video editing software to enhance production quality and engage viewers. Interact with subscribers through comments, live streams, and community posts to foster a supportive and engaged audience. Collaborate with other content creators and industry experts to create collaborative content and expand reach.`,
+    duration: 'Present',
+    description: `Multiple YouTube channels with 49K+ combined subscribers: Hemant Kadam (33K), Blogger Hemant (10K), Tech Hemant (6K). Educational content on frontend, AI, SEO, automation.`,
+  },
+  {
+    title: 'Workshops & Mentoring',
+    duration: 'SLRTCE',
+    description: `Conducted technical workshops: How to Do Freelancing, AI Agent Automation.`,
   },
 ];
 

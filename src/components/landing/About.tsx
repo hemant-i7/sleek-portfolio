@@ -1,4 +1,4 @@
-import { about, mySkills } from '@/config/About';
+import { about, mySkills, achievements } from '@/config/About';
 import Image from 'next/image';
 import React from 'react';
 import { FaCode, FaLightbulb, FaMusic, FaHandshake, FaInfoCircle } from 'react-icons/fa';
@@ -86,6 +86,19 @@ export default function About() {
             </Accordion>
           </div>
           
+          {/* Achievements Section */}
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Achievements</h3>
+            <ul className="space-y-2">
+              {achievements.map((a, i) => (
+                <li key={i} className="text-gray-600 dark:text-gray-300 flex flex-col gap-0.5">
+                  <span className="font-medium text-gray-800 dark:text-white">{a.title}</span>
+                  {a.note && <span className="text-sm text-gray-500 dark:text-gray-400">{a.note}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Skills Section */}
           <div className="mt-8">
             <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Technical Skills</h3>
