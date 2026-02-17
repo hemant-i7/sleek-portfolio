@@ -47,6 +47,7 @@ const nextConfig: NextConfig = {
   // Disable strict mode for faster builds
   reactStrictMode: false,
   serverExternalPackages: [],
+  transpilePackages: ['next-mdx-remote'],
 };
 
 export default nextConfig;
