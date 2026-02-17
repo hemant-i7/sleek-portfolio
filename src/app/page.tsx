@@ -4,6 +4,7 @@ import About from '@/components/landing/About';
 import Blog from '@/components/landing/Blog';
 import Experience from '@/components/landing/Experience';
 import Hero from '@/components/landing/Hero';
+import Links from '@/components/landing/Links';
 import Work from '@/components/landing/Projects';
 import Setup from '@/components/landing/Setup';
 import React from 'react';
@@ -26,6 +27,9 @@ export default function page() {
       </SectionReveal>
       <SectionReveal delay={0.3}>
         <Setup />
+      </SectionReveal>
+      <SectionReveal delay={0.35}>
+        <Links />
       </SectionReveal>
     </Container>
   );

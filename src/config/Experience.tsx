@@ -44,7 +44,7 @@ export const experiences: Experience[] = [
     company: 'Nano Technology (Freelance)',
     position: 'Frontend + Automation Engineer Intern',
     location: 'Remote',
-    image: '/company/1713630756849.jpeg',
+    image: '/company/nano.svg',
     description: [
       'Built low-code workflow UIs using n8n and LangChain for business process automation.',
       'Developed interactive dashboards and connected them with Node.js APIs.',
