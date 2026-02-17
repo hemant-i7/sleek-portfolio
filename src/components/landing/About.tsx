@@ -5,6 +5,8 @@ import {
   profileImage,
   technicalSkillsByCategory,
 } from '@/config/About';
+import type { HackathonAchievement } from './HackathonItem';
+import { HackathonItem } from './HackathonItem';
 import Figma from '@/components/technologies/Figma';
 import Github from '@/components/technologies/Github';
 import MongoDB from '@/components/technologies/MongoDB';
@@ -186,47 +188,12 @@ export default function About() {
         </p>
         <div className="mt-6 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
           <ul className="divide-y divide-border/50">
-            {achievements.map((a, i) => {
-              const item = a as { title: string; note?: string; where?: string; emoji?: string; description?: string; url?: string };
-              return (
-                <li
-                  key={i}
-                  className="flex flex-col gap-1 px-5 py-4 transition-colors hover:bg-muted/30 sm:flex-row sm:items-start sm:gap-4"
-                >
-                  <span className="text-2xl shrink-0" aria-hidden>
-                    {item.emoji ?? '🏆'}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-medium">{item.title}</p>
-                    {item.where && (
-                      <p className="text-sm text-muted-foreground">
-                        at {item.where}
-                      </p>
-                    )}
-                    {item.description && (
-                      <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    )}
-                    {item.note && (
-                      <p className="mt-0.5 text-xs text-muted-foreground">
-                        {item.note}
-                      </p>
-                    )}
-                    {item.url && (
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2 inline-block text-xs font-medium text-primary underline-offset-4 hover:underline"
-                      >
-                        Learn more →
-                      </a>
-                    )}
-                  </div>
-                </li>
-              );
-            })}
+            {achievements.map((a, i) => (
+              <HackathonItem
+                key={i}
+                item={a as HackathonAchievement}
+              />
+            ))}
           </ul>
         </div>
       </section>
