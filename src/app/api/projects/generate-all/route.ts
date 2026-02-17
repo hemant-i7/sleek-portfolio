@@ -11,6 +11,17 @@ import fs from 'fs';
 
 const GEMINI_IMAGE_MODEL = 'gemini-2.0-flash-exp-image-generation';
 
+type GeminiImageResponse = {
+  candidates?: Array<{
+    content?: {
+      parts?: Array<{
+        inlineData?: { data?: string };
+        inline_data?: { data?: string };
+      }>;
+    };
+  }>;
+};
+
 function getTagline(p: (typeof projects)[0]): string {
   return (
     (p as { tagline?: string }).tagline ||
@@ -58,16 +69,7 @@ export async function POST() {
         continue;
       }
 
-      const data = (await response.json()) as {
-        candidates?: Array<{
-          content?: {
-            parts?: Array<{
-              inlineData?: { data?: string };
-              inline_data?: { data?: string };
-            }>;
-          }>;
-        }>;
-      };
+      const data = (await response.json()) as GeminiImageResponse;
 
       const parts = data.candidates?.[0]?.content?.parts ?? [];
       const imagePart = parts.find(
