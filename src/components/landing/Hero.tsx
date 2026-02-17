@@ -56,7 +56,7 @@ export default function Hero() {
         alt="hero"
         width={100}
         height={100}
-        className="size-24 rounded-full bg-blue-300 dark:bg-yellow-300"
+        className="size-24 rounded-full bg-blue-300 transition-transform duration-300 hover:scale-105 dark:bg-yellow-300"
       />
 
       {/* Text Area */}

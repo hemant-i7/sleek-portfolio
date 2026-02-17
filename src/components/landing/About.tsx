@@ -141,7 +141,7 @@ export default function About() {
               .map((section, index) => (
                 <div
                   key={index}
-                  className="rounded-xl border border-border/50 bg-card/50 p-4 transition-colors hover:border-border hover:bg-card"
+                  className="rounded-xl border border-border/50 bg-card/50 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-card hover:shadow-md"
                 >
                   <div className="mb-2 flex items-center gap-2">
                     {getIcon(section.title)}
@@ -205,7 +205,7 @@ export default function About() {
           {technicalSkillsByCategory.map((group, gIdx) => (
             <div
               key={gIdx}
-              className="rounded-2xl border border-border/60 bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
+              className="rounded-2xl border border-border/60 bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               <h4 className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {group.category}
