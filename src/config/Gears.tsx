@@ -7,8 +7,6 @@ import Phone from '@/components/svgs/devices/Phone';
 
 /** Setup/workspace photo */
 export const setupImage = '/about/WhatsApp Image 2026-02-18 at 11.52.11.jpeg';
-/** n8n workflow automation */
-export const n8nImage = '/about/WhatsApp Image 2026-02-18 at 11.52.11 (1).jpeg';
 
 export const devices = [
   {

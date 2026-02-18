@@ -20,6 +20,8 @@ export interface HackathonAchievement {
   url?: string;
   postUrl?: string;
   postImageUrl?: string;
+  /** When set, hover and dialog show this list (hover uses first); overrides single postImageUrl for display */
+  postImageUrls?: string[];
 }
 
 interface HackathonItemProps {
@@ -27,9 +29,11 @@ interface HackathonItemProps {
 }
 
 export function HackathonItem({ item }: HackathonItemProps) {
+  const images = item.postImageUrls?.length ? item.postImageUrls : item.postImageUrl ? [item.postImageUrl] : [];
+  const firstImage = images[0];
   const hasPost = Boolean(item.postUrl?.trim());
-  const hasImage = Boolean(item.postImageUrl?.trim());
-  const isLinkedInImage = hasImage && item.postImageUrl!.startsWith('https://media.licdn');
+  const hasImage = images.length > 0;
+  const isLinkedInImage = (url: string) => url.startsWith('https://media.licdn');
 
   return (
     <li className="flex flex-col gap-1 px-5 py-4 transition-colors hover:bg-muted/30 sm:flex-row sm:items-start sm:gap-4">
@@ -37,12 +41,12 @@ export function HackathonItem({ item }: HackathonItemProps) {
         {item.emoji ?? '🏆'}
       </span>
       <div className="min-w-0 flex-1">
-        {item.postImageUrl && item.url ? (
+        {firstImage && item.url ? (
           <p className="font-medium">
             <LinkPreview
               url={item.url}
               isStatic
-              imageSrc={item.postImageUrl}
+              imageSrc={firstImage}
               width={320}
               height={200}
               className="font-medium text-foreground underline-offset-4 hover:underline"
@@ -94,20 +98,24 @@ export function HackathonItem({ item }: HackathonItemProps) {
                   className="inline-flex items-center gap-1 text-xs font-medium text-primary underline-offset-4 hover:underline"
                 >
                   <ImageIcon className="size-3.5" />
-                  View image
+                  View image{images.length > 1 ? 's' : ''}
                 </button>
               </DialogTrigger>
               <DialogContent className="max-w-[95vw] max-h-[90vh] w-auto border-0 bg-transparent p-0 shadow-none">
                 <DialogTitle className="sr-only">{item.title}, post image</DialogTitle>
-                <div className="relative flex max-h-[85vh] w-full items-center justify-center overflow-hidden rounded-lg bg-muted">
-                  <Image
-                    src={item.postImageUrl!}
-                    alt={`${item.title}, post image`}
-                    width={1200}
-                    height={800}
-                    className="max-h-[85vh] w-auto object-contain"
-                    unoptimized={Boolean(isLinkedInImage)}
-                  />
+                <div className="relative flex max-h-[85vh] w-full flex-col items-center justify-center gap-4 overflow-auto rounded-lg bg-muted p-2">
+                  {images.map((src, i) => (
+                    <div key={src + i} className="relative flex flex-1 items-center justify-center">
+                      <Image
+                        src={src}
+                        alt={`${item.title}, image ${i + 1}`}
+                        width={1200}
+                        height={800}
+                        className="max-h-[80vh] w-auto object-contain"
+                        unoptimized={isLinkedInImage(src)}
+                      />
+                    </div>
+                  ))}
                 </div>
               </DialogContent>
             </Dialog>
@@ -123,26 +131,30 @@ export function HackathonItem({ item }: HackathonItemProps) {
               aria-label="View post image"
             >
               <Image
-                src={item.postImageUrl!}
+                src={firstImage}
                 alt=""
                 fill
                 className="object-cover"
                 sizes="96px"
-                unoptimized={Boolean(isLinkedInImage)}
+                unoptimized={isLinkedInImage(firstImage)}
               />
             </button>
           </DialogTrigger>
           <DialogContent className="max-w-[95vw] max-h-[90vh] w-auto border-0 bg-transparent p-0 shadow-none">
             <DialogTitle className="sr-only">{item.title}, post image</DialogTitle>
-            <div className="relative flex max-h-[85vh] w-full items-center justify-center overflow-hidden rounded-lg bg-muted">
-              <Image
-                src={item.postImageUrl!}
-                alt={`${item.title}, post image`}
-                width={1200}
-                height={800}
-                className="max-h-[85vh] w-auto object-contain"
-                unoptimized={Boolean(isLinkedInImage)}
-              />
+            <div className="relative flex max-h-[85vh] w-full flex-col items-center justify-center gap-4 overflow-auto rounded-lg bg-muted p-2">
+              {images.map((src, i) => (
+                <div key={src + i} className="relative flex flex-1 items-center justify-center">
+                  <Image
+                    src={src}
+                    alt={`${item.title}, image ${i + 1}`}
+                    width={1200}
+                    height={800}
+                    className="max-h-[80vh] w-auto object-contain"
+                    unoptimized={isLinkedInImage(src)}
+                  />
+                </div>
+              ))}
             </div>
           </DialogContent>
         </Dialog>
