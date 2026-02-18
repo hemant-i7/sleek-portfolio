@@ -1,3 +1,5 @@
+'use client';
+
 import { type Experience } from '@/config/Experience';
 import { Link } from 'next-view-transitions';
 import Image from 'next/image';
@@ -18,20 +20,35 @@ const parseDescription = (text: string): string => {
   return text.replace(/\*(.*?)\*/g, '<b>$1</b>');
 };
 
+/** First letters of first two words, or first two chars of company name */
+function companyInitials(company: string): string {
+  const words = company.replace(/[(@].*$/, '').trim().split(/\s+/);
+  if (words.length >= 2) return (words[0][0] + words[1][0]).toUpperCase();
+  return company.slice(0, 2).toUpperCase() || '?';
+}
+
 export function ExperienceCard({ experience }: ExperienceCardProps) {
+  const [imgError, setImgError] = React.useState(false);
+  const initials = companyInitials(experience.company);
+
   return (
     <div className="flex flex-col gap-3">
       {/* Company Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-start gap-3">
           <div className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/40 bg-muted/20 p-1">
-            <Image
-              src={experience.image}
-              alt={experience.company}
-              width={40}
-              height={40}
-              className="size-full object-contain"
-            />
+            {imgError ? (
+              <span className="text-muted-foreground text-sm font-semibold" aria-hidden>{initials}</span>
+            ) : (
+              <Image
+                src={experience.image}
+                alt={experience.company}
+                width={40}
+                height={40}
+                className="size-full object-contain"
+                onError={() => setImgError(true)}
+              />
+            )}
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
