@@ -1,12 +1,14 @@
 import {
   about,
   achievements,
+  education,
   profileImage,
   technicalSkillsByCategory,
   whoIAmImage,
 } from '@/config/About';
 import type { HackathonAchievement } from './HackathonItem';
 import { HackathonItem } from './HackathonItem';
+import { Calendar, GraduationCap, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import {
@@ -210,6 +212,42 @@ export default function About() {
           </Accordion>
         </div>
       </div>
+
+      {/* Education */}
+      <section className="mt-20" id="education">
+        <SectionHeading subHeading="Academic" heading="Education" />
+        <div className="mt-6 flex flex-col gap-4">
+          {education.map((item, i) => (
+            <div
+              key={i}
+              className="flex gap-4 rounded-xl border border-border/60 bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <GraduationCap className="size-6" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="font-semibold">{item.institution}</h4>
+                <p className="mt-1 text-sm text-muted-foreground">{item.degree}</p>
+                <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5">
+                    <Calendar className="size-3.5" />
+                    {item.duration}
+                  </span>
+                  {item.location && (
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin className="size-3.5" />
+                      {item.location}
+                    </span>
+                  )}
+                  {'score' in item && item.score && (
+                    <span className="font-medium text-primary">{item.score}</span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Hackathon Wins: no image, one line + list with emoji & where */}
       <section className="mt-20" id="achievements">

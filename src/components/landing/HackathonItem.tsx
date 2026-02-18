@@ -1,5 +1,6 @@
 'use client';
 
+import { LinkPreview } from '@/components/ui/link-preview';
 import {
   Dialog,
   DialogContent,
@@ -36,7 +37,22 @@ export function HackathonItem({ item }: HackathonItemProps) {
         {item.emoji ?? '🏆'}
       </span>
       <div className="min-w-0 flex-1">
-        <p className="font-medium">{item.title}</p>
+        {item.postImageUrl && item.url ? (
+          <p className="font-medium">
+            <LinkPreview
+              url={item.url}
+              isStatic
+              imageSrc={item.postImageUrl}
+              width={320}
+              height={200}
+              className="font-medium text-foreground underline-offset-4 hover:underline"
+            >
+              {item.title}
+            </LinkPreview>
+          </p>
+        ) : (
+          <p className="font-medium">{item.title}</p>
+        )}
         {item.where && (
           <p className="text-sm text-muted-foreground">at {item.where}</p>
         )}

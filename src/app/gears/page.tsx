@@ -1,10 +1,11 @@
 import Container from '@/components/common/Container';
 import Monitor from '@/components/svgs/devices/Monitor';
 import { Separator } from '@/components/ui/separator';
-import { devices, software, webExtensions } from '@/config/Gears';
+import { devices, n8nImage, setupImage, software, webExtensions } from '@/config/Gears';
 import { generateMetadata as getMetadata } from '@/config/Meta';
 import { ArrowUpRight, Puzzle } from 'lucide-react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { Link } from 'next-view-transitions';
 import React from 'react';
 
@@ -37,6 +38,34 @@ export default function GearsPage() {
           </p>
         </div>
         <Separator />
+
+        {/* Setup & n8n photos */}
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div className="overflow-hidden rounded-xl border border-border/60 bg-card">
+            <div className="relative aspect-video w-full">
+              <Image
+                src={setupImage}
+                alt="My setup"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
+            <p className="p-3 text-center text-sm text-muted-foreground">My setup</p>
+          </div>
+          <div className="overflow-hidden rounded-xl border border-border/60 bg-card">
+            <div className="relative aspect-video w-full">
+              <Image
+                src={n8nImage}
+                alt="n8n workflow automation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
+            <p className="p-3 text-center text-sm text-muted-foreground">n8n workflow automation</p>
+          </div>
+        </div>
 
         {/* Devices Section */}
         <div className="space-y-4">
