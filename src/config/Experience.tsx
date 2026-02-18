@@ -60,7 +60,7 @@ export const experiences: Experience[] = [
     company: 'Edba Academy (Contract / Freelance)',
     position: 'Frontend & Digital Marketing Engineer',
     location: 'Remote',
-    image: '/company/1713630756849.jpeg',
+    image: '/company/edba-academy.png',
     description: [
       'Built responsive web pages using HTML, CSS, Tailwind CSS, and JavaScript.',
       'Improved website SEO performance and implemented marketing-related optimizations.',
