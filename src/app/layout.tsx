@@ -13,7 +13,12 @@ import { ViewTransitions } from 'next-view-transitions';
 
 import './globals.css';
 
-export const metadata = getMetadata('/');
+export const metadata = {
+  ...getMetadata('/'),
+  other: {
+    'google-adsense-account': 'ca-pub-2824416968186037',
+  },
+};
 
 export const viewport = {
   width: 'device-width',
