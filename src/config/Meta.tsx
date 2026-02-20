@@ -9,15 +9,17 @@ export interface PageMeta {
   twitterCard?: 'summary' | 'summary_large_image';
 }
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+  'https://hemant.engineer';
+
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
   title: 'Sleek Portfolio',
   description: 'Hemant Kadam, Software Developer & Content Creator',
-  url:
-    typeof window !== 'undefined'
-      ? window.location.origin
-      : 'http://localhost:3000',
+  url: baseUrl,
   ogImage: '/meta/opengraph-image.png',
   author: {
     name: 'Hemant Kadam',
@@ -216,5 +218,8 @@ export function generateMetadata(pathname: string) {
     alternates: {
       canonical: `${siteConfig.url}${pathname}`,
     },
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+      verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+    }),
   };
 }
