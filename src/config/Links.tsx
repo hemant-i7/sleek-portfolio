@@ -4,6 +4,16 @@
  */
 export const linktreeUrl = 'https://linktr.ee/hemant_i7';
 
+/** n8n Official Content Creator highlight: creator kit image + YouTube Short */
+export const n8nHighlight = {
+  title: 'n8n Official Content Creator',
+  subtitle: 'India · 2+ years',
+  creatorImage: '/about/WhatsApp Image 2026-02-20 at 13.54.04 (1).jpeg',
+  youtubeShortUrl: 'https://youtube.com/shorts/tMKB0ZmjTVE',
+  youtubeEmbedVideoId: 'tMKB0ZmjTVE',
+  instagramReelUrl: 'https://www.instagram.com/p/DUyr54DDTfv/',
+};
+
 export const extraLinks: { label: string; href: string; type?: 'youtube' | 'web' | 'social' }[] = [
   { label: 'Linktree (all links)', href: linktreeUrl, type: 'web' },
   { label: 'Blogger Hemant (YT)', href: 'https://www.youtube.com/@bloggerhemant', type: 'youtube' },

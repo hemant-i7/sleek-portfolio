@@ -123,6 +123,11 @@ export const achievements = [
 
 export const extracurriculars = [
   {
+    title: 'n8n Official Content Creator',
+    duration: 'India · 2+ years',
+    description: `Official n8n content creator for India. Creating workflow automation tutorials, tips, and demos. See the Links section for my n8n reel.`,
+  },
+  {
     title: 'Blogging & SEO',
     duration: 'Present',
     description: `Manage and rank 4+ personal websites (MarathiBeast.com, HireBace.com, Blogger.HemantKadam.in). Improved SEO and generated 2M+ Google organic traffic in 6 months.`,

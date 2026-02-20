@@ -1,4 +1,5 @@
-import { extraLinks, linktreeUrl } from '@/config/Links';
+import { extraLinks, linktreeUrl, n8nHighlight } from '@/config/Links';
+import Image from 'next/image';
 import React from 'react';
 import { FaGlobe } from 'react-icons/fa';
 import {
@@ -51,6 +52,34 @@ export default function Links() {
         </a>
         .
       </p>
+
+      {/* n8n Official Content Creator: image left, text right */}
+      <div className="mt-8 rounded-2xl border border-border/60 bg-card p-4 shadow-sm md:p-6">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
+          <div className="shrink-0 overflow-hidden rounded-xl border border-border/60 bg-muted/30 md:max-w-[280px]">
+            <Image
+              src={n8nHighlight.creatorImage}
+              alt="n8n creator kit - cap, t-shirt, stickers, thank you note from n8n Community Team"
+              width={480}
+              height={360}
+              className="h-auto max-h-[240px] w-full object-contain"
+              sizes="280px"
+              priority={false}
+            />
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-semibold">{n8nHighlight.title}</span>
+              <span className="text-muted-foreground text-sm">·</span>
+              <span className="text-muted-foreground text-sm">{n8nHighlight.subtitle}</span>
+            </div>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              n8n workflow automation & content. Creator kit from the n8n Community Team.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {extraLinks.map((item) => (
           <a
