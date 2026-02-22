@@ -172,6 +172,60 @@ export const BlogComponents = {
       </code>
     );
   },
+  // Table wrapper for overflow and borders
+  table: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <div className="my-6 w-full overflow-x-auto rounded-lg border border-border">
+      <table className="w-full min-w-[480px] border-collapse text-sm" {...props}>
+        {children}
+      </table>
+    </div>
+  ),
+  thead: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => (
+    <thead className="bg-muted/50" {...props}>
+      {children}
+    </thead>
+  ),
+  tbody: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => (
+    <tbody {...props}>
+      {children}
+    </tbody>
+  ),
+  th: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <th
+      className="border-b border-border px-4 py-3 text-left font-semibold"
+      {...props}
+    >
+      {children}
+    </th>
+  ),
+  td: ({
+    children,
+    ...props
+  }: {
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => (
+    <td className="border-b border-border/60 px-4 py-3" {...props}>
+      {children}
+    </td>
+  ),
+  tr: ({ children, ...props }: { children: React.ReactNode; [key: string]: unknown }) => (
+    <tr className="hover:bg-muted/20 transition-colors" {...props}>
+      {children}
+    </tr>
+  ),
   // Custom blockquote styling
   blockquote: ({
     children,

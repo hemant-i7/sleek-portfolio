@@ -1,0 +1,95 @@
+---
+title: "OpenClaw on Your Old Laptop? Yes—Full Setup Guide (No Crashes, 2GB RAM Min)"
+description: "Realistic OpenClaw setup for everyday laptops. Fix heap errors, gateway hangs, and UI fails on Intel i5, Ryzen, or Acer/HP in India. Step-by-step in 10 mins."
+image: '/blog/openclaw-setup-guide.png'
+tags: ['openclaw', 'ai-agent', 'setup', 'automation', 'india']
+date: '2026-02-20'
+isPublished: true
+---
+
+# OpenClaw on Your Old Laptop? Yes—Full Setup Guide (No Crashes, 2GB RAM Min)
+
+In this post you will learn how to install and run OpenClaw on a normal laptop without crashes. OpenClaw is an open-source AI agent platform that many people use for local automation and workflows. If you have an old laptop or a budget PC in India or anywhere else, this OpenClaw setup guide will help you get started. We will cover the real hardware you need, step-by-step install, and simple fixes for common errors like heap out of memory and gateway hangs. No cloud needed—everything runs on your machine.
+
+## What You Need Before You Start
+
+OpenClaw needs a few things to run. Here is a simple breakdown so you know what to expect before you install OpenClaw.
+
+## Hardware Reality Check
+
+You do not need an expensive PC to run OpenClaw. But your laptop or desktop must meet at least the minimum specs below. If you go below that, OpenClaw will crash or run very slow.
+
+**Minimum (it runs, but it will fight you):**
+
+- 2GB RAM
+- 1 or 2 vCPU
+- 20GB free space on SSD
+- Ubuntu 22.04, Mac, or Windows 10 or newer
+
+On this setup you may see UI lag and crashes when you use many tools at once. A Raspberry Pi 4 can run basic OpenClaw workflows if you give it 512MB to 1GB RAM.
+
+**Recommended (smooth daily use):**
+
+- 4GB RAM
+- 2 to 4 vCPU
+- 40GB free SSD space
+
+This is ideal for most users in India on common laptops like Acer Aspire or HP Pavilion in the ₹30k to ₹50k range. OpenClaw will run much smoother and you will have fewer crashes.
+
+**Pro tip:** If your RAM is low, turn on swap (a 4GB swap file). Before you start the OpenClaw gateway, run `free -h` in the terminal to check your memory. This helps you see if you need more swap.
+
+## Step-by-Step OpenClaw Install (About 10 Mins)
+
+Follow these steps in order. They work on Windows, Mac, and Linux.
+
+### Step 1: Install Node.js 22 or Newer
+
+OpenClaw uses Node.js for the gateway. Use Node 22 or higher. You can use Bun for other tasks if you want speed, but for the OpenClaw gateway use Node. Download Node from [nodejs.org](https://nodejs.org).
+
+### Step 2: Install the OpenClaw CLI
+
+Open a terminal and run:
+
+```bash
+npm install -g @openclaw/cli
+openclaw init
+```
+
+If you see "command not found" after install, add the npm global bin folder to your PATH. Your system needs to find the `openclaw` command.
+
+### Step 3: Run the Gateway and Web UI
+
+You need two terminal windows:
+
+- **Terminal 1:** Run `openclaw gateway`. Leave it running.
+- **Terminal 2:** Run `openclaw ui`. Then open your browser and go to [http://localhost:3000](http://localhost:3000).
+
+That is your OpenClaw web interface. You can chat with the agent and run workflows from there.
+
+### Step 4: Common Fixes
+
+**"Heap out of memory" error:**  
+Your Node process needs more memory. Run this in the same terminal before you start the gateway:
+
+```bash
+export NODE_OPTIONS="--max-old-space-size=4096"
+```
+
+Then start the gateway again. This gives Node 4GB heap and often fixes the crash.
+
+**On Windows:**  
+For a stable OpenClaw setup on Windows, use WSL2 with Ubuntu. Install WSL2, open Ubuntu, and follow the same steps as on Linux. This avoids many Windows-specific issues.
+
+## Test Your OpenClaw Setup
+
+After everything is running, open the web UI and use the slash command `/test-setup`. It will check that your tools and memory are working. If that works, your OpenClaw install is good to go.
+
+## GEO-Targeted Tips for OpenClaw Install
+
+Depending on where you are and what you search for, these tips can help:
+
+- **India (e.g. Mumbai, Virar):** If you search "OpenClaw Acer laptop install" or "OpenClaw HP laptop setup India", this guide is for you. Same steps; use the recommended specs if you can.
+- **US:** For "OpenClaw Windows 11 setup", follow the same steps and use WSL2 if you are on Windows.
+- **EU (e.g. Germany):** For "OpenClaw Raspberry Pi" or low-RAM setups, use the minimum specs and enable swap. The steps are the same.
+
+For more help, see the [OpenClaw FAQ](https://docs.openclaw.ai/help/faq) and community guides. You now have a working OpenClaw setup on your normal laptop.

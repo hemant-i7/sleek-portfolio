@@ -1,0 +1,99 @@
+---
+title: "OpenClaw Memory Broken? Fix with Cognee or Mem0 in 3 Steps (Persistent Graph)"
+description: "OpenClaw's Markdown memory turns to noise after 10 chats. Add graph-based recall with Cognee or Mem0—no more forgotten context. Docker and config examples."
+image: '/blog/openclaw-memory-fix.png'
+tags: ['openclaw', 'memory', 'cognee', 'mem0', 'ai-agent']
+date: '2026-02-20'
+isPublished: true
+---
+
+# OpenClaw Memory Broken? Fix with Cognee or Mem0 in 3 Steps (Persistent Graph)
+
+In this post we look at why OpenClaw memory often fails after a few chats and how to fix it. OpenClaw is a great open-source AI agent for automation, but by default it stores memory in Markdown files. After 10 or more chats, that memory becomes noisy and the agent forgets important context. Here you will learn how to add real persistent memory to OpenClaw using either Cognee or Mem0. Both use a graph-style memory so your agent can recall what you said and how things are related. We use simple English and step-by-step config so you can fix OpenClaw memory on your own machine or on a small server in India or elsewhere.
+
+## Why OpenClaw Default Memory Fails
+
+Out of the box, OpenClaw saves conversation and context in Markdown files. The problem is:
+
+- Semantic search over those files often returns irrelevant bits of old logs.
+- There are no clear links or relationships between different conversations.
+- So the agent "forgets" what you talked about and gives weak or wrong answers.
+
+The fix is to keep using those files but add a proper memory engine behind them. You connect OpenClaw to a graph-based memory (Cognee or Mem0) so it can store and recall context in a smarter way.
+
+## Fix OpenClaw Memory with Cognee (Docker or Local)
+
+Cognee gives you a graph-based memory backend. You run it once and point OpenClaw at it. Below are the three main steps.
+
+### Step 1: Run Cognee
+
+If you have Docker, run:
+
+```bash
+docker run -p 8002:8002 cognee/cognee
+```
+
+Keep this running. You can also use the full Docker Compose setup from the [Cognee docs](https://docs.cognee.ai) if you prefer.
+
+### Step 2: Install the OpenClaw Cognee Plugin
+
+In your terminal:
+
+```bash
+openclaw plugins install openclaw-cognee
+```
+
+This adds the Cognee memory plugin to OpenClaw.
+
+### Step 3: Set OpenClaw Config
+
+Edit your OpenClaw config file at `~/.openclaw/config.yaml` and set the memory engine to Cognee:
+
+```yaml
+memory:
+  engine: cognee
+  url: http://localhost:8002
+```
+
+Save the file. Restart the OpenClaw gateway. On startup it will scan your MEMORY.md and use Cognee for persistent graph memory. Your OpenClaw memory is now backed by Cognee.
+
+## Fix OpenClaw Memory with Mem0 (Cloud or Local)
+
+Mem0 is another option for OpenClaw memory. It works in the cloud or locally and also uses a graph for better recall.
+
+### Step 1: Get a Mem0 API Key
+
+Go to [app.mem0.ai](https://app.mem0.ai) and create an account. Get your API key. You will put it in the OpenClaw config.
+
+### Step 2: Add Mem0 to OpenClaw Config
+
+In `~/.openclaw/config.yaml` add:
+
+```yaml
+plugins:
+  mem0:
+    api_key: your_key
+    graph: true
+```
+
+Replace `your_key` with your real Mem0 API key. Save and restart the gateway.
+
+### Step 3: Test OpenClaw Memory
+
+Chat with OpenClaw 5 or 6 times. Talk about different topics (e.g. Node.js, Python, or a project). Then ask: "What did I say about Node.js?" The agent should recall the right conversation using the graph. If it does, your OpenClaw memory fix is working.
+
+## Pro Tips for OpenClaw Memory
+
+- Cognee and Mem0 use hash checks so they skip files that did not change. That keeps things fast.
+- Context is injected before each run so the agent sees the right history.
+- Use only one memory engine at a time (either Cognee or Mem0). Using both can write the same things twice and cause confusion.
+
+## GEO Suggestions for OpenClaw Memory
+
+If you search for OpenClaw memory fixes by region, these phrases match this guide:
+
+- **India:** "OpenClaw memory fix Docker India low RAM" — use Cognee in Docker and the config above.
+- **Global:** "OpenClaw persistent memory tutorial" — same steps work everywhere.
+- **Asia (e.g. Singapore):** "OpenClaw Cognee VPS Singapore" — run Cognee on a small VPS and point OpenClaw to it.
+
+You now have a working OpenClaw memory setup with either Cognee or Mem0 and simple, clear steps to keep your agent’s context in place.
