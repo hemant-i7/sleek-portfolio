@@ -20,6 +20,7 @@ export const extraLinks: { label: string; href: string; type?: 'youtube' | 'web'
   { label: 'Tech Hemant (YT)', href: 'https://www.youtube.com/@techhemant8484', type: 'youtube' },
   { label: 'Hemant Kadam (YT)', href: 'https://www.youtube.com/@HemanTKadaM', type: 'youtube' },
   { label: 'bloggerhemant.in', href: 'https://blogger.hemantkadam.in/', type: 'web' },
+  { label: 'OpenClaw alternatives', href: '/blog/openclaw-alternatives-migration', type: 'web' },
   { label: 'Hemantkadam.in', href: 'https://hemant.engineer/', type: 'web' },
   { label: 'Marathibeast.com', href: 'https://marathibeast.com/', type: 'web' },
   { label: 'Snapchat Lens (Mi cap)', href: 'https://www.snapchat.com/lens/afd64366829d40e4b5e42747eb475023', type: 'web' },

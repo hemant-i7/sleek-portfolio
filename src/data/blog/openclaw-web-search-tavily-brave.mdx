@@ -1,15 +1,15 @@
 ---
 title: "OpenClaw Search Showdown: Tavily vs Brave vs Built-In (Free Configs + Plugins)"
-description: "Brave API free tier gone? Switch to Tavily for cleaner AI search. Full OpenClaw configs, plugin setup, and multi-engine fallback for India and global use."
+description: "Brave API free tier gone? Switch to Tavily for cleaner AI search. Full OpenClaw configs, plugin setup, and multi-engine fallback. Web search, MCP, research."
 image: '/blog/openclaw-search-showdown.png'
-tags: ['openclaw', 'tavily', 'brave', 'web-search', 'mcp']
-date: '2026-02-20'
+tags: ['openclaw', 'tavily', 'brave', 'web-search', 'mcp', 'ai-search', 'research']
+date: '2026-02-03'
 isPublished: true
 ---
 
 # OpenClaw Search Showdown: Tavily vs Brave vs Built-In (Free Configs + Plugins)
 
-In this post we compare the main ways to do web search in OpenClaw. OpenClaw is an open-source AI agent that can search the web to answer questions and do research. By default it has a built-in web search, but many users also use Brave or Tavily for better results. The Brave API free tier has changed, so more people are switching to Tavily for OpenClaw. Here we explain the pros and cons of each option in simple English and give you ready-to-use OpenClaw configs and plugin steps. You will see how to set up Tavily, how to use multiple search engines together, and how to test your OpenClaw search in India or anywhere else.
+In this post we compare the main ways to do web search in OpenClaw. OpenClaw is an open-source AI agent that can search the web to answer questions and do research. By default it has a built-in web search, but many users also use Brave or Tavily for better results. The Brave API free tier has changed, so more people are switching to [Tavily](https://app.tavily.com) for OpenClaw. Here we explain the pros and cons of each option in simple English and give you ready-to-use OpenClaw configs and plugin steps. You will see how to set up Tavily, how to use multiple search engines together, and how to test your OpenClaw search. For install basics, see [OpenClaw setup guide](/blog/openclaw-setup-guide-normal-laptops).
 
 ## OpenClaw Search Options: Quick Comparison
 
@@ -51,8 +51,8 @@ Replace `sk-...` with your real key. You can add this line to your shell profile
 
 Once the plugin is installed and the key is set, OpenClaw will use Tavily automatically when the workflow needs web search. The main tools are:
 
-- **tavily_search** — search the web with options for domains and time range.
-- **tavily_extract** — get clean Markdown from a URL.
+- **tavily_search**, search the web with options for domains and time range.
+- **tavily_extract**, get clean Markdown from a URL.
 
 You do not need to wire them manually; the agent will call them when needed. Your OpenClaw search is now powered by Tavily.
 
@@ -66,14 +66,6 @@ search:
   fallback: [brave, duckduckgo]
 ```
 
-Restart the OpenClaw gateway after saving. Then test with a slash command like `/research latest OpenClaw India news`. The agent will use Tavily first and fall back to the others if needed. This gives you a solid OpenClaw search setup for India and global use.
-
-## GEO Suggestions for OpenClaw Search
-
-If you search for OpenClaw search setup by region, this guide matches phrases like:
-
-- **India:** "OpenClaw Tavily India news search" — use the Tavily plugin and config above.
-- **Global:** "OpenClaw search alternatives 2026" — same setup works everywhere.
-- **EU:** "OpenClaw GDPR search Brave vs Tavily" — Tavily and Brave both have privacy considerations; check their policies and choose what fits your needs.
+Restart the OpenClaw gateway after saving. Then test with a slash command like `/research latest OpenClaw news`. The agent will use Tavily first and fall back to the others if needed. This gives you a solid OpenClaw search setup. For persistent context across chats, pair with [OpenClaw memory fix (Cognee or Mem0)](/blog/openclaw-memory-fix-cognee-mem0).
 
 You now have a clear comparison of OpenClaw search options and a working Tavily-based setup with optional fallbacks.

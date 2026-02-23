@@ -1,15 +1,15 @@
 ---
 title: "Build a Local Data Analyst: OpenClaw + Ollama (CSV Insights, No Cloud)"
-description: "Privacy-first analytics with OpenClaw and Ollama. Upload CSV/PDF, get charts and reports via local orchestration—all offline. Full setup and example workflow."
+description: "Privacy-first analytics with OpenClaw and Ollama. Upload CSV/PDF, get charts and reports via local orchestration, all offline. Full setup and example workflow. Local AI, data analyst."
 image: '/blog/openclaw-ollama-analyst.png'
-tags: ['openclaw', 'ollama', 'data-analyst', 'local-ai', 'privacy']
-date: '2026-02-20'
+tags: ['openclaw', 'ollama', 'data-analyst', 'local-ai', 'privacy', 'csv', 'offline']
+date: '2026-02-13'
 isPublished: true
 ---
 
 # Build a Local Data Analyst: OpenClaw + Ollama (CSV Insights, No Cloud)
 
-In this post you will learn how to turn OpenClaw and Ollama into a local data analyst. OpenClaw is an open-source AI agent that can run tools and workflows on your machine. Ollama runs large language models (LLMs) locally. Together they can read your CSV and PDF files, create charts, and write reports without sending any data to the cloud. This is ideal if you care about privacy or work in India or elsewhere with sensitive data. We use simple English and give you the full setup and an example workflow so you can build your own OpenClaw data analyst in a few steps.
+In this post you will learn how to turn OpenClaw and Ollama into a local data analyst. OpenClaw is an open-source AI agent that can run tools and workflows on your machine. [Ollama](https://ollama.com) runs large language models (LLMs) locally. Together they can read your CSV and PDF files, create charts, and write reports without sending any data to the cloud. This is ideal if you care about privacy or work with sensitive data. We use simple English and give you the full setup and an example workflow so you can build your own OpenClaw data analyst in a few steps. For the basics, see [OpenClaw setup on normal laptops](/blog/openclaw-setup-guide-normal-laptops).
 
 ## What You Build
 
@@ -54,16 +54,16 @@ Use the same model name you use with `ollama run`. Save the file and restart the
 
 ### Step 3: Web UI and Uploads
 
-You need a small script (e.g. `web_assistant.py`) that handles file uploads from the OpenClaw web UI and triggers the local data analyst workflow. That script calls the OpenClaw flow (e.g. `/local-data-analyst`) when you upload a CSV or add a PDF. The exact code depends on how you build your UI; the idea is: upload → run OpenClaw workflow → get results.
+You need a small script (e.g. `web_assistant.py`) that handles file uploads from the OpenClaw web UI and triggers the local data analyst workflow. That script calls the OpenClaw flow (e.g. `/local-data-analyst`) when you upload a CSV or add a PDF. The exact code depends on how you build your UI; the idea is: upload, run OpenClaw workflow, get results.
 
 ### Step 4: Analysis Engine (Python Tool)
 
-Your analysis engine (e.g. `main.py`) uses Pandas to read the CSV and Matplotlib to draw charts. You expose it as an OpenClaw tool. OpenClaw will call it when the workflow needs to analyze data. Example of what runs:
+Your analysis engine (e.g. `main.py`) uses [Pandas](https://pandas.pydata.org) to read the CSV and Matplotlib to draw charts. You expose it as an OpenClaw tool. OpenClaw will call it when the workflow needs to analyze data. Example of what runs:
 
 - Tool call: `python main.py --csv data.csv --out trend.png`
 - Then the LLM (via Ollama) reads the chart and your context and writes a summary into `report.md`.
 
-So the flow is: CSV in → tool runs → chart and report out. All local.
+So the flow is: CSV in, tool runs, chart and report out. All local.
 
 ## Example Workflow
 
@@ -73,20 +73,12 @@ So the flow is: CSV in → tool runs → chart and report out. All local.
 
 **Outputs:**
 
-- `trend_chart.png` — chart image
-- `analysis_report.md` — written summary
-- `tool_trace.json` — trace of tool calls
+- `trend_chart.png`, chart image
+- `analysis_report.md`, written summary
+- `tool_trace.json`, trace of tool calls
 
 ## Tuning Your OpenClaw Data Analyst
 
-You can use different Ollama models for different steps. For example use a fast model for tool calls and a smarter model for the final summary. Change the model in the config or in the workflow and restart. This way you get a good balance between speed and quality for your local OpenClaw data analyst.
-
-## GEO Suggestions
-
-People often search for local AI or OpenClaw data analysis by region. This guide fits queries like:
-
-- **India:** "OpenClaw Ollama data analyst freelance India" — same setup; run OpenClaw and Ollama on your PC or a small server.
-- **US:** "Local OpenClaw CSV analyst tutorial" — same steps; all local.
-- **Brazil / other regions:** "OpenClaw Ollama Portuguese datasets" — same tech; use your local language in the prompts and reports.
+You can use different Ollama models for different steps. For example use a fast model for tool calls and a smarter model for the final summary. Change the model in the config or in the workflow and restart. This way you get a good balance between speed and quality for your local OpenClaw data analyst. For persistent context across sessions, pair this with [OpenClaw memory fix (Cognee or Mem0)](/blog/openclaw-memory-fix-cognee-mem0).
 
 You now have a simple, privacy-first OpenClaw and Ollama data analyst that works offline and keeps your data on your machine.

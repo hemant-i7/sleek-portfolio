@@ -1,9 +1,44 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import { CodeCopyButton } from './CodeCopyButton';
 
+function isInternal(href: string): boolean {
+  if (!href || typeof href !== 'string') return false;
+  return href.startsWith('/') && !href.startsWith('//');
+}
+
 export const BlogComponents = {
+  a: ({
+    href,
+    children,
+    ...props
+  }: {
+    href?: string;
+    children: React.ReactNode;
+    [key: string]: unknown;
+  }) => {
+    if (!href) return <span {...props}>{children}</span>;
+    if (isInternal(href)) {
+      return (
+        <Link href={href} className="text-primary underline underline-offset-2 hover:opacity-80" {...props}>
+          {children}
+        </Link>
+      );
+    }
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary underline underline-offset-2 hover:opacity-80"
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  },
   // Override default image component
   img: ({
     src,
