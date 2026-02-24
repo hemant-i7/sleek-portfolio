@@ -1,0 +1,190 @@
+---
+title: "OpenClaw Setup VPS + Telegram: Full Docker Guide for Hackathons (2026)"
+description: "Step-by-step OpenClaw setup on VPS with Docker and Telegram bot. Production webhooks, sandboxing, DigitalOcean ~₹500/mo. Perfect for hackathon demos and 24/7 bots."
+image: '/blog/openclaw-vps-telegram-docker.webp'
+tags: ['openclaw', 'openclaw-setup-vps-telegram', 'docker', 'vps', 'telegram', 'hackathon', 'digitalocean']
+date: '2026-02-21'
+isPublished: true
+---
+
+# OpenClaw Setup VPS + Telegram: Full Docker Guide for Hackathons (2026)
+
+Fragmented GitHub repos and short clips are easy to find. A single guide that gets OpenClaw on a VPS, in Docker, with a production-ready Telegram bot is not. This post is that guide.
+
+Search for **OpenClaw setup VPS Telegram** and you get bits and pieces. Here you get one place: step-by-step OpenClaw on a VPS (DigitalOcean ~₹500–1,000/mo), Docker for isolation, and Telegram with webhooks so your bot runs 24/7. Ideal for hackathons, demos, or a personal AI assistant you can talk to from your phone.
+
+## Why Put OpenClaw on a VPS with Docker and Telegram?
+
+- **VPS:** OpenClaw runs 24/7 even when your laptop is off. A small droplet (1 vCPU, 1–2 GB RAM) is enough for one agent and a Telegram bot.
+- **Docker:** Keeps OpenClaw and its dependencies in a container: easy restart, updates, and a clean environment. No “works on my machine” during a hackathon demo.
+- **Telegram:** Free, instant, and works everywhere. You can send commands (“summarize this link”), get alerts (“your cron job finished”), or build a hackathon project around a Telegram bot that uses OpenClaw.
+
+## What You Need (VPS, Bot Token, SSH)
+
+- A **VPS** with Ubuntu 22.04 (DigitalOcean, Vultr, Hetzner). In India, DigitalOcean’s $6 droplet (~₹500/mo) or the $12/2 GB option (~₹1,000/mo) both work.
+- A **Telegram account** and a bot token from [@BotFather](https://t.me/BotFather).
+- **SSH** access and basic familiarity with the terminal.
+
+## Step 1: Get Your Telegram Bot Token from BotFather
+
+1. Open Telegram and search for **@BotFather**.
+2. Send `/newbot`.
+3. Follow the prompts: choose a display name and a username (must end with `bot`, e.g. `my_openclaw_bot`).
+4. Copy the **token** BotFather gives you (e.g. `6123456789:AAH...`). Store it in a safe place; you will put it in `.env` on the server.
+5. Optional: if your bot must read all messages in groups, send `/setprivacy` to BotFather and disable privacy mode.
+
+## Step 2: Create the Droplet and Install Docker
+
+Create a Droplet (Ubuntu 22.04, 1 GB RAM minimum; 2 GB recommended). SSH in:
+
+```bash
+ssh root@your-server-ip
+```
+
+Update and install Docker:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER
+```
+
+Log out and back in (or use `newgrp docker`) so you can run `docker` without `sudo`.
+
+## Step 3: Dockerfile and Compose for OpenClaw
+
+Create a directory and a Dockerfile for OpenClaw so you have a reproducible image:
+
+```bash
+mkdir -p ~/openclaw-telegram && cd ~/openclaw-telegram
+```
+
+Create `Dockerfile`:
+
+```dockerfile
+FROM node:22-alpine
+WORKDIR /app
+RUN npm install -g @openclaw/cli
+COPY . .
+EXPOSE 3000
+CMD ["openclaw", "gateway", "start"]
+```
+
+For a quick start without a custom Dockerfile, you can use the official image if available, or build from the OpenClaw repo. Here we assume you have a `docker-compose.yml` that runs the gateway and the Telegram bridge.
+
+Create `docker-compose.yml`:
+
+```yaml
+version: '3.8'
+services:
+  openclaw:
+    build: .
+    container_name: openclaw
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - NODE_ENV=production
+    volumes:
+      - openclaw-data:/app/data
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1'
+
+volumes:
+  openclaw-data:
+```
+
+Create `.env`:
+
+```bash
+TELEGRAM_BOT_TOKEN=your-bot-token-from-botfather
+```
+
+Add OpenClaw config so the gateway enables the Telegram channel. Typically you need a config file (e.g. `gateway.yaml` or in the app directory) with:
+
+```yaml
+channels:
+  telegram:
+    enabled: true
+    token: "${TELEGRAM_BOT_TOKEN}"
+    mode: webhook
+```
+
+Use **webhook** for production so Telegram pushes updates to your server; that is more efficient than polling and avoids timeouts. For webhooks you need a public HTTPS URL. If you do not have a domain, you can use a tunnel (e.g. ngrok) for a hackathon demo; for production, set up Nginx + Let’s Encrypt.
+
+## Step 4: Choose Webhook (Production) or Polling (Quick Demo)
+
+**Polling:** The bot asks Telegram every few seconds for new messages. Simple, works behind NAT, but uses more CPU and has a small delay. Good for quick hackathon demos.
+
+**Webhook:** Telegram sends updates to your server when a message arrives. You need a public URL and HTTPS. Lower latency and CPU use. Required for production.
+
+For **webhook** on a VPS with a domain:
+
+1. Point a subdomain (e.g. `bot.yourdomain.com`) to your server IP.
+2. Install Nginx and obtain an SSL certificate (e.g. `certbot`).
+3. Configure Nginx to proxy requests to OpenClaw (or a small webhook handler) on e.g. port 3000.
+4. Set the webhook URL: `https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://bot.yourdomain.com/webhook`.
+
+OpenClaw’s Telegram integration may expose the webhook path in its docs (e.g. `/webhook/telegram`). Use that path in the `setWebhook` call.
+
+For a **hackathon without a domain**, run in polling mode: set `mode: polling` in config and ensure the container can reach the Telegram API. No HTTPS required.
+
+## Step 5: Start the Stack and Test the Bot
+
+```bash
+docker compose up -d
+docker compose logs -f openclaw
+```
+
+Open Telegram and send a message to your bot. You should see the request in the logs and get a reply if OpenClaw is configured correctly. If you use webhooks, send a test message and check Nginx and OpenClaw logs for the incoming POST.
+
+## Who Can Use the Bot? (dmPolicy)
+
+Control who can use the bot:
+
+- **pairing:** Users must complete a pairing/approval step (e.g. first-time link).
+- **allowlist:** Only listed user IDs can interact.
+- **open:** Anyone who finds the bot can use it (fine for hackathon, risky for production).
+
+Set this in your OpenClaw/Telegram channel config so you do not leave the bot open to abuse.
+
+## What It Costs (India, 2026)
+
+| Item | USD/mo | INR/mo (≈₹83/USD) |
+|------|--------|-------------------|
+| DigitalOcean 1 GB RAM | ~$6 | ~₹500 |
+| DigitalOcean 2 GB RAM | ~$12 | ~₹1,000 |
+| Domain (optional) | ~$1–2 | ~₹83–166 |
+| **Total** | **~$6–12** | **~₹500–1,000** |
+
+OpenClaw and Telegram are free; you only pay for the VPS and optional domain.
+
+## Hackathon Demo Tips
+
+- **Demo:** Use polling mode and a single Docker Compose command so judges can run it easily.
+- **Backup:** Export your `docker-compose.yml` and `.env.example` (no real token) to a repo so others can replicate.
+- **Sandboxing:** Docker already isolates the process; avoid running as root inside the container.
+- **Logs:** Use `docker compose logs` to show live interaction during the demo.
+
+## Optional: Add n8n for Workflows
+
+Once OpenClaw + Telegram are running on the VPS, you can add n8n to the same host: add an `n8n` service to your `docker-compose.yml` (use the official n8n image, expose port 5678, mount a volume for data). Then you can trigger OpenClaw from n8n (e.g. on a schedule or when a form is submitted) and send the result to Telegram. That gives you “OpenClaw + Telegram + workflow automation” in one place—ideal for hackathon projects that need “automation” as a keyword. Keep resource limits (memory/CPU) so the 2 GB droplet does not run out of RAM; 1 GB for OpenClaw and 512 MB for n8n is a reasonable split.
+
+## Security Reminders
+
+Do not expose the OpenClaw or n8n ports directly to the internet without a reverse proxy and, for webhooks, HTTPS. Use strong tokens for Telegram and any API keys; rotate them if they are ever logged or shared. For production, set `dmPolicy` to allowlist or pairing so only approved users can talk to the bot. In a hackathon, “open” might be acceptable for a demo; for a live bot, restrict access. If you use a tunnel (e.g. ngrok) for webhooks during development, do not leave it running with a production token; switch to a proper domain and HTTPS before going live. Finally, keep your Docker images updated so you get security patches; a simple `docker compose pull && docker compose up -d` on a schedule or before each demo keeps the stack current. For hackathon judging, prepare a 30-second pitch: “This is OpenClaw running on a VPS in Docker; I talk to it via Telegram and it can search the web and run tasks 24/7.” Then show one live interaction. That clarity often beats a complex slide deck. You now have a full OpenClaw setup on VPS with Telegram and Docker ready for hackathons or production.
+
+## When Something Breaks: Bot, Webhook, Memory
+
+- **Bot does not reply:** Check `TELEGRAM_BOT_TOKEN` in `.env`, ensure the token has no extra spaces. Restart: `docker compose restart openclaw`. Check logs for "Telegram" or "webhook" errors.
+- **WebSocket errors (1006):** If the OpenClaw gateway loses connection, verify `gateway.auth.token` in config and restart the container.
+- **Webhook not receiving updates:** Ensure the webhook URL is HTTPS and returns 200. Test with `curl -X POST https://your-domain/webhook/telegram` (with the same path your app uses). Check Nginx access logs.
+- **Out of memory:** Increase Droplet to 2 GB or add swap on the host.
+
+## Summary
+
+This **OpenClaw setup VPS Telegram** guide gives you: (1) a Telegram bot from BotFather, (2) a VPS with Docker, (3) OpenClaw in a container with Telegram (webhook or polling), and (4) optional Nginx + SSL for production webhooks. You get a full Docker-based setup suitable for hackathons and 24/7 use at roughly **₹500–1,000/month** on DigitalOcean.

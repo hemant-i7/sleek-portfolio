@@ -33,7 +33,9 @@ export function BlogContent({ frontmatter, mdxSource }: BlogContentProps) {
             alt={title}
             fill
             className="object-cover"
+            sizes="(max-width: 896px) 100vw, 896px"
             priority
+            fetchPriority="high"
           />
         </div>
 

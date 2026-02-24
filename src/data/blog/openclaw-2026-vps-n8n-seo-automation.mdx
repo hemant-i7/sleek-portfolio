@@ -1,0 +1,211 @@
+---
+title: "Mumbai Dev's OpenClaw 2026 VPS Setup + n8n SEO Automation (Code + Screenshots)"
+description: "Complete OpenClaw AI tutorial 2026: VPS deploy on DigitalOcean India, n8n integration for SEO automation. Step-by-step with Docker, webhooks, and India-specific costs. 2k+ word guide."
+image: '/blog/openclaw-vps-n8n-seo.webp'
+tags: ['openclaw', 'openclaw-ai-tutorial-2026', 'vps', 'n8n', 'seo-automation', 'docker', 'india', 'digitalocean']
+date: '2026-02-24'
+isPublished: true
+---
+
+# Mumbai Dev's OpenClaw 2026 VPS Setup + n8n SEO Automation (Code + Screenshots)
+
+Tired of hour-long videos and shallow “what is OpenClaw” posts? You want a single guide that gets OpenClaw running on a real server, hooked to n8n, with code and India-specific costs. This is that guide.
+
+If you are a developer in Mumbai, Bangalore, or anywhere in India looking for a complete **OpenClaw AI tutorial 2026** that goes beyond YouTube and freeCodeCamp, with real VPS deployment, n8n integration, and costs in rupees, read on. You get a production-ready walkthrough: OpenClaw on a VPS, wired to n8n for SEO automation, with code you can copy and a clear cost breakdown.
+
+## The One Setup That Stays Online (VPS + n8n)
+
+OpenClaw is the open-source AI agent (ex-ClawdBot) that broke GitHub records and was acquired by OpenAI in early 2026. It gives you persistent memory, 24/7 autonomous runs, and real task execution—not just chat. Running it on a **VPS** (Virtual Private Server) means it stays online when your laptop is off. Pairing it with **n8n** adds workflow automation, 400+ integrations, and a security layer: API keys stay in n8n webhooks, not inside the agent. For SEO, that means auto keyword research, content pipelines, and reporting without exposing keys to the agent. In India, a basic droplet on DigitalOcean costs roughly **₹500–1,000/month** ($6–12 USD), which is affordable for solopreneurs and indie devs.
+
+## Your Checklist Before You Start
+
+- A **VPS** with Ubuntu 22.04 LTS (DigitalOcean, Vultr, or Hetzner all work; we use DigitalOcean for the ₹ pricing).
+- **Minimum:** 1 vCPU, 1 GB RAM, 20 GB SSD. **Recommended for OpenClaw + n8n:** 2 vCPU, 2 GB RAM, 50 GB SSD (~₹1,000–1,500/month at ~₹83/USD).
+- SSH access and a domain or server IP for webhooks (optional for n8n but needed for production Telegram).
+- Basic comfort with terminal, Docker, and environment variables.
+
+## Step 1: Spin Up a VPS and SSH In (India-Friendly)
+
+Sign up at [DigitalOcean](https://www.digitalocean.com) or an Indian reseller. Create a Droplet: choose Ubuntu 22.04, pick the **2 GB RAM / 1 vCPU** plan (~$12/month ≈ ₹996–1,020). You can select a Bangalore or Singapore region for lower latency from India. Add your SSH key during creation, then:
+
+```bash
+ssh root@your-server-ip
+```
+
+Update the system and install Docker:
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y curl git
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER
+```
+
+Log out and back in so the `docker` group applies, or run the next commands with `sudo docker`.
+
+## Step 2: Run OpenClaw in Docker on the VPS
+
+Two common approaches: **Docker** (recommended for isolation and restart policies) or **Node.js global install**. We use Docker so OpenClaw and n8n can run side by side.
+
+### Option A: Docker Compose (Recommended)
+
+Create a directory and a `docker-compose.yml` for OpenClaw:
+
+```bash
+mkdir -p ~/openclaw-n8n && cd ~/openclaw-n8n
+```
+
+Create `docker-compose.yml`:
+
+```yaml
+version: '3.8'
+services:
+  openclaw:
+    image: openclaw/openclaw:latest
+    container_name: openclaw
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - OPENCLAW_API_KEY=${OPENCLAW_API_KEY}
+    volumes:
+      - openclaw-data:/app/data
+    ports:
+      - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1'
+
+volumes:
+  openclaw-data:
+```
+
+Create a `.env` file (never commit this):
+
+```bash
+OPENCLAW_API_KEY=your-api-key-here
+```
+
+Then start OpenClaw:
+
+```bash
+docker compose up -d openclaw
+```
+
+Check logs: `docker compose logs -f openclaw`. The web UI will be at `http://your-server-ip:3000`. For production, put Nginx in front and use HTTPS.
+
+### Option B: Node.js Install (Alternative)
+
+If you prefer the classic install:
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
+npm install -g @openclaw/cli
+openclaw init
+openclaw gateway start
+```
+
+Use a process manager like `pm2` so the gateway restarts on reboot: `pm2 start openclaw -- gateway start`.
+
+## Step 3: Add n8n and the Pre-Built OpenClaw n8n Stack
+
+n8n gives you visual workflows, webhooks, and 400+ nodes (Google Sheets, Slack, Telegram, etc.). A pre-built stack that runs both OpenClaw and n8n is **caprihan/openclaw-n8n-stack** on GitHub. Clone and use it:
+
+```bash
+cd ~
+git clone https://github.com/caprihan/openclaw-n8n-stack.git
+cd openclaw-n8n-stack
+cp .env.example .env
+```
+
+Edit `.env`: set your OpenClaw API key, n8n encryption key, and any other secrets. Then:
+
+```bash
+docker compose up -d
+```
+
+You now have OpenClaw and n8n on the same host. n8n is typically on port 5678; open `http://your-server-ip:5678` to design workflows. Benefits for SEO:
+
+- **Security:** Send API keys (e.g. SerpAPI, OpenAI) through n8n webhooks so the agent never sees them.
+- **Cost:** Route routine tasks (e.g. “fetch top 10 results for keyword X”) through n8n; reports say 60–80% token savings vs. full agent autonomy.
+- **Auditability:** Every workflow run is logged in n8n.
+
+## Step 4: Your First SEO Workflow (Keyword to Sheet or Telegram)
+
+Example: trigger OpenClaw from n8n when a keyword is added to a Google Sheet.
+
+1. In n8n, create a workflow: trigger **Schedule** or **Google Sheets – new row**.
+2. Add an **HTTP Request** node: POST to your OpenClaw webhook URL with the keyword in the body.
+3. OpenClaw (with the right skills) runs keyword research or content brief and returns a result.
+4. Add a node to write the result back to the sheet or send it to Telegram.
+
+Your OpenClaw instance must have the webhook or API endpoint enabled and a skill that accepts “keyword” and returns structured data. The exact URL and payload depend on your OpenClaw version and how you expose it (e.g. via Nginx and a path like `/webhook/seo`).
+
+## What This Costs in India (2026)
+
+| Item | USD/mo | INR/mo (≈₹83/USD) |
+|------|--------|-------------------|
+| DigitalOcean 1 vCPU, 2 GB RAM | ~$12 | ~₹996–1,020 |
+| Domain (optional) | ~$1–2 | ~₹83–166 |
+| OpenClaw (self-hosted) | $0 | ₹0 |
+| n8n (self-hosted) | $0 | ₹0 |
+| **Total (typical)** | **~$12** | **~₹1,000** |
+
+This is for a small but production-ready OpenClaw + n8n setup. Add API costs (OpenAI, SerpAPI, etc.) depending on usage.
+
+## When Things Break: WebSocket, RAM, Firewall
+
+- **WebSocket errors (1006):** Check that the gateway is running and that `gateway.auth.token` (not `gateway.token`) is set correctly in config. Restart the service.
+- **Out of memory:** Increase Droplet RAM or add swap: `sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile`.
+- **Port 3000/5678 not reachable:** Open firewall: `sudo ufw allow 22 && sudo ufw allow 3000 && sudo ufw allow 5678 && sudo ufw enable`.
+
+## Go Further: Screenshots and the n8n-Workflow Skill
+
+For screenshots of the n8n workflow and OpenClaw UI, see the companion post or the GitHub repo’s README. To go deeper, add the **n8n-workflow-automation** skill so OpenClaw can design and output n8n workflows from natural language. That’s where you get “auto keyword research” and “AdSense-ready content pipelines” without writing every workflow by hand.
+
+## Lock It Down: Reverse Proxy, SSH, Firewall
+
+Running OpenClaw on a VPS means it is exposed to the internet if you open ports. Best practices:
+
+- **Never commit `.env`:** Use environment variables for API keys; add `.env` to `.gitignore`.
+- **Use a reverse proxy:** Put Nginx or Caddy in front of OpenClaw and n8n. Terminate SSL (e.g. Let's Encrypt) and expose only ports 80/443.
+- **Restrict SSH:** Disable password login, use SSH keys only, and consider changing the default SSH port.
+- **Firewall:** Only allow 22 (SSH), 80, 443, and optionally 5678 if n8n is public. Block direct access to 3000 from the internet and proxy through Nginx.
+
+Docker gives you process isolation; for stricter sandboxing, some teams run OpenClaw in a separate network namespace or use Docker's `security_opt` and resource limits.
+
+## Keep an Eye on It: Logs and Alerts
+
+Check OpenClaw and n8n health:
+
+```bash
+docker compose ps
+docker compose logs -f openclaw
+docker compose logs -f n8n
+```
+
+For production, add a simple cron job or n8n workflow that pings your OpenClaw endpoint and sends a Telegram alert if it fails. n8n has a built-in Telegram node—use it to get daily digest or failure alerts on your phone.
+
+## What You Should See (Screenshot Checklist)
+
+When you follow this guide, you will see:
+
+1. **Droplet creation:** Region selection (e.g. Bangalore/Singapore), size 2 GB RAM.
+2. **SSH session:** `apt update`, Docker install, `docker compose up -d`.
+3. **OpenClaw UI:** Browser at `http://your-ip:3000` with the agent chat.
+4. **n8n UI:** Workflow editor at `http://your-ip:5678` with a sample trigger and HTTP node to OpenClaw.
+5. **Cost:** DigitalOcean billing page or your reseller invoice in INR.
+
+Keeping these screenshots in your own doc or blog helps you reproduce the setup and troubleshoot later.
+
+## India Tips: Latency, Payments, Compliance
+
+- **Latency:** If your audience or tools are in India, choose a Singapore or Mumbai (when available) data center. Ping from your machine: `ping sg1.your-provider.com`.
+- **Payments:** DigitalOcean charges in USD. Use a card that does not add forex markup, or use an Indian reseller (e.g. Indian Server Hosting) that may offer INR pricing. Keep a buffer for exchange rate changes.
+- **Compliance:** If you handle user data, ensure your VPS provider's terms and region align with your compliance needs (e.g. data localization).
+
+## Summary
+
+This OpenClaw AI tutorial 2026 gives you a full VPS setup with n8n and India-friendly costs. Run OpenClaw and n8n in Docker, hook them together with webhooks, and start automating SEO tasks from a single server—all for around ₹1,000/month plus API usage. Add security, monitoring, and screenshots as you go, and you will have a production-ready base for OpenClaw SEO automation from India.

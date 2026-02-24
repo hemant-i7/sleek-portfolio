@@ -17,7 +17,7 @@ const baseUrl =
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
-  title: 'Sleek Portfolio',
+  title: 'Hemant Kadam - Dev & Creator',
   description: 'Hemant Kadam, Software Developer & Content Creator',
   url: baseUrl,
   ogImage: '/meta/opengraph-image.png',

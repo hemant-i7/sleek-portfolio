@@ -46,15 +46,18 @@ export const BlogComponents = {
     ...props
   }: {
     src: string;
-    alt: string;
+    alt?: string;
     [key: string]: unknown;
   }) => (
     <Image
       src={src}
-      alt={alt}
+      alt={alt ?? 'Blog post image'}
       width={800}
       height={400}
       className="rounded-lg"
+      sizes="(max-width: 768px) 100vw, 800px"
+      loading="lazy"
+      decoding="async"
       {...props}
     />
   ),
