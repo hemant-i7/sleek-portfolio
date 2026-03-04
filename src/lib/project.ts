@@ -1,4 +1,4 @@
-import { projects } from '@/config/Projects';
+import { visibleProjects } from '@/config/Projects';
 import {
   ProjectCaseStudy,
   ProjectCaseStudyFrontmatter,
@@ -134,7 +134,7 @@ export function getProjectNavigation(currentSlug: string): {
   next: { title: string; slug: string } | null;
 } {
   // Find current project in config
-  const currentProjectIndex = projects.findIndex(
+  const currentProjectIndex = visibleProjects.findIndex(
     (project) => project.projectDetailsPageSlug === `/projects/${currentSlug}`,
   );
 
@@ -143,10 +143,10 @@ export function getProjectNavigation(currentSlug: string): {
   }
 
   const previousProject =
-    currentProjectIndex > 0 ? projects[currentProjectIndex - 1] : null;
+    currentProjectIndex > 0 ? visibleProjects[currentProjectIndex - 1] : null;
   const nextProject =
-    currentProjectIndex < projects.length - 1
-      ? projects[currentProjectIndex + 1]
+    currentProjectIndex < visibleProjects.length - 1
+      ? visibleProjects[currentProjectIndex + 1]
       : null;
 
   return {

@@ -1,7 +1,7 @@
 import { about } from './About';
 import { experiences } from './Experience';
 import { heroConfig, socialLinks } from './Hero';
-import { projects } from './Projects';
+import { visibleProjects } from './Projects';
 
 function generateSystemPrompt(): string {
   const skillNames = heroConfig.skills.map((skill) => skill.name).join(', ');
@@ -14,7 +14,7 @@ function generateSystemPrompt(): string {
         `${exp.position} at ${exp.company} (${exp.startDate} - ${exp.endDate})`,
     )
     .join('\n- ');
-  const projectsText = projects
+  const projectsText = visibleProjects
     .map(
       (project) =>
         `${project.title}: ${project.description}${project.live ? ` - ${project.live}` : ''}`,

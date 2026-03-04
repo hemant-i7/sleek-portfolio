@@ -31,6 +31,7 @@ export const projects: Project[] = [
     details: false,
     projectDetailsPageSlug: '',
     isWorking: true,
+    hidden: true, // unhide when ready
   },
   {
     title: 'CuraLink',
@@ -129,3 +130,5 @@ export const projects: Project[] = [
     isWorking: true,
   },
 ];
+
+export const visibleProjects = projects.filter((p) => !p.hidden);

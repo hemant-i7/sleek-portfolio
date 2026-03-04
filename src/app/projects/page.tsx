@@ -2,7 +2,7 @@ import Container from '@/components/common/Container';
 import { ProjectList } from '@/components/projects/ProjectList';
 import { Separator } from '@/components/ui/separator';
 import { generateMetadata as getMetadata } from '@/config/Meta';
-import { projects } from '@/config/Projects';
+import { visibleProjects } from '@/config/Projects';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -41,16 +41,16 @@ export default function ProjectsPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold">
               All Projects
-              {projects.length > 0 && (
+              {visibleProjects.length > 0 && (
                 <span className="text-muted-foreground ml-2 text-sm font-normal">
-                  ({projects.length}{' '}
-                  {projects.length === 1 ? 'project' : 'projects'})
+                  ({visibleProjects.length}{' '}
+                  {visibleProjects.length === 1 ? 'project' : 'projects'})
                 </span>
               )}
             </h2>
           </div>
 
-          <ProjectList projects={projects} />
+          <ProjectList projects={visibleProjects} />
         </div>
       </div>
     </Container>

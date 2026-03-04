@@ -12,6 +12,8 @@ export interface Project {
   details: boolean;
   projectDetailsPageSlug: string;
   isWorking: boolean;
+  /** When true, project is excluded from lists (e.g. "Arise" hidden until unhide). */
+  hidden?: boolean;
 }
 
 export interface ProjectCaseStudyFrontmatter {
