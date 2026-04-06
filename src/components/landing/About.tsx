@@ -138,7 +138,7 @@ export default function About() {
           <div>
             <p className="font-semibold">{about.name}</p>
             <p className="text-sm text-muted-foreground">
-              SLRTCE · Surfboard Ventures · @BloggerHemant
+              SLRTCE · Surfboard Ventures · @BloggerHemant · @hemantkadam.ai (9K IG)
             </p>
           </div>
         </div>

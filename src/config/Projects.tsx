@@ -31,7 +31,6 @@ export const projects: Project[] = [
     details: false,
     projectDetailsPageSlug: '',
     isWorking: true,
-    hidden: true, // unhide when ready
   },
   {
     title: 'CuraLink',

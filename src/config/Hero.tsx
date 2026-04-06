@@ -89,7 +89,7 @@ export const heroConfig = {
   // Description Configuration
   description: {
     template:
-      'Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at <b>@BloggerHemant</b> (10K+). Recognized in national and international hackathons.',
+      'Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at <b>@BloggerHemant</b> (10K+), <b>@hemantkadam.ai</b> (9K+ on IG). Recognized in national and international hackathons.',
   },
 
   // Buttons Configuration

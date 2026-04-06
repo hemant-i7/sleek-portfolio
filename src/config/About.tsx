@@ -35,7 +35,7 @@ export const hackathonsSectionImage = '/about/hackathons-hero.png';
 
 export const about = {
   name: 'Hemant Kadam',
-  description: `Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at @BloggerHemant (10K+). Recognized in national and international hackathons.`,
+  description: `Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at @BloggerHemant (10K+), @hemantkadam.ai (9K+ on IG). Recognized in national and international hackathons.`,
 
   aboutMe: [
     {
@@ -48,7 +48,7 @@ export const about = {
     },
     {
       title: 'Beyond Code',
-      content: `I run multiple YouTube channels (49K+ combined subscribers), manage 4+ blogs with 2M+ organic traffic, and conduct workshops on freelancing and AI automation at my college.`
+      content: `I run multiple YouTube channels (49K+ combined subscribers), Instagram @hemantkadam.ai (9K+), manage 4+ blogs with 2M+ organic traffic, and conduct workshops on freelancing and AI automation at my college.`
     },
     {
       title: 'Open for Business',
@@ -67,10 +67,11 @@ export const about = {
     },
     {
       question: 'What are your socials?',
-      answer: 'Find me on GitHub, LinkedIn, YouTube, and Blogger. All links below open in a new tab.',
+      answer: 'Find me on GitHub, LinkedIn, YouTube, Instagram, and Blogger. All links below open in a new tab.',
       links: [
         { label: 'GitHub', href: 'https://github.com/hemant-i7' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hemant-kadam-5a1195194/' },
+        { label: 'Instagram (9K+)', href: 'https://www.instagram.com/hemantkadam.ai/' },
         { label: 'Blogger Hemant (YT)', href: 'https://www.youtube.com/@bloggerhemant' },
         { label: 'Hemant Kadam (YT)', href: 'https://www.youtube.com/@HemanTKadaM' },
         { label: 'Tech Hemant (YT)', href: 'https://www.youtube.com/@techhemant8484' },

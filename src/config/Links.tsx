@@ -26,6 +26,6 @@ export const extraLinks: { label: string; href: string; type?: 'youtube' | 'web'
   { label: 'Snapchat Lens (Mi cap)', href: 'https://www.snapchat.com/lens/afd64366829d40e4b5e42747eb475023', type: 'web' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hemant-kadam-5a1195194/', type: 'social' },
   { label: 'GitHub', href: 'https://github.com/hemant-i7', type: 'social' },
-  { label: 'Instagram', href: 'https://www.instagram.com/hemant_i7/', type: 'social' },
+  { label: 'Instagram (9K+)', href: 'https://www.instagram.com/hemantkadam.ai/', type: 'social' },
   { label: 'Telegram', href: 'https://t.me/hemantkadam112', type: 'social' },
 ];
