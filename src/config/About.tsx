@@ -1,33 +1,62 @@
-import Bun from '@/components/technologies/Bun';
-import JavaScript from '@/components/technologies/JavaScript';
+import Gemini from '@/components/technologies/Gemini';
 import MongoDB from '@/components/technologies/MongoDB';
+import NestJs from '@/components/technologies/NestJs';
 import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
-import PostgreSQL from '@/components/technologies/PostgreSQL';
+import OpenAI from '@/components/technologies/OpenAI';
 import ReactIcon from '@/components/technologies/ReactIcon';
 import TypeScript from '@/components/technologies/TypeScript';
 
 export const mySkills = [
-  <JavaScript key="javascript" />,
+  <OpenAI key="openai" />,
+  <Gemini key="gemini" />,
   <NextJs key="nextjs" />,
   <ReactIcon key="react" />,
   <TypeScript key="typescript" />,
-  <MongoDB key="mongodb" />,
-  <Bun key="bun" />,
+  <NestJs key="nestjs" />,
   <NodeJs key="nodejs" />,
-  <PostgreSQL key="postgresql" />,
+  <MongoDB key="mongodb" />,
 ];
 
 export const technicalSkillsByCategory: { category: string; skills: string[] }[] = [
-  { category: 'Frontend', skills: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'ShadCN UI'] },
-  { category: 'Backend & Cloud', skills: ['Node.js', 'MongoDB', 'REST APIs'] },
-  { category: 'Automation & AI', skills: ['LangChain', 'n8n', 'Embeddings'] },
-  { category: 'CMS', skills: ['WordPress', 'Contentstack'] },
-  { category: 'Tools', skills: ['GitHub', 'VS Code', 'Postman', 'Figma', 'Notion', 'Vercel'] },
-  { category: 'Soft Skills', skills: ['Analytical Thinking', 'Collaboration', 'Problem Solving', 'Time Management'] },
+  {
+    category: 'AI / LLM',
+    skills: [
+      'LangChain',
+      'ReAct agents',
+      'RAG',
+      'OpenAI API',
+      'Gemini API',
+      'Claude API',
+      'FAISS',
+      'prompt engineering',
+    ],
+  },
+  {
+    category: 'Evals & Observability',
+    skills: [
+      'Custom eval sets',
+      'output scoring',
+      'token logging',
+      'cost optimization',
+      'hallucination checks',
+    ],
+  },
+  {
+    category: 'Frontend',
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Chrome extensions (MV3)', 'streaming UI'],
+  },
+  {
+    category: 'Backend & Data',
+    skills: ['Node.js', 'NestJS', 'MongoDB', 'PostgreSQL', 'REST APIs', 'n8n', 'vector databases'],
+  },
+  {
+    category: 'Tools',
+    skills: ['GitHub', 'Vercel', 'Postman', 'Figma', 'Notion', 'Contentstack', 'AWS Cloud Foundations'],
+  },
 ];
 
-export const profileImage = '/company/1715195128331.jpeg';
+export const profileImage = '/assets/Hemant-kadam.png';
 export const aboutSectionImage = '/about/about-hero.png';
 /** Who I am illustration (tech, YouTube, AI, Next.js) */
 export const whoIAmImage = '/project/ChatGPT Image Feb 18, 2026, 12_38_09 AM.png';
@@ -35,20 +64,20 @@ export const hackathonsSectionImage = '/about/hackathons-hero.png';
 
 export const about = {
   name: 'Hemant Kadam',
-  description: `Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at @BloggerHemant (10K+), @hemantkadam.ai (9K+ on IG). Recognized in national and international hackathons.`,
+  description: `AI Engineer specializing in LLM-powered products: RAG pipelines, ReAct agents, agentic browser extensions, and AI automation backends. Shipped 5 production AI products. Won 7 hackathons including IIT Roorkee (National) and Bit & Build (International). Teaches AI development to 49K+ YouTube and 13K+ Instagram followers. Core stack: LangChain, OpenAI, Gemini, Claude, FAISS, n8n, Next.js.`,
 
   aboutMe: [
     {
       title: 'Who Am I?',
-      content: `I'm a software developer and creator who loves building products and sharing knowledge. I focus on frontend (React, Next.js, Tailwind) and work with Node.js, NestJS, MongoDB on the backend.`
+      content: `I'm an AI Product Engineer and creator. I build LLM apps—RAG systems, ReAct agents, Chrome side-panel agents, and n8n automation backends—and ship them with Next.js, NestJS, and vector stores like FAISS.`
     },
     {
       title: 'What Drives Me',
-      content: `I'm passionate about building high-performance web apps, AI/automation (LangChain, n8n), and creating educational content. I enjoy turning ideas into working solutions and learning from every hackathon and project.`
+      content: `I'm passionate about production AI: evals, observability, cost control, and tools users actually adopt. I turn hackathon ideas into live products and document the process for developers on YouTube and Instagram.`
     },
     {
       title: 'Beyond Code',
-      content: `I run multiple YouTube channels (49K+ combined subscribers), Instagram @hemantkadam.ai (9K+), manage 4+ blogs with 2M+ organic traffic, and conduct workshops on freelancing and AI automation at my college.`
+      content: `I run YouTube channels with 49K+ combined subscribers, @hemantkadam.ai on Instagram (13K+), blogs with 2M+ organic traffic, and workshops at SLRTCE on freelancing and AI agent automation.`
     },
     {
       title: 'Open for Business',
@@ -71,7 +100,7 @@ export const about = {
       links: [
         { label: 'GitHub', href: 'https://github.com/hemant-i7' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hemant-kadam-5a1195194/' },
-        { label: 'Instagram (9K+)', href: 'https://www.instagram.com/hemantkadam.ai/' },
+        { label: 'Instagram (13K+)', href: 'https://www.instagram.com/hemantkadam.ai/' },
         { label: 'Blogger Hemant (YT)', href: 'https://www.youtube.com/@bloggerhemant' },
         { label: 'Hemant Kadam (YT)', href: 'https://www.youtube.com/@HemanTKadaM' },
         { label: 'Tech Hemant (YT)', href: 'https://www.youtube.com/@techhemant8484' },
@@ -81,11 +110,11 @@ export const about = {
     },
     {
       question: 'How can I contact you?',
-      answer: 'Email (hemantkadam112@gmail.com), LinkedIn, or the Contact page on this site. I respond to genuine inquiries.'
+      answer: 'Email (works@hemant.engineer), LinkedIn, or the Contact page on this site. I respond to genuine inquiries.'
     },
     {
       question: 'Do you do freelancing or consulting?',
-      answer: 'Yes, for the right projects. I focus on frontend, full-stack web apps, and AI/automation. Reach out with details.'
+      answer: 'Yes, for the right projects. I focus on LLM products, RAG, agents, full-stack AI apps, and automation. Reach out with details.'
     },
     {
       question: 'Where can I see your work?',
@@ -97,7 +126,7 @@ export const about = {
 export const education = [
   {
     institution: 'Shree L. R. Tiwari College of Engineering (Mumbai University)',
-    degree: 'Bachelor of Engineering in Computer Science (CGPA: 8.5)',
+    degree: 'B.E. Computer Engineering (CGPA: 8.5)',
     duration: 'Sep 2023 – Jun 2026',
     location: 'Mumbai, India',
   },
@@ -111,11 +140,11 @@ export const education = [
 ];
 
 export const achievements = [
-  { title: '1st Place – IIT Roorkee 44-hour Hackathon', where: 'IIT Roorkee', note: 'Seventh hackathon win. Team: Kaustubh Bane, Hasan Sayyed, Morvi Panchal.', emoji: '🥇', description: 'Premier 44-hour hackathon at IIT Roorkee.', url: 'https://www.iitr.ac.in/', postUrl: '', postImageUrl: '/assets/1770533753132.jpeg' },
+  { title: 'Winner – IIT Roorkee 44-Hour Hackathon (National)', where: 'IIT Roorkee', note: 'AI product judged best by IIT faculty and industry engineers.', emoji: '🥇', description: 'Premier 44-hour national hackathon at IIT Roorkee.', url: 'https://www.iitr.ac.in/', postUrl: '', postImageUrl: '/assets/1770533753132.jpeg' },
   { title: 'Winner – TechSurf 2025', where: 'TechSurf', note: '', emoji: '🏆', description: 'Contentstack\'s annual flagship hackathon for India\'s next-gen developers. 40,000+ participants over 5 editions; certification, pitch, and finale rounds.', url: 'https://contentstack.com/techsurf', postUrl: '', postImageUrl: '/assets/1761478333779.jpeg' },
   { title: '1st Runner-up – Webathon 2025 (National)', where: 'Webathon', note: '', emoji: '🥈', description: 'National-level hackathon by ACM-MHSSCE; multi-round with startup funding and mentorship.', url: 'https://webathon.mhsscoe.acm.org/', postUrl: '', postImageUrl: '/assets/1723226899215.jpeg' },
   { title: '2nd Runner-up – Saboo Siddik College Hackathon (National)', where: 'Saboo Siddik College, Mumbai', note: '', emoji: '🥉', description: 'National hackathon at M.H. Saboo Siddik College of Engineering, Mumbai.', url: 'https://webathon.mhsscoe.acm.org/', postUrl: '', postImageUrl: '/about/WhatsApp Image 2026-02-18 at 11.53.44.jpeg' },
-  { title: '5th Place – Google Build & Blog Hackathon, Google Office BKC (National)', where: 'Google Office BKC', note: '', emoji: '🎯', description: 'Build & Blog Marathon at Google Mumbai (BKC). Theme: Data to Generative AI with Google Cloud; mentorship from Google.', url: 'https://gdg.community.dev/', postUrl: '', postImageUrl: '/assets/1762709389501.jpeg' },
+  { title: '5th Place – Google Build & Blog Hackathon, Google Mumbai BKC', where: 'Google Office BKC', note: 'Theme: Generative AI on Google Cloud.', emoji: '🎯', description: 'Build & Blog Marathon at Google Mumbai (BKC) with Google Cloud mentorship.', url: 'https://gdg.community.dev/', postUrl: '', postImageUrl: '/assets/1762709389501.jpeg' },
   { title: 'YouTube Creator Collective', where: 'YouTube', note: '', emoji: '📺', description: 'Part of YouTube Creator Collective meetup.', url: 'https://www.youtube.com/', postUrl: '', postImageUrl: '/assets/1716131753680.jpeg' },
   { title: 'Top 5 Finalist – Bit & Build International Hackathon', where: 'Fr. CRCE, Mumbai (International)', note: '', emoji: '🌍', description: 'International hackathon by GDSC Fr. Conceicao Rodrigues College. 2,500+ participants, 400+ teams, 20+ countries; AI, ML, Web, UX themes.', url: 'https://bit-n-build.devfolio.co/', postUrl: '', postImageUrl: '' },
   { title: 'Top Performer – Global Digital Health Summit Hackathon', where: 'NMACC (International)', note: '', emoji: '⚡', description: 'Hackathon at Global Digital Health Summit; digital health, AI, and telemedicine focus.', url: 'https://cdac.in/index.aspx?id=lu_GDHS', postUrl: '', postImageUrl: '/about/WhatsApp Image 2026-02-18 at 11.52.19.jpeg', postImageUrls: ['/about/WhatsApp Image 2026-02-18 at 11.52.19.jpeg', '/about/WhatsApp Image 2026-02-18 at 11.52.50.jpeg'] },
@@ -131,12 +160,12 @@ export const extracurriculars = [
   {
     title: 'Blogging & SEO',
     duration: 'Present',
-    description: `Manage and rank 4+ personal websites (MarathiBeast.com, HireBace.com, Blogger.HemantKadam.in). Improved SEO and generated 2M+ Google organic traffic in 6 months.`,
+    description: `Manage and rank 4+ personal websites (MarathiBeast.com, HireBace.com, hemant.engineer). Improved SEO and generated 2M+ Google organic traffic in 6 months.`,
   },
   {
     title: 'Content Creation',
     duration: 'Present',
-    description: `Multiple YouTube channels with 49K+ combined subscribers: Hemant Kadam (33K), Blogger Hemant (10K), Tech Hemant (6K). Educational content on frontend, AI, SEO, automation.`,
+    description: `Multiple YouTube channels with 49K+ combined subscribers and 13K+ on Instagram @hemantkadam.ai. Educational content on AI agents, LangChain, RAG, and automation.`,
   },
   {
     title: 'Workshops & Mentoring',

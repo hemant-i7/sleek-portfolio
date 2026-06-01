@@ -12,10 +12,46 @@ import { Project } from '@/types/project';
 
 export const projects: Project[] = [
   {
-    title: 'Arise',
-    tagline: 'AI-Powered Educational Platform – Quiz, Presentation & Roadmap',
+    title: 'Sauna Orbit',
+    tagline: 'AI Browser Agent · Manifest V3 · Gemini & Claude',
     description:
-      'Comprehensive AI learning ecosystem with quiz, presentation, and roadmap modules. Built with Next.js, Gemini API, ElevenLabs, and Node.js.',
+      'MV3 Chrome extension with side panel and content scripts. BYOK Gemini/Claude, live DOM serialization, browser-action tools (fill, click, scrape, navigate), and streaming agent loop.',
+    image: '/project/sauna-orbit-banner.png',
+    link: 'https://youtu.be/BCjzh9GZ_Lw',
+    technologies: [
+      { name: 'Gemini API', icon: <Gemini /> },
+      { name: 'JavaScript', icon: <TypeScript /> },
+    ],
+    github: 'https://github.com/hemant-i7/orbit',
+    live: 'https://youtu.be/BCjzh9GZ_Lw',
+    details: false,
+    projectDetailsPageSlug: '',
+    isWorking: true,
+  },
+  {
+    title: 'ContentPulse',
+    tagline: 'AI Chatbot Platform + npm SDK · LangChain · Contentstack',
+    description:
+      'Turborepo monorepo with NestJS + Next.js and a published npm chatbot SDK. OAuth Contentstack integration, Groq/OpenAI RAG, streaming memory, and n8n publishing pipeline.',
+    image: '/project/contentpulse-banner.png',
+    link: 'https://contentpulse-contentpulse-contenpulse.eu-contentstackapps.com/',
+    technologies: [
+      { name: 'Next.js', icon: <NextJs /> },
+      { name: 'Node.js', icon: <NodeJs /> },
+      { name: 'OpenAI', icon: <OpenAI /> },
+      { name: 'TypeScript', icon: <TypeScript /> },
+    ],
+    github: 'https://github.com/hemant-i7/ContentPulse',
+    live: 'https://contentpulse-contentpulse-contenpulse.eu-contentstackapps.com/',
+    details: false,
+    projectDetailsPageSlug: '',
+    isWorking: true,
+  },
+  {
+    title: 'Arise',
+    tagline: 'AI Learning Platform · LangChain Agents · ElevenLabs TTS',
+    description:
+      'LangChain router dispatches quiz, adaptive roadmap, or TTS chains. ConversationBufferMemory, output scoring, and retry on off-topic answers.',
     image: '/project/arise-banner.png',
     link: 'https://www.ariseai.app/',
     technologies: [
@@ -34,9 +70,9 @@ export const projects: Project[] = [
   },
   {
     title: 'CuraLink',
-    tagline: 'AI Medical Diagnosis System',
+    tagline: 'Medical RAG System · FAISS · LangChain',
     description:
-      'Multilingual dashboards and LangChain-powered AI diagnosis for medical use cases. Built with Next.js, Tailwind, LangChain, MongoDB, NextAuth.',
+      'Medical QA over clinical docs with LangChain RetrievalQA, FAISS, and citations. English, Hindi, and Marathi. Chunk tuning for 80%+ retrieval precision on 100-question evals.',
     image: '/project/curalink-banner.png',
     link: 'https://curalink-two.vercel.app/',
     technologies: [

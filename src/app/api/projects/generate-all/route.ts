@@ -4,12 +4,14 @@
  * Returns { generated: { title, url }[], failed: { title, error }[] }.
  */
 import { projects } from '@/config/Projects';
+import {
+  GEMINI_IMAGE_MODEL,
+  geminiImageGenerationConfig,
+} from '@/lib/gemini-image-config';
 import { buildProjectBannerPrompt } from '@/lib/project-banner-prompt';
 import { NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
-
-const GEMINI_IMAGE_MODEL = 'gemini-2.0-flash-exp-image-generation';
 
 type GeminiImageResponse = {
   candidates?: Array<{
@@ -59,8 +61,8 @@ export async function POST() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: [{ role: 'user', parts: [{ text: prompt }] }],
-          generationConfig: { responseModalities: ['TEXT', 'IMAGE'] },
-        } as Record<string, unknown>),
+          generationConfig: geminiImageGenerationConfig,
+        }),
       });
 
       if (!response.ok) {

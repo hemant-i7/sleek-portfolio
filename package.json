@@ -9,7 +9,10 @@
     "lint": "next lint",
     "blog:webp": "node scripts/convert-blog-to-webp.mjs",
     "generate-banners": "curl -s -X POST http://localhost:3000/api/projects/generate-all -H 'Content-Type: application/json'",
-    "generate-curalink-banner": "curl -s -X POST http://localhost:3000/api/projects/generate-image -H 'Content-Type: application/json' -d '{\"projectKey\":\"CuraLink\"}'"
+    "generate-curalink-banner": "curl -s -X POST http://localhost:3000/api/projects/generate-image -H 'Content-Type: application/json' -d '{\"projectKey\":\"CuraLink\"}'",
+    "generate-orbit-banner": "node scripts/generate-banners.mjs",
+    "generate-navbar-sprite": "node scripts/generate-navbar-sprite.mjs",
+    "download-reels": "python3 scripts/download-instagram-reels.py"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

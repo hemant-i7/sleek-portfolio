@@ -15,6 +15,7 @@ import {
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
+import { ContentReelsCarousel } from './ContentReelsCarousel';
 
 function getLinkIcon(item: (typeof extraLinks)[0]) {
   if (item.type === 'youtube') return <SiYoutube className="size-5 text-[#ff0000]" />;
@@ -53,34 +54,44 @@ export default function Links() {
         .
       </p>
 
-      {/* n8n Official Content Creator: image left, text right */}
-      <div className="mt-8 rounded-2xl border border-border/60 bg-card p-4 shadow-sm md:p-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
-          <div className="shrink-0 overflow-hidden rounded-xl border border-border/60 bg-muted/30 md:max-w-[280px]">
-            <Image
-              src={n8nHighlight.creatorImage}
-              alt="n8n creator kit - cap, t-shirt, stickers, thank you note from n8n Community Team"
-              width={480}
-              height={360}
-              className="h-auto max-h-[240px] w-full object-contain"
-              sizes="280px"
-              priority={false}
-            />
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-semibold">{n8nHighlight.title}</span>
-              <span className="text-muted-foreground text-sm">·</span>
-              <span className="text-muted-foreground text-sm">{n8nHighlight.subtitle}</span>
+      {/* n8n creator + reels — two-column on md+ */}
+      <article className="mt-8 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
+        <div className="grid md:grid-cols-[1fr_minmax(0,300px)] lg:grid-cols-[1fr_340px] md:divide-x md:divide-border/50">
+          <div className="flex flex-col gap-5 p-5 sm:p-6">
+            <div className="overflow-hidden rounded-xl border border-border/50 bg-muted/20">
+              <Image
+                src={n8nHighlight.creatorImage}
+                alt="n8n creator kit"
+                width={480}
+                height={360}
+                className="h-auto w-full max-h-[200px] object-contain sm:max-h-[220px]"
+                sizes="(max-width: 768px) 100vw, 360px"
+              />
             </div>
-            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              n8n workflow automation & content. Creator kit from the n8n Community Team.
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-primary">
+                Official partner
+              </p>
+              <h3 className="mt-1 text-lg font-semibold leading-tight">
+                {n8nHighlight.title}
+              </h3>
+              <p className="text-muted-foreground mt-1 text-sm">{n8nHighlight.subtitle}</p>
+              <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+                n8n workflow automation & content. Creator kit from the n8n Community Team.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-center border-t border-border/50 bg-muted/10 p-5 sm:p-6 md:border-t-0">
+            <p className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              Reels
             </p>
+            <ContentReelsCarousel />
           </div>
         </div>
-      </div>
+      </article>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
         {extraLinks.map((item) => (
           <a
             key={item.label}

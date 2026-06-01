@@ -5,14 +5,24 @@
  * Saves to public/project/{slug}-banner.png and returns { url, projectName, tagline }.
  */
 import { projects } from '@/config/Projects';
-import { buildProjectBannerPrompt } from '@/lib/project-banner-prompt';
+import {
+  GEMINI_IMAGE_MODEL,
+  geminiImageGenerationConfig,
+} from '@/lib/gemini-image-config';
+import {
+  buildProjectBannerPrompt,
+  type BannerVariant,
+} from '@/lib/project-banner-prompt';
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs';
 
-// Use GEMINI_IMAGE_MODEL in .env for a higher-quality model (e.g. Imagen 3 when available)
-const GEMINI_IMAGE_MODEL =
-  process.env.GEMINI_IMAGE_MODEL || 'gemini-2.0-flash-exp-image-generation';
+function bannerVariantForTitle(title: string): BannerVariant {
+  const t = title.toLowerCase();
+  if (t.includes('orbit') || t.includes('sauna')) return 'browser-agent';
+  if (t.includes('contentpulse')) return 'cms-chatbot';
+  return 'default';
+}
 
 function getProjectByKey(key: string): { title: string; tagline: string } | null {
   const idx = parseInt(key, 10);
@@ -76,7 +86,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const prompt = buildProjectBannerPrompt(title, fullFormOrTagline);
+    const variant = (body.variant as BannerVariant | undefined) ?? bannerVariantForTitle(title);
+    const prompt = buildProjectBannerPrompt(title, fullFormOrTagline, variant);
 
     const modelToUse = GEMINI_IMAGE_MODEL;
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelToUse}:generateContent?key=${apiKey}`;
@@ -86,8 +97,8 @@ export async function POST(request: NextRequest) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        generationConfig: { responseModalities: ['TEXT', 'IMAGE'] },
-      } as Record<string, unknown>),
+        generationConfig: geminiImageGenerationConfig,
+      }),
     });
 
     if (!response.ok) {

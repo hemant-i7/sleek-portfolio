@@ -17,8 +17,8 @@ const baseUrl =
 // Base site configuration
 export const siteConfig = {
   name: heroConfig.name,
-  title: 'Hemant Kadam - Dev & Creator',
-  description: 'Hemant Kadam, Software Developer & Content Creator',
+  title: 'Hemant Kadam - AI Product Engineer',
+  description: 'Hemant Kadam, AI Product Engineer & Content Creator',
   url: baseUrl,
   ogImage: '/meta/opengraph-image.png',
   author: {
@@ -26,17 +26,19 @@ export const siteConfig = {
     twitter: '@hemant_i7',
     github: 'hemant-i7',
     linkedin: 'hemant-kadam-5a1195194',
-    email: 'hemantkadam112@gmail.com',
-    blog: 'https://blogger.hemantkadam.in/',
+    email: 'works@hemant.engineer',
+    blog: 'https://hemant.engineer',
   },
   keywords: [
     'portfolio',
-    'developer',
-    'full-stack',
+    'ai engineer',
+    'llm',
+    'langchain',
+    'rag',
     'react',
     'nextjs',
     'typescript',
-    'software development',
+    'ai product engineer',
     heroConfig.name.toLowerCase(),
   ],
 };
@@ -118,7 +120,7 @@ export const pageMetadata: Record<string, PageMeta> = {
   // Resume page
   '/resume': {
     title: 'Resume - Professional CV',
-    description: `View and download ${heroConfig.name}'s resume and CV. Frontend, backend, DevOps, Docker. Technical skills, experience, and qualifications.`,
+    description: `View and download ${heroConfig.name}'s resume and CV. AI engineering, LLM products, RAG, agents, and full-stack experience.`,
     keywords: [
       'resume',
       'cv',

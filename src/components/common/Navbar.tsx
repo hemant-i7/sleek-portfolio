@@ -7,35 +7,59 @@ import Container from './Container';
 import ThemeSwitch from './ThemeSwitch';
 
 export default function Navbar() {
+  const { logo } = navbarConfig;
+
   return (
-    <Container className="sticky top-0 z-20 rounded-md py-4 backdrop-blur-sm">
-      <div className="flex items-center justify-between px-6">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="block transition-transform duration-200 hover:scale-105 active:scale-95">
-            <Image
-              className="h-12 w-12 rounded-md border border-gray-200 bg-blue-300 dark:bg-yellow-300"
-              src={navbarConfig.logo.src}
-              alt={navbarConfig.logo.alt}
-              width={navbarConfig.logo.width}
-              height={navbarConfig.logo.height}
-            />
-          </Link>
-          <div className="flex items-center justify-center gap-4">
-            {navbarConfig.navItems.map((item) => (
-              <Link
-                className="relative text-foreground transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-200 hover:after:w-full"
-                key={item.label}
-                href={item.href}
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
+      <Container className="py-3">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex min-w-0 items-center gap-6">
+            <Link
+              href="/"
+              className="group flex shrink-0 items-center gap-3 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <span
+                className={
+                  logo.pixelated
+                    ? 'relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/60 bg-[#1a1f2e] shadow-sm ring-1 ring-white/10 transition-transform group-hover:scale-[1.03] sm:size-11'
+                    : 'relative flex size-10 shrink-0 overflow-hidden rounded-full border-2 border-primary/25 bg-muted shadow-sm ring-2 ring-background transition-transform group-hover:scale-[1.03] sm:size-11'
+                }
               >
-                {item.label}
-              </Link>
-            ))}
+                <Image
+                  className={
+                    logo.pixelated
+                      ? 'size-full object-contain [image-rendering:pixelated]'
+                      : 'size-full object-cover object-top'
+                  }
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                  unoptimized={logo.pixelated}
+                  priority
+                />
+              </span>
+              <span className="hidden font-semibold tracking-tight text-foreground sm:inline">
+                Hemant
+              </span>
+            </Link>
+
+            <nav className="flex items-center gap-5 sm:gap-6" aria-label="Main">
+              {navbarConfig.navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
-        </div>
-        <div className="flex items-center gap-4">
+
           <ThemeSwitch />
         </div>
-      </div>
-    </Container>
+      </Container>
+    </header>
   );
 }

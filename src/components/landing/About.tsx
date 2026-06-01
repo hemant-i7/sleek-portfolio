@@ -23,16 +23,22 @@ import {
   FaPuzzlePiece,
 } from 'react-icons/fa';
 import {
+  SiAmazonwebservices,
+  SiAnthropic,
   SiApifox,
   SiContentstack,
   SiFigma,
   SiGithub,
+  SiGooglegemini,
   SiLangchain,
   SiMongodb,
   SiN8N,
+  SiNestjs,
   SiNextdotjs,
   SiNodedotjs,
   SiNotion,
+  SiOpenai,
+  SiPostgresql,
   SiPostman,
   SiReact,
   SiShadcnui,
@@ -50,32 +56,51 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../ui/accordion';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+const skillIconClass = 'size-3.5 shrink-0';
 
 const skillIconMap: Record<string, React.ReactNode> = {
-  'React.js': <SiReact className="size-full p-1" />,
-  'Next.js': <SiNextdotjs className="size-full p-1" />,
-  TypeScript: <SiTypescript className="size-full p-1" />,
-  'Tailwind CSS': <SiTailwindcss className="size-full p-1" />,
-  'ShadCN UI': <SiShadcnui className="size-full p-1" />,
-  'Node.js': <SiNodedotjs className="size-full p-1" />,
-  MongoDB: <SiMongodb className="size-full p-1" />,
-  'REST APIs': <SiApifox className="size-full p-1" />,
-  LangChain: <SiLangchain className="size-full p-1" />,
-  n8n: <SiN8N className="size-full p-1" />,
-  Embeddings: <FaBrain className="size-full p-1" />,
-  WordPress: <SiWordpress className="size-full p-1" />,
-  Contentstack: <SiContentstack className="size-full p-1" />,
-  GitHub: <SiGithub className="size-full p-1" />,
-  'VS Code': <FaCode className="size-full p-1" />,
-  Postman: <SiPostman className="size-full p-1" />,
-  Figma: <SiFigma className="size-full p-1" />,
-  Notion: <SiNotion className="size-full p-1" />,
-  Vercel: <SiVercel className="size-full p-1" />,
-  'Analytical Thinking': <FaLightbulb className="size-full p-1" />,
-  Collaboration: <FaPeopleCarry className="size-full p-1" />,
-  'Problem Solving': <FaPuzzlePiece className="size-full p-1" />,
-  'Time Management': <FaClock className="size-full p-1" />,
+  React: <SiReact className={skillIconClass} />,
+  'React.js': <SiReact className={skillIconClass} />,
+  'Next.js': <SiNextdotjs className={skillIconClass} />,
+  TypeScript: <SiTypescript className={skillIconClass} />,
+  'Tailwind CSS': <SiTailwindcss className={skillIconClass} />,
+  'ShadCN UI': <SiShadcnui className={skillIconClass} />,
+  'Node.js': <SiNodedotjs className={skillIconClass} />,
+  NestJS: <SiNestjs className={skillIconClass} />,
+  MongoDB: <SiMongodb className={skillIconClass} />,
+  PostgreSQL: <SiPostgresql className={skillIconClass} />,
+  'REST APIs': <SiApifox className={skillIconClass} />,
+  LangChain: <SiLangchain className={skillIconClass} />,
+  'ReAct agents': <FaBrain className={skillIconClass} />,
+  RAG: <FaBrain className={skillIconClass} />,
+  'OpenAI API': <SiOpenai className={skillIconClass} />,
+  'Gemini API': <SiGooglegemini className={skillIconClass} />,
+  'Claude API': <SiAnthropic className={skillIconClass} />,
+  FAISS: <FaBrain className={skillIconClass} />,
+  'prompt engineering': <FaLightbulb className={skillIconClass} />,
+  'Custom eval sets': <FaPuzzlePiece className={skillIconClass} />,
+  'output scoring': <FaPuzzlePiece className={skillIconClass} />,
+  'token logging': <FaClock className={skillIconClass} />,
+  'cost optimization': <FaLightbulb className={skillIconClass} />,
+  'hallucination checks': <FaInfoCircle className={skillIconClass} />,
+  'Chrome extensions (MV3)': <FaCode className={skillIconClass} />,
+  'streaming UI': <FaCode className={skillIconClass} />,
+  n8n: <SiN8N className={skillIconClass} />,
+  'vector databases': <FaBrain className={skillIconClass} />,
+  Embeddings: <FaBrain className={skillIconClass} />,
+  WordPress: <SiWordpress className={skillIconClass} />,
+  Contentstack: <SiContentstack className={skillIconClass} />,
+  GitHub: <SiGithub className={skillIconClass} />,
+  'VS Code': <FaCode className={skillIconClass} />,
+  Postman: <SiPostman className={skillIconClass} />,
+  Figma: <SiFigma className={skillIconClass} />,
+  Notion: <SiNotion className={skillIconClass} />,
+  Vercel: <SiVercel className={skillIconClass} />,
+  'AWS Cloud Foundations': <SiAmazonwebservices className={skillIconClass} />,
+  'Analytical Thinking': <FaLightbulb className={skillIconClass} />,
+  Collaboration: <FaPeopleCarry className={skillIconClass} />,
+  'Problem Solving': <FaPuzzlePiece className={skillIconClass} />,
+  'Time Management': <FaClock className={skillIconClass} />,
 };
 
 function getIcon(title: string) {
@@ -133,12 +158,12 @@ export default function About() {
             alt={about.name}
             width={64}
             height={64}
-            className="rounded-full border-2 border-primary/20 object-cover"
+            className="size-16 rounded-full border-2 border-primary/20 object-cover object-top"
           />
           <div>
             <p className="font-semibold">{about.name}</p>
             <p className="text-sm text-muted-foreground">
-              SLRTCE · Surfboard Ventures · @BloggerHemant · @hemantkadam.ai (9K IG)
+              SLRTCE · Surfboard Ventures · @BloggerHemant · @hemantkadam.ai (13K IG)
             </p>
           </div>
         </div>
@@ -270,32 +295,28 @@ export default function About() {
       {/* Technical Skills: dedicated section */}
       <section className="mt-20" id="skills">
         <SectionHeading subHeading="Technical" heading="Skills" />
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {technicalSkillsByCategory.map((group, gIdx) => (
             <div
               key={gIdx}
-              className="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border/60 bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              className="flex flex-col rounded-2xl border border-border/60 bg-card p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
-              <h4 className="mb-3 shrink-0 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <h4 className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {group.category}
               </h4>
-              <div className="flex min-h-0 flex-wrap gap-2 [&_svg]:size-6 [&_svg]:shrink-0">
+              <div className="flex flex-wrap gap-2">
                 {group.skills.map((skillName, sIdx) => (
-                  <Tooltip key={sIdx}>
-                    <TooltipTrigger asChild>
-                      <span className="inline-flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/50 bg-muted/50 transition-colors hover:border-border hover:bg-muted">
-                        {skillIconMap[skillName] ?? <FaCode className="size-full p-1" />}
-                      </span>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{skillName}</p>
-                    </TooltipContent>
-                  </Tooltip>
+                  <span
+                    key={sIdx}
+                    className="inline-flex max-w-full items-center gap-1.5 rounded-lg border border-border/50 bg-muted/40 px-2.5 py-1.5 text-xs font-medium leading-snug text-foreground"
+                  >
+                    {skillIconMap[skillName] ?? (
+                      <FaCode className={`${skillIconClass} text-muted-foreground`} />
+                    )}
+                    <span className="break-words">{skillName}</span>
+                  </span>
                 ))}
               </div>
-              <p className="mt-3 min-w-0 truncate text-xs text-muted-foreground" title={group.skills.join(', ')}>
-                {group.skills.join(' · ')}
-              </p>
             </div>
           ))}
         </div>

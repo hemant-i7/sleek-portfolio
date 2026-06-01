@@ -3,15 +3,19 @@
 % Author: Hemant Kadam
 %------------------------
 
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10.5pt]{article}
 
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
 \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{enumitem}
-\usepackage[pdftex]{hyperref}
+\usepackage[hidelinks,pdftex]{hyperref}
 \usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{microtype}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -19,83 +23,110 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1in}
+\addtolength{\textheight}{1.05in}
 
 \sloppy
-\tolerance=1000
+\emergencystretch=2em
+\tolerance=2000
+\hbadness=10000
 
-\hypersetup{
-  colorlinks=true,
-  urlcolor=black,
-  linkcolor=black,
-  citecolor=black,
-  breaklinks=true
-}
-
+\hypersetup{colorlinks=true, urlcolor=black, linkcolor=black, citecolor=black, breaklinks=true}
 \urlstyle{same}
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Section formatting
-\titleformat{\section}{
-  \vspace{-6pt}\bfseries\scshape\raggedright\normalsize
-}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+%% FA icon + underlined label
+\newcommand{\falink}[3]{%
+  \href{#2}{\textcolor{black}{#1\;{\small\underline{#3}}}}%
+}
 
-% Custom commands
-\newcommand{\resumeItem}[2]{\item\small{\textbf{#1}: #2 \vspace{-2pt}}}
+%% Section rule
+\titleformat{\section}{
+  \vspace{-5pt}\bfseries\scshape\raggedright\normalsize
+}{}{0em}{}[\color{black}\titlerule\vspace{-4pt}]
+
+\newcommand{\resumeItem}[2]{\item\small{\textbf{#1:} #2\vspace{-2pt}}}
+
 \newcommand{\resumeSubheading}[4]{
   \vspace{-1pt}\item
-  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    \textbf{#1} & #2 \\
-    \textit{#3} & \textit{#4} \\
+  \begin{tabular*}{\linewidth}{@{}p{0.72\linewidth}@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & \small#2 \\
+    \textit{\small#3} & \textit{\small #4} \\
   \end{tabular*}\vspace{-5pt}
 }
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-3pt}}
+
+%% Project: stacked lines so text wraps inside margins (no tabular overflow)
+\newcommand{\resumeProjectHeading}[3]{%
+  \vspace{5pt}\item
+  \noindent\textbf{\normalsize #1}\par\vspace{1pt}
+  \noindent\small #3\par\vspace{1pt}
+  \noindent\small\textit{#2}\par\vspace{-3pt}%
+}
+
+%% Skills: label + list; wraps at full line width
+\newcommand{\skillline}[2]{%
+  \par\small\noindent\textbf{#1}\enspace #2\par\vspace{3pt}%
+}
+
+%% Achievement: placement — event · optional detail (rank order, wraps)
+\newcommand{\achievement}[3]{%
+  \item[]
+  \small\noindent\begin{minipage}[t]{\linewidth}%
+    \textbf{#1}\enspace\textemdash\enspace #2%
+    \if\relax\detokenize{#3}\relax\else.\enspace #3\fi
+  \end{minipage}\vspace{1pt}%
+}
+
+\newcommand{\resumeSubItem}[2]{\item\small{\textbf{#1:} #2}\vspace{-3pt}}
 \renewcommand{\labelitemii}{$\circ$}
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-%-----------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%
+\newcommand{\resumeItemListStart}{%
+  \begin{itemize}[leftmargin=*,topsep=2pt,itemsep=0pt,parsep=0pt]%
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+\newcommand{\resumeBullet}[1]{\item\small\noindent\begin{minipage}[t]{\dimexpr\linewidth-1.2em\relax}#1\end{minipage}}
 
 \begin{document}
 
 %----------HEADING-----------------
 \vspace{-10pt}
-\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{{\LARGE Hemant Kadam}} & Mobile: +91-7738705798 \\
-  Email: \href{mailto:hemantkadam112@gmail.com}{\underline{hemantkadam112@gmail.com}} & Virar, Mumbai \\
-  \href{https://github.com/hemant-i7}{\underline{GitHub: hemant-i7}} & \href{https://www.linkedin.com/in/hemant-kadam-5a1195194/}{\underline{LinkedIn: hemant-kadam}} \\
-  \href{https://blogger.hemantkadam.in}{\underline{Blog: blogger.hemantkadam.in}} & \href{https://hemant.engineer}{\underline{hemant.engineer}} \\
+\begin{tabular*}{\linewidth}{@{}p{0.62\linewidth}@{\extracolsep{\fill}}r@{}}
+  \textbf{{\LARGE Hemant Kadam}} & \faPhone\ \href{tel:+917738705798}{+91-7738705798} \\[2pt]
+  \faEnvelope\ \href{mailto:works@hemant.engineer}{works@hemant.engineer} &
+  Virar, Mumbai \\[2pt]
+  \faGlobe\ \href{https://hemant.engineer}{hemant.engineer} & \\[2pt]
+  \faGithub\ \href{https://github.com/hemant-i7}{hemant-i7}
+  \enspace\textbar\enspace
+  \faLinkedin\ \href{https://www.linkedin.com/in/hemant-kadam-5a1195194/}{LinkedIn}
+  \enspace\textbar\enspace
+  \faInstagram\ \href{https://www.instagram.com/hemantkadam.ai/}{IG 13K}
+  \enspace\textbar\enspace
+  \faYoutube\ \href{https://www.youtube.com/@bloggerhemant}{YT 49K+} & \\
 \end{tabular*}
-\vspace{-6pt}
+\vspace{-2pt}
 
 %-----------SUMMARY-----------------
 \section{Summary}
-\small{
-Software developer with strong expertise in frontend technologies and working knowledge of backend systems. Experienced in developing high-performance web apps using React.js, Next.js, Tailwind CSS, with backend integration through Node.js, NestJS \& MongoDB. Backend \& DevOps oriented: Docker, APIs, deployment. Currently pursuing Computer Engineering at SLRTCE and Intern at Surfboard Ventures. Creator at \href{https://www.youtube.com/@bloggerhemant}{\underline{@BloggerHemant}} with 10K+ subscribers, creating educational content on frontend, AI, SEO and automation. Recognized in multiple national and international hackathons.
-}
-\vspace{8pt}
+\small{AI Engineer specializing in LLM-powered products: RAG pipelines, ReAct agents, agentic browser extensions, and AI automation backends. Shipped 5 production AI products used by real users. Won 7 hackathons including IIT Roorkee (National) and Bit \& Build (International, 2,500+ participants). Teaches AI development to 49K+ YouTube and 13K+ Instagram followers. Core stack: LangChain, OpenAI API, Gemini API, Claude API, FAISS, n8n, Next.js.}
+\vspace{4pt}
 
 %-----------EDUCATION-----------------
 \section{Education}
 \resumeSubHeadingListStart
   \resumeSubheading
-    {Shree L. R. Tiwari College of Engineering (Mumbai University)}{Mumbai, India}
-    {Bachelor of Engineering in Computer Science (CGPA: 8.5)}{Sep 2023 – Jun 2026}
+    {Shree L. R. Tiwari College of Engineering, Mumbai University}{Mumbai, India}
+    {B.E. Computer Engineering \textnormal{$|$ CGPA: 8.5}}{Sep 2023 \textemdash\ Jun 2026}
   \resumeSubheading
     {Viva College of Diploma Engineering and Technology}{Mumbai, India}
-    {Diploma in Computer Engineering (84\%)}{Aug 2020 – Jun 2023}
+    {Diploma in Computer Engineering \textnormal{$|$ 84\%}}{Aug 2020 \textemdash\ Jun 2023}
 \resumeSubHeadingListEnd
-\vspace{6pt}
+\vspace{4pt}
 
 %-----------EXPERIENCE-----------------
 \section{Experience}
@@ -103,136 +134,158 @@ Software developer with strong expertise in frontend technologies and working kn
 
   \resumeSubheading
     {Surfboard Ventures}{Virar, Mumbai}
-    {Associate Software Engineer Intern}{Feb 2025 – Present}
+    {Associate Software Engineer Intern \textnormal{\small(Next.js, TypeScript, NestJS, Razorpay)}}{Feb 2025 \textemdash\ Present}
     \resumeItemListStart
-      \resumeItem{Frontend Development}{Developed and optimized modern user interfaces using Next.js 15 and Tailwind CSS.}
-      \resumeItem{Secure Payments}{Integrated payment workflows for in-app certifications using Razorpay.}
-      \resumeItem{API Integration}{Worked with NestJS backend services for reliable data flow between modules.}
+      \resumeItem{Streaming UI}{Shipped features for a live SaaS product; built React components that render AI-generated content streams with real-time streaming state management.}
+      \resumeItem{Payment Integration}{Integrated Razorpay for in-app certification purchases: checkout flow, webhook handlers, and idempotent error recovery; zero payment failures post-launch.}
+      \resumeItem{API Contract Design}{Defined REST API contracts and JSON schemas with the NestJS backend team before build; eliminated integration bugs by catching shape mismatches at design time.}
     \resumeItemListEnd
 
-  \vspace{4pt}
+  \vspace{3pt}
 
   \resumeSubheading
     {Nano Technology (Freelance)}{Remote}
-    {Frontend + Automation Engineer Intern}{June 2024 – Feb 2025}
+    {AI Automation Engineer \textnormal{\small(LangChain, FAISS, n8n, OpenAI)}}{Jun 2024 \textemdash\ Feb 2025}
     \resumeItemListStart
-      \resumeItem{Automation Workflows}{Built low-code workflow UIs using n8n and LangChain for business process automation.}
-      \resumeItem{Dashboard \& API Integration}{Developed interactive dashboards and connected them with Node.js APIs.}
-      \resumeItem{Data Management}{Streamlined analytics through MongoDB and responsive frontend visualizations.}
+      \resumeItem{LangChain Agents}{Built ReAct agents with tool use, BufferMemory, and PDF retrieval over a FAISS vector store; automated 3+ hours/day of manual analyst work.}
+      \resumeItem{n8n Automation}{Designed n8n as the full workflow backend: HTTP request nodes, webhook triggers, custom JS function nodes, and conditional routing; eliminated manual steps for 4 recurring workflows.}
+      \resumeItem{Prompt Engineering \& Evals}{Authored and iterated system prompts for document QA and data extraction; validated against 50-question eval sets before each client deployment.}
+      \resumeItem{Observability}{Logged token usage, latency, and error rates per run; identified a prompt consuming 3$\times$ expected tokens and cut cost by rewriting context injection.}
     \resumeItemListEnd
 
-  \vspace{4pt}
+  \vspace{3pt}
 
   \resumeSubheading
-    {Edba Academy (Contract / Freelance)}{Remote}
-    {Frontend \& Digital Marketing Engineer}{July 2023 – Sep 2023}
+    {Edba Academy (Contract)}{Remote}
+    {Frontend Engineer \textnormal{\small(HTML, Tailwind CSS, JavaScript, SEO)}}{Jul 2023 \textemdash\ Sep 2023}
     \resumeItemListStart
-      \resumeItem{Frontend Development}{Built responsive web pages using HTML, CSS, Tailwind CSS, and JavaScript.}
-      \resumeItem{Digital Marketing \& SEO}{Improved website SEO performance and implemented marketing-related optimizations.}
-      \resumeItem{Web Development Services}{Created dynamic, user-friendly interfaces for academy portals.}
-    \resumeItemListEnd
-
-  \vspace{4pt}
-
-  \resumeSubheading
-    {N. S. Media}{Vasai, Mumbai}
-    {Software Developer Intern}{Aug 2022 – Sep 2022}
-    \resumeItemListStart
-      \resumeItem{Frontend Design}{Created responsive websites using React.js, CSS3, and integrated REST APIs.}
-      \resumeItem{Performance Optimization}{Improved page load speed by 20\%.}
-      \resumeItem{SEO Enhancements}{Optimized website SEO for better search engine ranking and visibility.}
+      \resumeItem{Academy Portals}{Built 3 responsive academy portals; on-page SEO improvements increased Google Search Console impressions measurably within 60 days.}
+      \resumeItem{Performance}{Optimized asset loading and reduced render-blocking resources; Lighthouse scores above 85 across all portals.}
+      \resumeItem{Certification Infrastructure}{Integrated dynamic certificate generation for course completions, eliminating all manual PDF exports for the operations team.}
     \resumeItemListEnd
 
 \resumeSubHeadingListEnd
-\vspace{6pt}
+\vspace{4pt}
 
-%-----------PROJECTS-----------------
-\section{Projects}
+%-----------AI PROJECTS-----------------
+\section{AI Projects}
 \resumeSubHeadingListStart
 
-  \resumeSubItem{\textbf{Arise – AI-Powered Educational Platform}}{
-  \href{https://www.ariseai.app/}{\underline{Live}} \,|\, \href{https://github.com/hemant-i7/Arise}{\underline{GitHub}} \\
-  Comprehensive AI learning ecosystem with quiz, presentation, and roadmap modules. \textbf{Tech:} Next.js, TypeScript, Tailwind, Gemini API, ElevenLabs, Node.js.}
+  \resumeProjectHeading
+    {Sauna Orbit}
+    {AI Browser Agent · JavaScript · Manifest V3 · Gemini API · Claude API · Chrome Side Panel}
+    {%
+      \falink{\faYoutube}{https://youtu.be/BCjzh9GZ_Lw}{Demo}\enspace
+      \falink{\faGithub}{https://github.com/hemant-i7/orbit}{GitHub}%
+    }
+  \resumeItemListStart
+    \resumeBullet{MV3-native Chrome extension with a background service worker, side panel, and content scripts. Supports \textbf{Gemini and Claude} via bring-your-own-key (\texttt{chrome.storage.local}; zero backend). Serializes live DOM into the LLM prompt, executes browser-action tools (fill-form, click, scrape, navigate tabs), and loops until the task completes with streaming replies and tab-strip progress.}
+  \resumeItemListEnd
 
-  \vspace{4pt}
+  \resumeProjectHeading
+    {ContentPulse}
+    {AI Chatbot Platform + npm SDK · NestJS · Next.js · LangChain · Groq · Contentstack · Turborepo}
+    {%
+      \falink{\faGlobe}{https://contentpulse-contentpulse-contenpulse.eu-contentstackapps.com/}{Live}\enspace
+      \falink{\faYoutube}{https://youtu.be/oL8AujXvVGY}{Demo}\enspace
+      \falink{\faGithub}{https://github.com/hemant-i7/ContentPulse}{GitHub}\enspace
+      \falink{\faNpm}{https://www.npmjs.com/package/contentpulse-chat-sdk}{npm}%
+    }
+  \resumeItemListStart
+    \resumeBullet{Turborepo monorepo (Next.js + NestJS) with a \textbf{chatbot SDK published to npm}. Integrates Contentstack CMS via OAuth 2.0; users authenticate, select their stack, and get LLM responses grounded in their own content (Groq/OpenAI, streaming, session memory). n8n pipeline handles webhook-triggered research, SEO scoring, and multi-platform publishing. Monitoring caught a 40\% cost spike; fixed by summarizing retrieved chunks pre-injection.}
+  \resumeItemListEnd
 
-  \resumeSubItem{\textbf{CuraLink – AI Medical Diagnosis System}}{
-  \href{https://curalink-two.vercel.app/}{\underline{Live}} \,|\, \href{https://github.com/hemant-i7/curalink-bot}{\underline{GitHub}} \\
-  Built multilingual dashboards and integrated LangChain-powered AI diagnosis. \textbf{Tech:} Next.js, Tailwind, LangChain, MongoDB, NextAuth.}
+  \resumeProjectHeading
+    {Arise}
+    {AI Learning Platform · LangChain Agents · Gemini API · ElevenLabs TTS · Next.js · OpenAI Embeddings}
+    {%
+      \falink{\faGlobe}{https://www.ariseai.app/}{Live}\enspace
+      \falink{\faGithub}{https://github.com/hemant-i7/Arise}{GitHub}%
+    }
+  \resumeItemListStart
+    \resumeBullet{LangChain router dispatches each query to a specialized chain: quiz generation, adaptive study roadmap, or ElevenLabs TTS narration. ConversationBufferMemory persists session context. Output scoring validates relevance; off-topic answers trigger a retry with a revised prompt.}
+  \resumeItemListEnd
 
-  \vspace{4pt}
-
-  \resumeSubItem{\textbf{TalentLink – Brand-Influencer Collaboration Platform}}{
-  \href{https://talentlink-hk.vercel.app/}{\underline{Live}} \,|\, \href{https://github.com/hemant-i7/talentlink}{\underline{GitHub}} \\
-  Streamlines collaboration between brand managers and influencers with campaign management and performance tracking. \textbf{Tech:} Next.js, Tailwind, NLP, Node.js, MongoDB.}
-
-  \vspace{4pt}
-
-  \resumeSubItem{\textbf{OneStop – Training \& Placement Hub}}{
-  \href{https://onestopclient.vercel.app/}{\underline{Live}} \,|\, \href{https://github.com/hemant-i7/onestop}{\underline{GitHub}} \\
-  Job and placement platform with quizzes, ATS matching, and dynamic APIs. \textbf{Tech:} Next.js, Tailwind CSS, Node.js, MongoDB.}
+  \resumeProjectHeading
+    {CuraLink}
+    {Medical RAG System · LangChain RAG · FAISS · OpenAI Embeddings · MongoDB · Next.js}
+    {%
+      \falink{\faGlobe}{https://curalink-two.vercel.app/}{Live}\enspace
+      \falink{\faGithub}{https://github.com/hemant-i7/curalink-bot}{GitHub}%
+    }
+  \resumeItemListStart
+    \resumeBullet{Medical QA over clinical documents using LangChain RetrievalQA with FAISS and OpenAI embeddings. Each answer includes source citations. Supports English, Hindi, and Marathi. Chunk size and overlap tuned to keep retrieval precision above 80\% on a 100-question test set.}
+  \resumeItemListEnd
 
 \resumeSubHeadingListEnd
-\vspace{6pt}
-
-%-----------ACHIEVEMENTS-----------------
-\section{Achievements}
-\resumeSubHeadingListStart
-  \resumeSubItem{Hackathons}{
-  \begin{itemize}[leftmargin=*]
-    \item 1st Place – IIT Roorkee 44-hour Hackathon
-    \item Winner – TechSurf 2025
-    \item 1st Runner-up – Webathon 2025 (National)
-    \item 2nd Runner-up – Saboo Siddik College Hackathon (National)
-    \item 5th Place – Google Build \& Blog Hackathon, Google Office BKC (National)
-    \item Top 5 Finalist – Bit \& Build International Hackathon (International)
-    \item Top Performer – Global Digital Health Summit Hackathon, NMACC (International)
-    \item Top 5 – Technovation, Amrutvahini College Nashik (National)
-  \end{itemize}}
-\resumeSubHeadingListEnd
-\vspace{6pt}
+\vspace{4pt}
 
 %-----------SKILLS-----------------
 \section{Skills}
-\resumeSubHeadingListStart
-  \resumeSubItem{Frontend}{React.js, Next.js, TypeScript, Tailwind CSS, ShadCN UI}
-  \resumeSubItem{Backend \& Cloud}{Node.js, MongoDB, REST APIs}
-  \resumeSubItem{Automation \& AI Tools}{LangChain, n8n, Embeddings}
-  \resumeSubItem{CMS}{WordPress, Contentstack}
-  \resumeSubItem{Tools}{GitHub, VS Code, Postman, Figma, Notion, Vercel}
-  \resumeSubItem{Soft Skills}{Analytical Thinking, Collaboration, Problem Solving, Time Management}
-\resumeSubHeadingListEnd
-\vspace{6pt}
+\vspace{2pt}
+{\small
+\skillline{AI / LLM}{LangChain, ReAct agents, RAG, tool use, memory, OpenAI API, Gemini API, Claude API, Groq, FAISS, Pinecone, embeddings, function calling, prompt engineering}
+\skillline{Evals \& Observability}{Custom eval sets, output scoring, token and latency logging, retry logic, cost optimization, hallucination checks}
+\skillline{Frontend}{React, Next.js, TypeScript, Tailwind CSS, ShadCN UI, Chrome extensions (Manifest V3), streaming UI}
+\skillline{Backend \& Data}{Node.js, NestJS, MongoDB, PostgreSQL, REST APIs, webhooks, n8n, vector databases}
+\skillline{Tools}{GitHub, Vercel, Postman, Figma, Notion, Contentstack, AWS Cloud Foundations}
+}
+\vspace{2pt}
 
-%-----------CERTIFICATIONS-----------------
-\section{Certifications}
-\resumeSubHeadingListStart
-  \resumeSubItem{Contentstack for Developers + Launch}{\href{https://www.edquest.pro/certificate/techsurf-BCWPFANQ}{\underline{Contentstack}}}
-  \resumeSubItem{AWS Academy Graduate – Cloud Foundations}{\href{https://www.credly.com/badges/a20568ae-23f2-40c7-8f01-07e48ce9fbe1}{\underline{AWS Academy}}}
-  \resumeSubItem{Postman API Fundamentals Student Expert}{\href{https://badgr.com/public/assertions/HGisimb9S-yWLXU3LmS8eA}{\underline{Postman}}}
-  \resumeSubItem{Web Front-End Development}{\href{https://www.edba-academy.com/certificates/edba-FGJSOCZ1}{\underline{Edba Academy}}}
-\resumeSubHeadingListEnd
-\vspace{6pt}
+%-----------ACHIEVEMENTS-----------------
+\section{Achievements}
+\vspace{2pt}
+{\small\textbf{Hackathons}}
+\begin{itemize}[leftmargin=0pt, label={}, nosep, topsep=2pt, itemsep=4pt]
+  \achievement{Winner}{IIT Roorkee 44-Hour Hackathon \textit{(National)}}{AI product judged best by IIT faculty and industry engineers}
+  \achievement{Winner}{TechSurf 2025 by Contentstack}{40,000+ participants across 5 editions}
+  \achievement{1st Runner-Up}{Webathon 2025 \textit{(National, ACM MHSSCE)}}{Multi-round competition with startup mentorship track}
+  \achievement{2nd Runner-Up}{Saboo Siddik College Hackathon \textit{(National)}}{}
+  \achievement{5th Place}{Google Build \& Blog Hackathon, Google Mumbai BKC}{Theme: Generative AI on Google Cloud}
+  \achievement{Top 5 Finalist}{Bit \& Build International Hackathon}{2,500+ participants from 20+ countries}
+  \achievement{Top Performer}{Global Digital Health Summit Hackathon \textit{(International)}}{AI and telemedicine track}
+\end{itemize}
+\vspace{2pt}
 
 %-----------EXTRACURRICULAR-----------------
 \section{Extracurricular}
 \resumeSubHeadingListStart
+
   \resumeSubItem{Blogging \& SEO}{
-  Manage and rank 4+ personal websites; improved SEO and generated 2M+ Google organic traffic in 6 months:
+  Manage and rank 4+ personal websites on various niches, improved SEO and generated 2M+ Google organic traffic in 6 months:
   \begin{itemize}[leftmargin=*]
     \item \href{https://marathibeast.com/}{\underline{\textit{MarathiBeast.com}}}
-    \item \href{https://blogger.hemantkadam.in/}{\underline{\textit{Blogger.HemantKadam.in}}}
-    \item \href{https://hemant.engineer}{\underline{\textit{hemant.engineer}}}
+    \item \href{https://hirebace.com/}{\underline{\textit{HireBace.com}}}
+    \item \href{https://hemant.engineer/}{\underline{\textit{hemant.engineer}}}
   \end{itemize}}
+
   \resumeSubItem{Content Creation}{
-  Multiple YouTube channels with 49K+ combined subscribers:
+  Manage multiple platforms with a combined audience of 49K+ subscribers and 13K+ Instagram followers:
   \begin{itemize}[leftmargin=*]
-    \item \href{https://www.youtube.com/@HemanTKadaM}{\underline{\textit{Hemant Kadam (33K)}}}
-    \item \href{https://www.youtube.com/@bloggerhemant}{\underline{\textit{Blogger Hemant (10K)}}}
-    \item \href{https://www.youtube.com/@techhemant8484}{\underline{\textit{Tech Hemant (6K)}}}
+    \item \href{https://www.youtube.com/@HemanTKadaM}{\underline{\textit{Hemant Kadam YouTube (33K subscribers)}}}
+    \item \href{https://www.youtube.com/@bloggerhemant}{\underline{\textit{Blogger Hemant YouTube (10K subscribers)}}}
+    \item \href{https://www.youtube.com/@techhemant8484}{\underline{\textit{Tech Hemant YouTube (6K subscribers)}}}
+    \item \href{https://www.instagram.com/hemantkadam.ai/reels/}{\underline{\textit{Instagram Reels @hemantkadam.ai}}}
   \end{itemize}}
+
   \resumeSubItem{Workshops \& Mentoring}{
-  Conducted technical workshops at SLRTCE: \textit{How to Do Freelancing}, \textit{AI Agent Automation}.}
+  Conducted technical workshops at SLRTCE including:
+  \begin{itemize}[leftmargin=*]
+    \item \textit{How to Do Freelancing}
+    \item \textit{AI Agent Automation}
+  \end{itemize}}
+
 \resumeSubHeadingListEnd
+\vspace{4pt}
+
+%-----------CERTIFICATIONS-----------------
+\section{Certifications}
+\resumeSubHeadingListStart
+  \resumeSubItem{AWS Academy Graduate \textendash\ Cloud Foundations}{\href{https://www.credly.com/badges/a20568ae-23f2-40c7-8f01-07e48ce9fbe1}{\underline{AWS Academy}}}
+  \resumeSubItem{Contentstack for Developers + Launch}{\href{https://www.edquest.pro/certificate/techsurf-BCWPFANQ}{\underline{Contentstack}}}
+  \resumeSubItem{Postman API Fundamentals Student Expert}{\href{https://badgr.com/public/assertions/HGisimb9S-yWLXU3LmS8eA}{\underline{Postman}}}
+  \resumeSubItem{Web Front-End Development}{\href{https://www.edba-academy.com/certificates/edba-FGJSOCZ1}{\underline{Edba Academy}}}
+\resumeSubHeadingListEnd
+\vspace{6pt}
 
 \end{document}

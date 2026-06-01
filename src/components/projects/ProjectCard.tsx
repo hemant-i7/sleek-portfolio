@@ -38,13 +38,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="group h-full w-full overflow-hidden border-gray-100 p-0 shadow-none transition-all duration-200 hover:shadow-md dark:border-gray-800">
       <CardHeader className="p-0">
-        <div className="group relative aspect-video overflow-hidden bg-muted">
+        <div className="group relative aspect-video overflow-hidden bg-gradient-to-br from-sky-950 via-blue-950 to-slate-950">
           <Image
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
             src={imgSrc}
             alt={project.title}
             width={1920}
             height={1080}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onError={() => setImgError(true)}
           />
           {project.video && (
@@ -126,7 +127,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               {project.technologies.map((technology, index) => (
                 <Tooltip key={index}>
                   <TooltipTrigger>
-                    <div className="size-6 transition-all duration-300 pb-10 pt-4 hover:scale-120 hover:cursor-pointer">
+                    <div className="flex size-8 items-center justify-center rounded-md border border-border/40 bg-muted/30 transition-all duration-300 hover:scale-110 hover:cursor-pointer [&_svg]:size-5">
                       {technology.icon}
                     </div>
                   </TooltipTrigger>

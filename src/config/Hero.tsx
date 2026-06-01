@@ -27,13 +27,12 @@ import Github from '@/components/svgs/Github';
 import LinkedIn from '@/components/svgs/LinkedIn';
 import Mail from '@/components/svgs/Mail';
 import X from '@/components/svgs/X';
-import Bun from '@/components/technologies/Bun';
-import JavaScript from '@/components/technologies/JavaScript';
+import Gemini from '@/components/technologies/Gemini';
 import MongoDB from '@/components/technologies/MongoDB';
+import NestJs from '@/components/technologies/NestJs';
 import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
-import PostgreSQL from '@/components/technologies/PostgreSQL';
-import Prisma from '@/components/technologies/Prisma';
+import OpenAI from '@/components/technologies/OpenAI';
 import ReactIcon from '@/components/technologies/ReactIcon';
 // Technology Components
 import TypeScript from '@/components/technologies/TypeScript';
@@ -43,19 +42,18 @@ export const skillComponents = {
   TypeScript: TypeScript,
   ReactIcon: ReactIcon,
   NextJs: NextJs,
-  Bun: Bun,
-  PostgreSQL: PostgreSQL,
+  OpenAI: OpenAI,
+  Gemini: Gemini,
   NodeJs: NodeJs,
   MongoDB: MongoDB,
-  Prisma: Prisma,
-  JavaScript: JavaScript,
+  NestJs: NestJs,
 };
 
 export const heroConfig = {
   // Personal Information
   name: 'Hemant Kadam',
-  title: 'Software Developer & Content Creator.',
-  avatar: '/company/1715195128331.jpeg',
+  title: 'AI Product Engineer & Content Creator.',
+  avatar: '/assets/Hemant-kadam.png',
 
   // Skills Configuration
   skills: [
@@ -75,21 +73,26 @@ export const heroConfig = {
       component: 'NextJs',
     },
     {
-      name: 'Bun',
-      href: 'https://bun.sh/',
-      component: 'Bun',
+      name: 'OpenAI',
+      href: 'https://openai.com/',
+      component: 'OpenAI',
     },
     {
-      name: 'PostgreSQL',
-      href: 'https://www.postgresql.org/',
-      component: 'PostgreSQL',
+      name: 'Gemini',
+      href: 'https://ai.google.dev/',
+      component: 'Gemini',
+    },
+    {
+      name: 'NestJS',
+      href: 'https://nestjs.com/',
+      component: 'NestJs',
     },
   ],
 
   // Description Configuration
   description: {
     template:
-      'Software developer with strong expertise in frontend (React, Next.js, Tailwind) and backend (Node.js, NestJS, MongoDB). Backend and DevOps oriented: Docker, APIs, deployment. Building high-performance web apps. Creator at <b>@BloggerHemant</b> (10K+), <b>@hemantkadam.ai</b> (9K+ on IG). Recognized in national and international hackathons.',
+      'AI Engineer building LLM products: RAG, ReAct agents, agentic browser extensions, and automation backends. Shipped 5 production AI apps. Stack: <b>LangChain</b>, OpenAI, Gemini, Claude, FAISS, n8n, Next.js. 7× hackathon winner. Teaching AI to <b>49K+ YouTube</b> and <b>13K+ Instagram</b> followers.',
   },
 
   // Buttons Configuration
@@ -128,7 +131,7 @@ export const socialLinks = [
   },
   {
     name: 'Email',
-    href: 'mailto:hemantkadam112@gmail.com',
+    href: 'mailto:works@hemant.engineer',
     icon: <Mail />,
   },
 ];

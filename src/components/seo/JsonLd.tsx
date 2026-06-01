@@ -9,7 +9,7 @@ export function JsonLd() {
     url: siteConfig.url,
     image: `${siteConfig.url}${profileImage}`,
     description: about.description,
-    jobTitle: 'Software Developer',
+    jobTitle: 'AI Product Engineer',
     sameAs: [
       `https://twitter.com/${siteConfig.author.twitter.replace('@', '')}`,
       `https://github.com/${siteConfig.author.github}`,

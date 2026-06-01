@@ -3,13 +3,23 @@ export interface NavItem {
   href: string;
 }
 
+export interface NavbarLogo {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** Upscale pixel art crisply (Pokémon-style sprite) */
+  pixelated?: boolean;
+}
+
 export const navbarConfig = {
   logo: {
-    src: '/assets/logo.png',
-    alt: 'logo',
-    width: 100,
-    height: 100,
-  },
+    src: '/assets/Hemant-kadam.png',
+    alt: 'Hemant Kadam',
+    width: 88,
+    height: 88,
+    pixelated: false,
+  } satisfies NavbarLogo,
   navItems: [
     {
       label: 'Work',
