@@ -131,7 +131,7 @@ export const socialLinks = [
   },
   {
     name: 'Email',
-    href: 'mailto:works@hemant.engineer',
+    href: 'mailto:work@hemantkadam.in',
     icon: <Mail />,
   },
 ];

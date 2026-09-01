@@ -110,7 +110,7 @@ export const about = {
     },
     {
       question: 'How can I contact you?',
-      answer: 'Email (works@hemant.engineer), LinkedIn, or the Contact page on this site. I respond to genuine inquiries.'
+      answer: 'Email (work@hemantkadam.in), LinkedIn, or the Contact page on this site. I respond to genuine inquiries.'
     },
     {
       question: 'Do you do freelancing or consulting?',

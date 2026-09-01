@@ -26,7 +26,7 @@ export const siteConfig = {
     twitter: '@hemant_i7',
     github: 'hemant-i7',
     linkedin: 'hemant-kadam-5a1195194',
-    email: 'works@hemant.engineer',
+    email: 'work@hemantkadam.in',
     blog: 'https://hemant.engineer',
   },
   keywords: [

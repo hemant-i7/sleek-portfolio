@@ -98,14 +98,14 @@
 \vspace{-10pt}
 \begin{tabular*}{\linewidth}{@{}p{0.62\linewidth}@{\extracolsep{\fill}}r@{}}
   \textbf{{\LARGE Hemant Kadam}} & \faPhone\ \href{tel:+917738705798}{+91-7738705798} \\[2pt]
-  \faEnvelope\ \href{mailto:works@hemant.engineer}{works@hemant.engineer} &
+  \faEnvelope\ \href{mailto:work@hemantkadam.in}{work@hemantkadam.in} &
   Virar, Mumbai \\[2pt]
-  \faGlobe\ \href{https://hemant.engineer}{hemant.engineer} & \\[2pt]
+  \faGlobe\ \href{https://hemantkadam.in}{hemantkadam.in} & \\[2pt]
   \faGithub\ \href{https://github.com/hemant-i7}{hemant-i7}
   \enspace\textbar\enspace
   \faLinkedin\ \href{https://www.linkedin.com/in/hemant-kadam-5a1195194/}{LinkedIn}
   \enspace\textbar\enspace
-  \faInstagram\ \href{https://www.instagram.com/hemantkadam.ai/}{IG 13K}
+  \faInstagram\ \href{https://www.instagram.com/hemantkadam.ai/}{IG 16K+}
   \enspace\textbar\enspace
   \faYoutube\ \href{https://www.youtube.com/@bloggerhemant}{YT 49K+} & \\
 \end{tabular*}
@@ -113,7 +113,7 @@
 
 %-----------SUMMARY-----------------
 \section{Summary}
-\small{AI Engineer specializing in LLM-powered products: RAG pipelines, ReAct agents, agentic browser extensions, and AI automation backends. Shipped 5 production AI products used by real users. Won 7 hackathons including IIT Roorkee (National) and Bit \& Build (International, 2,500+ participants). Teaches AI development to 49K+ YouTube and 13K+ Instagram followers. Core stack: LangChain, OpenAI API, Gemini API, Claude API, FAISS, n8n, Next.js.}
+\small{AI Engineer specializing in LLM-powered products: RAG pipelines, LangGraph multi-agent systems, agentic browser extensions, and AI automation backends. Shipped 5 production AI products used by real users. Won 7 hackathons including IIT Roorkee (National) and Bit \& Build (International, 2,500+ participants). Teaches AI development to 49K+ YouTube and 16K+ Instagram followers. Core stack: LangChain, LangGraph, FastAPI, Docker, OpenAI API, Gemini API, Claude API, FAISS, n8n, Next.js.}
 \vspace{4pt}
 
 %-----------EDUCATION-----------------
@@ -145,12 +145,13 @@
 
   \resumeSubheading
     {Nano Technology (Freelance)}{Remote}
-    {AI Automation Engineer \textnormal{\small(LangChain, FAISS, n8n, OpenAI)}}{Jun 2024 \textemdash\ Feb 2025}
+    {AI Automation Engineer \textnormal{\small(LangChain, LangGraph, FastAPI, Docker, FAISS, n8n, OpenAI)}}{Jun 2024 \textemdash\ Feb 2025}
     \resumeItemListStart
-      \resumeItem{LangChain Agents}{Built ReAct agents with tool use, BufferMemory, and PDF retrieval over a FAISS vector store; automated 3+ hours/day of manual analyst work.}
+      \resumeItem{LangGraph Agents}{Built multi-step ReAct agents with LangGraph for stateful orchestration, tool use, BufferMemory, and PDF retrieval over a FAISS vector store; automated 3+ hours/day of manual analyst work.}
+      \resumeItem{FastAPI Services}{Built FastAPI microservices wrapping the LangChain retrieval pipeline for client integrations; containerized with Docker for consistent local and deployment environments.}
       \resumeItem{n8n Automation}{Designed n8n as the full workflow backend: HTTP request nodes, webhook triggers, custom JS function nodes, and conditional routing; eliminated manual steps for 4 recurring workflows.}
       \resumeItem{Prompt Engineering \& Evals}{Authored and iterated system prompts for document QA and data extraction; validated against 50-question eval sets before each client deployment.}
-      \resumeItem{Observability}{Logged token usage, latency, and error rates per run; identified a prompt consuming 3$\times$ expected tokens and cut cost by rewriting context injection.}
+      \resumeItem{Observability}{Tracked token usage, latency, and error rates per run with Langfuse; identified a prompt consuming 3$\times$ expected tokens and cut cost by rewriting context injection.}
     \resumeItemListEnd
 
   \vspace{3pt}
@@ -184,7 +185,7 @@
 
   \resumeProjectHeading
     {ContentPulse}
-    {AI Chatbot Platform + npm SDK · NestJS · Next.js · LangChain · Groq · Contentstack · Turborepo}
+    {AI Chatbot Platform + npm SDK · NestJS · Next.js · LangChain · Groq · Contentstack · Turborepo · Docker · AWS}
     {%
       \falink{\faGlobe}{https://contentpulse-contentpulse-contenpulse.eu-contentstackapps.com/}{Live}\enspace
       \falink{\faYoutube}{https://youtu.be/oL8AujXvVGY}{Demo}\enspace
@@ -192,7 +193,7 @@
       \falink{\faNpm}{https://www.npmjs.com/package/contentpulse-chat-sdk}{npm}%
     }
   \resumeItemListStart
-    \resumeBullet{Turborepo monorepo (Next.js + NestJS) with a \textbf{chatbot SDK published to npm}. Integrates Contentstack CMS via OAuth 2.0; users authenticate, select their stack, and get LLM responses grounded in their own content (Groq/OpenAI, streaming, session memory). n8n pipeline handles webhook-triggered research, SEO scoring, and multi-platform publishing. Monitoring caught a 40\% cost spike; fixed by summarizing retrieved chunks pre-injection.}
+    \resumeBullet{Turborepo monorepo (Next.js + NestJS) with a \textbf{chatbot SDK published to npm}. Integrates Contentstack CMS via OAuth 2.0; users authenticate, select their stack, and get LLM responses grounded in their own content (Groq/OpenAI, streaming, session memory). Dockerized services deployed to AWS. n8n pipeline handles webhook-triggered research, SEO scoring, and multi-platform publishing. Monitoring caught a 40\% cost spike; fixed by summarizing retrieved chunks pre-injection.}
   \resumeItemListEnd
 
   \resumeProjectHeading
@@ -208,13 +209,13 @@
 
   \resumeProjectHeading
     {CuraLink}
-    {Medical RAG System · LangChain RAG · FAISS · OpenAI Embeddings · MongoDB · Next.js}
+    {Medical RAG System · LangChain RAG · FastAPI · Docker · FAISS · OpenAI Embeddings · MongoDB · Next.js}
     {%
       \falink{\faGlobe}{https://curalink-two.vercel.app/}{Live}\enspace
       \falink{\faGithub}{https://github.com/hemant-i7/curalink-bot}{GitHub}%
     }
   \resumeItemListStart
-    \resumeBullet{Medical QA over clinical documents using LangChain RetrievalQA with FAISS and OpenAI embeddings. Each answer includes source citations. Supports English, Hindi, and Marathi. Chunk size and overlap tuned to keep retrieval precision above 80\% on a 100-question test set.}
+    \resumeBullet{Medical QA over clinical documents using LangChain RetrievalQA with FAISS and OpenAI embeddings, served through a Dockerized FastAPI backend. Each answer includes source citations. Supports English, Hindi, and Marathi. Chunk size and overlap tuned to keep retrieval precision above 80\% on a 100-question test set.}
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -224,11 +225,12 @@
 \section{Skills}
 \vspace{2pt}
 {\small
-\skillline{AI / LLM}{LangChain, ReAct agents, RAG, tool use, memory, OpenAI API, Gemini API, Claude API, Groq, FAISS, Pinecone, embeddings, function calling, prompt engineering}
-\skillline{Evals \& Observability}{Custom eval sets, output scoring, token and latency logging, retry logic, cost optimization, hallucination checks}
+\skillline{AI / LLM}{LangChain, LangGraph, ReAct agents, RAG, tool use, memory, OpenAI API, Gemini API, Claude API, Groq, FAISS, Pinecone, embeddings, function calling, prompt engineering}
+\skillline{Evals \& Observability}{Langfuse, LangSmith, custom eval sets, output scoring, token and latency logging, retry logic, cost optimization, hallucination checks}
 \skillline{Frontend}{React, Next.js, TypeScript, Tailwind CSS, ShadCN UI, Chrome extensions (Manifest V3), streaming UI}
-\skillline{Backend \& Data}{Node.js, NestJS, MongoDB, PostgreSQL, REST APIs, webhooks, n8n, vector databases}
-\skillline{Tools}{GitHub, Vercel, Postman, Figma, Notion, Contentstack, AWS Cloud Foundations}
+\skillline{Backend \& Data}{Node.js, NestJS, FastAPI, Python, MongoDB, PostgreSQL, REST APIs, webhooks, n8n, vector databases}
+\skillline{Infra \& Deployment}{Docker, AWS (EC2, S3), GCP, GitHub Actions, Vercel}
+\skillline{Tools}{GitHub, Postman, Figma, Notion, Contentstack, AWS Cloud Foundations}
 }
 \vspace{2pt}
 
@@ -252,20 +254,27 @@
 \resumeSubHeadingListStart
 
   \resumeSubItem{Blogging \& SEO}{
-  Manage and rank 4+ personal websites on various niches, improved SEO and generated 2M+ Google organic traffic in 6 months:
+  Manage and rank personal websites on various niches, improved SEO and generated 2M+ Google organic traffic in 6 months:
   \begin{itemize}[leftmargin=*]
-    \item \href{https://marathibeast.com/}{\underline{\textit{MarathiBeast.com}}}
     \item \href{https://hirebace.com/}{\underline{\textit{HireBace.com}}}
-    \item \href{https://hemant.engineer/}{\underline{\textit{hemant.engineer}}}
+    \item \href{https://hemantkadam.in/}{\underline{\textit{hemantkadam.in}}}
   \end{itemize}}
 
   \resumeSubItem{Content Creation}{
-  Manage multiple platforms with a combined audience of 49K+ subscribers and 13K+ Instagram followers:
+  Manage multiple platforms with a combined audience of 49K+ subscribers and 16K+ Instagram followers:
   \begin{itemize}[leftmargin=*]
     \item \href{https://www.youtube.com/@HemanTKadaM}{\underline{\textit{Hemant Kadam YouTube (33K subscribers)}}}
     \item \href{https://www.youtube.com/@bloggerhemant}{\underline{\textit{Blogger Hemant YouTube (10K subscribers)}}}
     \item \href{https://www.youtube.com/@techhemant8484}{\underline{\textit{Tech Hemant YouTube (6K subscribers)}}}
-    \item \href{https://www.instagram.com/hemantkadam.ai/reels/}{\underline{\textit{Instagram Reels @hemantkadam.ai}}}
+    \item \href{https://www.instagram.com/hemantkadam.ai/reels/}{\underline{\textit{Instagram Reels @hemantkadam.ai (16k followers)}}}
+  \end{itemize}}
+
+  \resumeSubItem{n8n Community}{
+  Official n8n Ambassador (India); hosted 3 official n8n offline meetups:
+  \begin{itemize}[leftmargin=*]
+    \item \textit{n8n Open House @ Paytm Office}
+    \item \textit{n8n Co-working Meetup @ Hive8}
+    \item \textit{Builder Don't Wait --- judged AI projects}
   \end{itemize}}
 
   \resumeSubItem{Workshops \& Mentoring}{
