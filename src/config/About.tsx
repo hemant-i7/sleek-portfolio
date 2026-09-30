@@ -101,7 +101,7 @@ export const about = {
         { label: 'GitHub', href: 'https://github.com/hemant-i7' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hemant-kadam-5a1195194/' },
         { label: 'Instagram (13K+)', href: 'https://www.instagram.com/hemantkadam.ai/' },
-        { label: 'Blogger Hemant (YT)', href: 'https://www.youtube.com/@bloggerhemant' },
+        { label: 'Hemant Kadam AI (YT)', href: 'https://www.youtube.com/@hemantkadamai' },
         { label: 'Hemant Kadam (YT)', href: 'https://www.youtube.com/@HemanTKadaM' },
         { label: 'Tech Hemant (YT)', href: 'https://www.youtube.com/@techhemant8484' },
         { label: 'Blog', href: 'https://blogger.hemantkadam.in/' },

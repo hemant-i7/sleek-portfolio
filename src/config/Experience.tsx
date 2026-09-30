@@ -84,7 +84,7 @@ export const experiences: Experience[] = [
     ],
     startDate: 'May 2020',
     endDate: 'Present',
-    website: 'https://www.youtube.com/@bloggerhemant',
+    website: 'https://www.youtube.com/@hemantkadamai',
     technologies: [],
   },
 ];

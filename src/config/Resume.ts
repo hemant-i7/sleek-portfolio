@@ -5,7 +5,7 @@ export const resumeConfig = {
   quickLinks: [
     { label: 'GitHub', href: 'https://github.com/hemant-i7' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hemant-kadam-5a1195194/' },
-    { label: 'YouTube', href: 'https://www.youtube.com/@bloggerhemant' },
+    { label: 'YouTube', href: 'https://www.youtube.com/@hemantkadamai' },
     { label: 'Instagram', href: 'https://www.instagram.com/hemantkadam.ai/' },
     { label: 'Portfolio', href: 'https://hemant.engineer' },
     { label: 'Contact', href: '/contact' },

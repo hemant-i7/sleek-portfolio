@@ -46,7 +46,7 @@ export const contentReels: ContentReel[] = [
 
 export const extraLinks: { label: string; href: string; type?: 'youtube' | 'web' | 'social' }[] = [
   { label: 'Linktree (all links)', href: linktreeUrl, type: 'web' },
-  { label: 'Blogger Hemant (YT)', href: 'https://www.youtube.com/@bloggerhemant', type: 'youtube' },
+  { label: 'Hemant Kadam AI (YT)', href: 'https://www.youtube.com/@hemantkadamai', type: 'youtube' },
   { label: 'Tech Hemant (YT)', href: 'https://www.youtube.com/@techhemant8484', type: 'youtube' },
   { label: 'Hemant Kadam (YT)', href: 'https://www.youtube.com/@HemanTKadaM', type: 'youtube' },
   { label: 'bloggerhemant.in', href: 'https://blogger.hemantkadam.in/', type: 'web' },
