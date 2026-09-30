@@ -16,3 +16,14 @@ export function WorkshopButton({ className = '' }: { className?: string }) {
     </a>
   );
 }
+
+export function WorkshopSession({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex flex-col items-center text-center ${className}`}>
+      <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        Workshop session
+      </p>
+      <WorkshopButton />
+    </div>
+  );
+}
