@@ -26,7 +26,7 @@ export const experiences: Experience[] = [
   {
     isCurrent: true,
     company: 'Surfboard Ventures',
-    position: 'Associate Software Engineer Intern',
+    position: 'Associate Applied AI Engineer',
     location: 'Virar, Mumbai',
     image: '/company/surfboard_ventures_logo.jpeg',
     description: [

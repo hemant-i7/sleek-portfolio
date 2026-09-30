@@ -16,12 +16,3 @@ export function WorkshopButton({ className = '' }: { className?: string }) {
     </a>
   );
 }
-
-/** Always-visible bottom popup button for the N8N workshop session. */
-export default function WorkshopCta() {
-  return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 flex justify-center px-4 pr-20 sm:pr-4">
-      <WorkshopButton className="pointer-events-auto" />
-    </div>
-  );
-}
