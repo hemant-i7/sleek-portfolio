@@ -1,3 +1,4 @@
+import { WorkshopButton } from '@/components/common/WorkshopCta';
 import { extraLinks, linktreeUrl, n8nHighlight } from '@/config/Links';
 import Image from 'next/image';
 import React from 'react';
@@ -79,6 +80,12 @@ export default function Links() {
               <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
                 n8n workflow automation & content. Creator kit from the n8n Community Team.
               </p>
+              <div className="mt-4">
+                <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Workshop session
+                </p>
+                <WorkshopButton className="shadow-sm" />
+              </div>
             </div>
           </div>
 

@@ -2,6 +2,7 @@ import AdSense from '@/components/analytics/AdSense';
 import UmamiAnalytics from '@/components/analytics/UmamiAnalytics';
 import ChatBubble from '@/components/common/ChatBubble';
 import Footer from '@/components/common/Footer';
+import WorkshopCta from '@/components/common/WorkshopCta';
 import Navbar from '@/components/common/Navbar';
 import OnekoCat from '@/components/common/OnekoCat';
 import Providers from '@/components/common/Providers';
@@ -43,6 +44,7 @@ export default function RootLayout({
               <OnekoCat />
               <Quote />
               <Footer />
+              <WorkshopCta />
               <ChatBubble />
               <UmamiAnalytics />
             <AdSense />
